@@ -25,7 +25,7 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
     titleBar->setFixedHeight(46);
     auto* titleLay = new QHBoxLayout(titleBar);
     titleLay->setContentsMargins(0, 0, 0, 0);
-    QString hello = QString("HE THONG QUAN LY TAXI TIEN SA — Xin chao, %1 (%2)")
+    QString hello = QString("HỆ THỐNG QUẢN LÝ TAXI TIÊN SA — Xin chào, %1 (%2)")
                         .arg(QString::fromStdString(nd->getTenDangNhap()),
                              QString::fromStdString(nd->tenVaiTro()));
     auto* titleLbl = new QLabel(hello, titleBar);
@@ -63,30 +63,30 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
         return btn;
     };
 
-    QPushButton* btnOverview = addMenuBtn("Tong quan", 0);
+    QPushButton* btnOverview = addMenuBtn("Tổng quan", 0);
 
     if (laQuanLy) {
         driverPage = new DriverPage(heThong, this);
         stack->addWidget(driverPage);
-        addMenuBtn("Quan ly tai xe", stack->count() - 1);
+        addMenuBtn("Quản lý tài xế", stack->count() - 1);
 
         taxiPage = new TaxiPage(heThong, this);
         stack->addWidget(taxiPage);
-        addMenuBtn("Quan ly taxi", stack->count() - 1);
+        addMenuBtn("Quản lý taxi", stack->count() - 1);
     }
 
     bookingPage = new BookingPage(heThong, this);
     stack->addWidget(bookingPage);
-    addMenuBtn("Dat chuyen xe", stack->count() - 1);
+    addMenuBtn("Đặt chuyến xe", stack->count() - 1);
 
     if (laQuanLy) {
         statsPage = new StatsPage(heThong, this);
         stack->addWidget(statsPage);
-        addMenuBtn("Thong ke / Bao cao", stack->count() - 1);
+        addMenuBtn("Thống kê / Báo cáo", stack->count() - 1);
     }
 
     sideLay->addStretch();
-    auto* btnLogout = new QPushButton("Dang xuat", sidebar);
+    auto* btnLogout = new QPushButton("Đăng xuất", sidebar);
     btnLogout->setObjectName("menuBtn");
     btnLogout->setMinimumHeight(38);
     connect(btnLogout, &QPushButton::clicked, this, [this]() { emit dangXuat(); });
@@ -114,7 +114,7 @@ QWidget* MainWindow::buildOverviewPage() {
     auto* lay = new QVBoxLayout(page);
     lay->setContentsMargins(20, 16, 20, 16);
 
-    auto* lblTitle = new QLabel("Tong quan he thong", page);
+    auto* lblTitle = new QLabel("Tổng quan hệ thống", page);
     lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
     lay->addWidget(lblTitle);
     lay->addSpacing(12);
@@ -136,10 +136,10 @@ QWidget* MainWindow::buildOverviewPage() {
         grid->addWidget(card);
     };
 
-    themThe(lblSoTaiXe, "Tai xe");
+    themThe(lblSoTaiXe, "Tài xế");
     themThe(lblSoTaxi, "Taxi");
-    themThe(lblSoChuyen, "Chuyen xe da ghi nhan");
-    themThe(lblDoanhThu, "Tong doanh thu");
+    themThe(lblSoChuyen, "Chuyến xe đã ghi nhận");
+    themThe(lblDoanhThu, "Tổng doanh thu");
 
     grid->addStretch();
     lay->addLayout(grid);

@@ -12,13 +12,13 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     auto* root = new QVBoxLayout(this);
     root->setContentsMargins(20, 16, 20, 16);
 
-    auto* lblTitle = new QLabel("THONG KE / BAO CAO — Bang luong theo taxi", this);
+    auto* lblTitle = new QLabel("THỐNG KÊ / BÁO CÁO — Bảng lương theo taxi", this);
     lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
     root->addWidget(lblTitle);
     root->addSpacing(8);
 
     auto* row = new QHBoxLayout();
-    row->addWidget(new QLabel("Chon taxi:", this));
+    row->addWidget(new QLabel("Chọn taxi:", this));
     cbTaxi = new QComboBox(this);
     cbTaxi->setFixedWidth(220);
     connect(cbTaxi, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StatsPage::onChonTaxi);
@@ -29,7 +29,7 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
 
     table = new QTableWidget(this);
     table->setColumnCount(6);
-    table->setHorizontalHeaderLabels({"Ma chuyen", "Diem don", "Diem den", "Khoang cach", "Cuoc phi", "Trang Thai"});
+    table->setHorizontalHeaderLabels({"Mã chuyến", "Điểm đón", "Điểm đến", "Khoảng cách", "Cước phí", "Trạng thái"});
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -39,7 +39,7 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     auto* totalCard = new QFrame(this);
     totalCard->setObjectName("card");
     auto* totalLay = new QHBoxLayout(totalCard);
-    totalLay->addWidget(new QLabel("<b>TONG CONG</b>", totalCard));
+    totalLay->addWidget(new QLabel("<b>TỔNG CỘNG</b>", totalCard));
     totalLay->addStretch();
     lblTong = new QLabel("0 d", totalCard);
     lblTong->setStyleSheet("font-size:15px; font-weight:bold; color:#4285C7;");
@@ -70,7 +70,7 @@ void StatsPage::onChonTaxi(int index) {
         table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(c.getDiemDon())));
         table->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(c.getDiemDen())));
         table->setItem(i, 3, new QTableWidgetItem(QString::number(c.getKhoangCach(), 'f', 1) + " km"));
-        table->setItem(i, 4, new QTableWidgetItem(QString::number(c.getCuocPhi(), 'f', 0) + " d"));
+        table->setItem(i, 4, new QTableWidgetItem(QString::number(c.getCuocPhi(), 'f', 0) + " đ"));
 
         auto* itTrangThai = new QTableWidgetItem(QString::fromStdString(trangThaiChuyenToStr(c.getTrangThai())));
         if (c.getTrangThai() == DA_HUY) itTrangThai->setForeground(QColor("#B8503F"));
@@ -79,5 +79,5 @@ void StatsPage::onChonTaxi(int index) {
 
         if (c.getTrangThai() != DA_HUY) tong += c.getCuocPhi();
     }
-    lblTong->setText(QString::number(tong, 'f', 0) + " d");
+    lblTong->setText(QString::number(tong, 'f', 0) + " đ");
 }

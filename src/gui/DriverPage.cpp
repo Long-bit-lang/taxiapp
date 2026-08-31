@@ -17,17 +17,17 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     auto* root = new QVBoxLayout(this);
     root->setContentsMargins(20, 16, 20, 16);
 
-    auto* lblTitle = new QLabel("QUAN LY TAI XE", this);
+    auto* lblTitle = new QLabel("QUẢN LÝ TÀI XẾ", this);
     lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
     root->addWidget(lblTitle);
     root->addSpacing(8);
 
     auto* toolbar = new QHBoxLayout();
-    auto* btnThem = new QPushButton("+  Them", this);
+    auto* btnThem = new QPushButton("+  Thêm", this);
     btnThem->setObjectName("btnPrimary");
-    auto* btnSua = new QPushButton("Sua", this);
+    auto* btnSua = new QPushButton("Sửa", this);
     btnSua->setObjectName("btnFlat");
-    auto* btnXoa = new QPushButton("Xoa", this);
+    auto* btnXoa = new QPushButton("Xóa", this);
     btnXoa->setObjectName("btnDanger");
     connect(btnThem, &QPushButton::clicked, this, &DriverPage::onThem);
     connect(btnSua, &QPushButton::clicked, this, &DriverPage::onSua);
@@ -38,7 +38,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     toolbar->addStretch();
 
     txtSearch = new QLineEdit(this);
-    txtSearch->setPlaceholderText("Tim kiem: ten / bang lai / GPLX...");
+    txtSearch->setPlaceholderText("Tìm kiếm: tên / bằng lái / GPLX...");
     txtSearch->setFixedWidth(280);
     connect(txtSearch, &QLineEdit::textChanged, this, &DriverPage::onTimKiem);
     toolbar->addWidget(txtSearch);
@@ -47,7 +47,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
 
     table = new QTableWidget(this);
     table->setColumnCount(6);
-    table->setHorizontalHeaderLabels({"Ma TX", "Ho va ten", "SDT", "Bang lai", "So GPLX", "Trang thai"});
+    table->setHorizontalHeaderLabels({"Mã TX", "Họ và tên", "SĐT", "Bằng lái", "Số GPLX", "Trạng thái"});
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -87,11 +87,11 @@ void DriverPage::onThem() {
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
         if (heThong->taiXe().coMaTX(moi.getMaTX())) {
-            QMessageBox::warning(this, "Loi", "Ma tai xe nay da ton tai! Vui long thu lai.");
+            QMessageBox::warning(this, "Lỗi", "Mã tài xế này đã tồn tại! Vui lòng thử lại.");
             return;
         }
         if (heThong->taiXe().coSoGPLX(moi.getSoGPLX())) {
-            QMessageBox::warning(this, "Loi", "So GPLX nay da ton tai trong he thong!");
+            QMessageBox::warning(this, "Lỗi", "Số GPLX này đã tồn tại trong hệ thống!");
             return;
         }
         heThong->taiXe().them(moi);
@@ -101,7 +101,7 @@ void DriverPage::onThem() {
 
 void DriverPage::onSua() {
     int row = table->currentRow();
-    if (row < 0) { QMessageBox::information(this, "Thong bao", "Vui long chon mot tai xe de sua."); return; }
+    if (row < 0) { QMessageBox::information(this, "Thông báo", "Vui lòng chọn một tài xế để sửa."); return; }
     std::string maTX = table->item(row, 0)->text().toStdString();
     const TaiXe* found = nullptr;
     for (auto& t : heThong->taiXe().layDanhSach()) if (t.getMaTX() == maTX) { found = &t; break; }
@@ -111,7 +111,7 @@ void DriverPage::onSua() {
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
         if (heThong->taiXe().coSoGPLX(moi.getSoGPLX(), maTX)) {
-            QMessageBox::warning(this, "Loi", "So GPLX nay da ton tai o mot tai xe khac!");
+            QMessageBox::warning(this, "Lỗi", "Số GPLX này đã tồn tại ở một tài xế khác!");
             return;
         }
         heThong->taiXe().sua(maTX, moi);
@@ -121,17 +121,17 @@ void DriverPage::onSua() {
 
 void DriverPage::onXoa() {
     int row = table->currentRow();
-    if (row < 0) { QMessageBox::information(this, "Thong bao", "Vui long chon mot tai xe de xoa."); return; }
+    if (row < 0) { QMessageBox::information(this, "Thông báo", "Vui lòng chọn một tài xế để xóa."); return; }
     std::string maTX = table->item(row, 0)->text().toStdString();
     std::string hoTen = table->item(row, 1)->text().toStdString();
     if (heThong->chuyenXe().taiXeDangChay(maTX)) {
-        QMessageBox::warning(this, "Khong the xoa",
-            QString("Tai xe \"%1\" dang thuc hien mot chuyen xe, khong the xoa luc nay.")
+        QMessageBox::warning(this, "Không thể xoá",
+            QString("Tài xế \"%1\" đang thực hiện một chuyến xe, không thể xóa lúc này.")
                 .arg(QString::fromStdString(hoTen)));
         return;
     }
-    auto ret = QMessageBox::question(this, "Xac nhan xoa",
-        QString("Ban co chac muon xoa tai xe \"%1\" (%2)?").arg(QString::fromStdString(hoTen), QString::fromStdString(maTX)));
+    auto ret = QMessageBox::question(this, "Xác nhận xóa",
+        QString("Bạn có chắc muốn xóa tài xế \"%1\" (%2)?").arg(QString::fromStdString(hoTen), QString::fromStdString(maTX)));
     if (ret == QMessageBox::Yes) {
         heThong->taiXe().xoa(maTX);
         refresh();

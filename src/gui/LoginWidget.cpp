@@ -20,7 +20,7 @@ LoginWidget::LoginWidget(HeThongTaxi* ht, QWidget* parent)
     titleBar->setFixedHeight(46);
     auto* titleLay = new QHBoxLayout(titleBar);
     titleLay->setContentsMargins(0, 0, 0, 0);
-    auto* titleLbl = new QLabel("HE THONG QUAN LY TAXI TIEN SA — DANG NHAP", titleBar);
+    auto* titleLbl = new QLabel("HỆ THỐNG QUẢN LÝ TAXI TIÊN SA — ĐĂNG NHẬP", titleBar);
     titleLbl->setObjectName("titleLabel");
     titleLay->addWidget(titleLbl);
     root->addWidget(titleBar);
@@ -37,19 +37,19 @@ LoginWidget::LoginWidget(HeThongTaxi* ht, QWidget* parent)
     cardLay->setContentsMargins(30, 26, 30, 26);
     cardLay->setSpacing(10);
 
-    auto* lblTitle = new QLabel("DANG NHAP HE THONG", card);
+    auto* lblTitle = new QLabel("ĐĂNG NHẬP HỆ THỐNG", card);
     lblTitle->setStyleSheet("font-size:16px; font-weight:bold;");
     lblTitle->setAlignment(Qt::AlignCenter);
     cardLay->addWidget(lblTitle);
     cardLay->addSpacing(14);
 
-    cardLay->addWidget(new QLabel("Ten dang nhap", card));
+    cardLay->addWidget(new QLabel("Tên đăng nhập", card));
     txtTaiKhoan = new QLineEdit(card);
     txtTaiKhoan->setPlaceholderText("Username");
     cardLay->addWidget(txtTaiKhoan);
 
     cardLay->addSpacing(6);
-    cardLay->addWidget(new QLabel("Mat khau", card));
+    cardLay->addWidget(new QLabel("Mật khẩu", card));
     txtMatKhau = new QLineEdit(card);
     txtMatKhau->setEchoMode(QLineEdit::Password);
     txtMatKhau->setPlaceholderText("Password");
@@ -61,7 +61,7 @@ LoginWidget::LoginWidget(HeThongTaxi* ht, QWidget* parent)
     cardLay->addWidget(lblLoi);
 
     cardLay->addSpacing(8);
-    auto* btnLogin = new QPushButton("DANG NHAP", card);
+    auto* btnLogin = new QPushButton("ĐĂNG NHẬP", card);
     btnLogin->setObjectName("btnPrimary");
     btnLogin->setMinimumHeight(38);
     connect(btnLogin, &QPushButton::clicked, this, &LoginWidget::onDangNhap);
@@ -79,7 +79,7 @@ void LoginWidget::onDangNhap() {
     std::string mk = txtMatKhau->text().toStdString();
     auto nd = heThong->taiKhoan().kiemTraDangNhap(tk, mk);
     if (!nd) {
-        lblLoi->setText("Sai ten dang nhap hoac mat khau!");
+        lblLoi->setText("Sai tên đăng nhập hoặc mật khẩu!");
         return;
     }
     lblLoi->setText("");

@@ -12,7 +12,7 @@
 
 DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
     : QDialog(parent) {
-    setWindowTitle(existing ? "Sua thong tin tai xe" : "Them tai xe moi");
+    setWindowTitle(existing ? "Sửa thông tin tài xế" : "Thêm tài xế mới");
     setMinimumWidth(380);
 
     auto* root = new QVBoxLayout(this);
@@ -30,8 +30,8 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
         txtTen->setText(QString::fromStdString(existing->getTen()));
         txtHoDem->setText(QString::fromStdString(existing->getHoDem()));
     }
-    form->addRow("Ten:", txtTen);
-    form->addRow("Ho & dem:", txtHoDem);
+    form->addRow("Tên:", txtTen);
+    form->addRow("Họ & đệm:", txtHoDem);
 
     dateNgaySinh = new QDateEdit(this);
     dateNgaySinh->setDisplayFormat("dd/MM/yyyy");
@@ -42,7 +42,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
     } else {
         dateNgaySinh->setDate(QDate(1995, 1, 1));
     }
-    form->addRow("Ngay sinh:", dateNgaySinh);
+    form->addRow("Ngày sinh:", dateNgaySinh);
 
     txtDiaChi = new QLineEdit(this);
     txtSdt = new QLineEdit(this);
@@ -56,31 +56,31 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
     } else {
         txtBangLai->setText("B2");
     }
-    form->addRow("Dia chi:", txtDiaChi);
-    form->addRow("So dien thoai:", txtSdt);
-    form->addRow("Bang lai:", txtBangLai);
-    form->addRow("So GPLX:", txtGPLX);
+    form->addRow("Địa chỉ:", txtDiaChi);
+    form->addRow("Số điện thoại:", txtSdt);
+    form->addRow("Bằng lái:", txtBangLai);
+    form->addRow("Số GPLX:", txtGPLX);
 
     cbTrangThai = new QComboBox(this);
-    cbTrangThai->addItems({"Dang hoat dong", "Nghi", "Ngung hoat dong"});
+    cbTrangThai->addItems({"Đang hoạt động", "Nghỉ", "Ngừng hoạt động"});
     if (existing) cbTrangThai->setCurrentIndex((int)existing->getTrangThai());
-    form->addRow("Trang thai:", cbTrangThai);
+    form->addRow("Trạng thái:", cbTrangThai);
 
     root->addLayout(form);
 
     auto* btnRow = new QHBoxLayout();
-    auto* btnCancel = new QPushButton("Huy", this);
+    auto* btnCancel = new QPushButton("Hủy", this);
     btnCancel->setObjectName("btnFlat");
-    auto* btnSave = new QPushButton("Luu", this);
+    auto* btnSave = new QPushButton("Lưu", this);
     btnSave->setObjectName("btnPrimary");
     connect(btnCancel, &QPushButton::clicked, this, &QDialog::reject);
     connect(btnSave, &QPushButton::clicked, this, [this]() {
         if (txtTen->text().trimmed().isEmpty() || txtHoDem->text().trimmed().isEmpty()) {
-            QMessageBox::warning(this, "Loi", "Vui long nhap day du Ho & dem va Ten.");
+            QMessageBox::warning(this, "Lỗi", "Vui lòng nhập đầy đủ Họ & đệm và Tên.");
             return;
         }
         if (txtDiaChi->text().trimmed().isEmpty()) {
-            QMessageBox::warning(this, "Loi", "Vui long nhap dia chi.");
+            QMessageBox::warning(this, "Lỗi", "Vui lòng nhập địa chỉ.");
             return;
         }
 
@@ -88,28 +88,28 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
         QString sdt = txtSdt->text().trimmed();
         sdt.remove(' ');
         if (!sdtRegex.match(sdt).hasMatch()) {
-            QMessageBox::warning(this, "Loi",
-                "So dien thoai khong hop le (phai bat dau bang 0, gom 10 chu so).");
+            QMessageBox::warning(this, "Lỗi",
+                "Số điện thoại không hợp lệ (phả bắt đầu bằng 0, gồm 10 chữ số).");
             return;
         }
 
         if (txtBangLai->text().trimmed().isEmpty()) {
-            QMessageBox::warning(this, "Loi", "Vui long nhap loai bang lai.");
+            QMessageBox::warning(this, "Lỗi", "Vui lòng nhập loại bằng lái.");
             return;
         }
         if (txtGPLX->text().trimmed().isEmpty()) {
-            QMessageBox::warning(this, "Loi", "Vui long nhap so GPLX.");
+            QMessageBox::warning(this, "Lỗi", "Vui lòng nhập số GPLX.");
             return;
         }
 
         QDate ns = dateNgaySinh->date();
         if (ns > QDate::currentDate()) {
-            QMessageBox::warning(this, "Loi", "Ngay sinh khong the o tuong lai.");
+            QMessageBox::warning(this, "Lỗi", "Ngày sinh không thể ở tương lai.");
             return;
         }
         int tuoi = ns.daysTo(QDate::currentDate()) / 365;
         if (tuoi < 18 || tuoi > 70) {
-            QMessageBox::warning(this, "Loi", "Tai xe phai trong do tuoi tu 18 den 70.");
+            QMessageBox::warning(this, "Lỗi", "Tài xế phải trong độ tuổi từ 18 đến 70.");
             return;
         }
 
