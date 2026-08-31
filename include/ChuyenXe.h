@@ -13,7 +13,6 @@ private:
     std::string diemDon;
     std::string diemDen;
     double khoangCach = 0;
-    double thoiGianChay = 0;
     double cuocPhi = 0;
     TrangThaiChuyen trangThai = DANG_DI;
     std::string maTaiXe;
@@ -24,7 +23,6 @@ public:
               std::string thoiDiemChuyen, std::string don, std::string den, double kc, std::string maTX = "")
         : maChuyen(ma), tenKhachHang(ten), sdtKhachHang(sdt), bienSoTaxi(bienSo),
           thoiDiem(thoiDiemChuyen), diemDon(don), diemDen(den), khoangCach(kc), maTaiXe(maTX) {
-        thoiGianChay = kc * 2.4;
         cuocPhi = tinhCuocPhi();
     }
 
@@ -42,7 +40,6 @@ public:
     std::string getDiemDon() const { return diemDon; }
     std::string getDiemDen() const { return diemDen; }
     double getKhoangCach() const { return khoangCach; }
-    double getThoiGianChay() const { return thoiGianChay; }
     double getCuocPhi() const { return cuocPhi; }
     void setCuocPhi(double c) { cuocPhi = c; }
     TrangThaiChuyen getTrangThai() const { return trangThai; }

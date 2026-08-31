@@ -11,7 +11,6 @@
 #include <QFormLayout>
 #include <QMessageBox>
 #include <QCheckBox>
-#include <QScrollArea>
 #include <algorithm>
 
 TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(ht) {

@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     heThong.khoiDong();
 
     auto* root = new QStackedWidget();
-    root->setWindowTitle("He thong quan ly Taxi Tien Sa");
+    root->setWindowTitle("Hệ thống quản lý Taxi Tiên Sa");
     root->resize(1000, 640);
 
     auto* login = new LoginWidget(&heThong);

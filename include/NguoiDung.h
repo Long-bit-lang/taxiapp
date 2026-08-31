@@ -27,15 +27,15 @@ public:
     std::string getTenDangNhap() const { return tenDangNhap; }
     VaiTro getVaiTro() const { return vaiTro; }
 
-    virtual std::vector<std::string> danhSachChucNang() const = 0;
+    virtual std::vector<ChucNang> danhSachChucNang() const = 0;
     virtual std::string tenVaiTro() const = 0;
 };
 
 class QuanLy : public NguoiDung {
 public:
     QuanLy(std::string tk) : NguoiDung(tk, QUAN_LY) {}
-    std::vector<std::string> danhSachChucNang() const override {
-        return {"Quan ly tai xe", "Quan ly taxi", "Dat chuyen xe", "Thong ke / Bao cao"};
+    std::vector<ChucNang> danhSachChucNang() const override {
+        return {CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_THONG_KE};
     }
     std::string tenVaiTro() const override { return "Quan ly"; }
 };
@@ -43,8 +43,8 @@ public:
 class DieuHanh : public NguoiDung {
 public:
     DieuHanh(std::string tk) : NguoiDung(tk, DIEU_HANH) {}
-    std::vector<std::string> danhSachChucNang() const override {
-        return {"Dat chuyen xe"};
+    std::vector<ChucNang> danhSachChucNang() const override {
+        return {CN_DAT_CHUYEN_XE};
     }
     std::string tenVaiTro() const override { return "Dieu hanh"; }
 };

@@ -13,8 +13,6 @@
 #include <QFrame>
 #include <QMessageBox>
 #include <QDateTime>
-#include <QButtonGroup>
-#include <QRadioButton>
 
 BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     : QWidget(parent), heThong(ht) {
@@ -29,7 +27,6 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
 
     auto* row = new QHBoxLayout();
 
-    // left card: customer info form
     auto* leftCard = new QFrame(this);
     leftCard->setObjectName("card");
     auto* leftLay = new QVBoxLayout(leftCard);
@@ -68,11 +65,10 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     leftLay->addWidget(btnTim);
     leftLay->addStretch();
 
-    // right card: suggested taxi list
     auto* rightCard = new QFrame(this);
     rightCard->setObjectName("card");
     auto* rightLay = new QVBoxLayout(rightCard);
-    rightLay->addWidget(new QLabel("<b>Danh sách taxi đề xuất (ưu tiên thời gian đón sớm nhất)</b>", rightCard));
+    rightLay->addWidget(new QLabel("<b>Danh sách taxi đề xuất</b>", rightCard));
 
     dsTaxiContainer = new QWidget(rightCard);
     dsTaxiLayout = new QVBoxLayout(dsTaxiContainer);
@@ -125,7 +121,7 @@ void BookingPage::hienThiDanhSachTaxi() {
         card->setCursor(Qt::PointingHandCursor);
         card->setMinimumHeight(56);
         card->setProperty("bienSo", bienSo);
-        card->setText(QString("Biển số: %1   |   %2 chỗ\nThời gian đón dự kiến: ~3-8 phut")
+        card->setText(QString("Biển số: %1   |   %2 chỗ")
                       .arg(bienSo).arg(t->getSucChua()));
         card->setStyleSheet(
             "QPushButton { text-align: left; padding: 10px 14px; border: 1px solid #96948C;"
@@ -214,7 +210,7 @@ void BookingPage::onXacNhan() {
         QMessageBox::warning(this, "Lỗi",
                              QString("Taxi %1 chỉ chở tối đa %2 khách, không đủ chở %3 khách đã nhập.")
                                  .arg(bienSoDangChon).arg(taxi->getSucChua()).arg(spinSoKhach->value()));
-        hienThiDanhSachTaxi();  // lam moi lai danh sach cho khop
+        hienThiDanhSachTaxi();
         return;
     }
 

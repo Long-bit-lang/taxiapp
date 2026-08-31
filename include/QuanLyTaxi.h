@@ -7,19 +7,12 @@
 #include <sstream>
 #include <algorithm>
 #include "Taxi.h"
+#include "Common.h"
 
 class QuanLyTaxi {
 private:
     std::vector<Taxi> dsTaxi;
     std::string duongDanFile;
-
-    static std::vector<std::string> split(const std::string& s, char delim) {
-        std::vector<std::string> out;
-        std::stringstream ss(s);
-        std::string item;
-        while (std::getline(ss, item, delim)) out.push_back(item);
-        return out;
-    }
 
 public:
     explicit QuanLyTaxi(std::string file = "data/taxi.txt") : duongDanFile(file) {}
@@ -37,7 +30,7 @@ public:
         ghiFile();
         return true;
     }
-    
+
     void goBoTaiXeKhoiTatCaTaxi(const std::string& maTX) {
         for (auto& t : dsTaxi) t.xoaTaiXe(maTX);
         ghiFile();
@@ -63,8 +56,6 @@ public:
                   [](Taxi* a, Taxi* b) { return a->getBienSo() < b->getBienSo(); });
         return ketQua;
     }
-
-    void capNhatSauKhiGhi() { ghiFile(); }
 
     void docFile() {
         dsTaxi.clear();

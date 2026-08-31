@@ -29,7 +29,6 @@ public:
         return s;
     }
 
-    void setSucChua(int sc) { sucChua = sc; }
     void setSanSang(bool ss) { dangSanSang = ss; }
 
     void themTaiXe(const std::string& maTX) {

@@ -134,6 +134,7 @@ void DriverPage::onXoa() {
         QString("Bạn có chắc muốn xóa tài xế \"%1\" (%2)?").arg(QString::fromStdString(hoTen), QString::fromStdString(maTX)));
     if (ret == QMessageBox::Yes) {
         heThong->taiXe().xoa(maTX);
+        heThong->taxi().goBoTaiXeKhoiTatCaTaxi(maTX);
         refresh();
     }
 }

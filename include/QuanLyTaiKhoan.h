@@ -13,14 +13,6 @@ private:
     std::vector<TaiKhoan> dsTaiKhoan;
     std::string duongDanFile;
 
-    static std::vector<std::string> split(const std::string& s, char delim) {
-        std::vector<std::string> out;
-        std::stringstream ss(s);
-        std::string item;
-        while (std::getline(ss, item, delim)) out.push_back(item);
-        return out;
-    }
-
 public:
     explicit QuanLyTaiKhoan(std::string file = "data/taikhoan.txt") : duongDanFile(file) {}
 
@@ -46,12 +38,6 @@ public:
             if (p.size() < 3) continue;
             dsTaiKhoan.emplace_back(p[0], p[1], (VaiTro)std::stoi(p[2]));
         }
-    }
-
-    void ghiFile() const {
-        std::ofstream fout(duongDanFile, std::ios::trunc);
-        for (auto& acc : dsTaiKhoan)
-            fout << acc.tenDangNhap << "|" << acc.matKhau << "|" << (int)acc.vaiTro << "\n";
     }
 };
 

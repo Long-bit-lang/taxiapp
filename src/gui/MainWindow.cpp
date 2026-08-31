@@ -50,8 +50,6 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
     dashboardOverview = buildOverviewPage();
     stack->addWidget(dashboardOverview); // index 0
 
-    bool laQuanLy = (nd->getVaiTro() == QUAN_LY);
-
     auto addMenuBtn = [&](const QString& text, int stackIndex) {
         auto* btn = new QPushButton(text, sidebar);
         btn->setObjectName("menuBtn");
@@ -65,24 +63,33 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
 
     QPushButton* btnOverview = addMenuBtn("Tổng quan", 0);
 
-    if (laQuanLy) {
-        driverPage = new DriverPage(heThong, this);
-        stack->addWidget(driverPage);
-        addMenuBtn("Quản lý tài xế", stack->count() - 1);
-
-        taxiPage = new TaxiPage(heThong, this);
-        stack->addWidget(taxiPage);
-        addMenuBtn("Quản lý taxi", stack->count() - 1);
-    }
-
-    bookingPage = new BookingPage(heThong, this);
-    stack->addWidget(bookingPage);
-    addMenuBtn("Đặt chuyến xe", stack->count() - 1);
-
-    if (laQuanLy) {
-        statsPage = new StatsPage(heThong, this);
-        stack->addWidget(statsPage);
-        addMenuBtn("Thống kê / Báo cáo", stack->count() - 1);
+    for (ChucNang cn : nd->danhSachChucNang()) {
+        QWidget* page = nullptr;
+        QString nhan;
+        switch (cn) {
+        case CN_QUAN_LY_TAI_XE:
+            driverPage = new DriverPage(heThong, this);
+            page = driverPage;
+            nhan = "Quản lý tài xế";
+            break;
+        case CN_QUAN_LY_TAXI:
+            taxiPage = new TaxiPage(heThong, this);
+            page = taxiPage;
+            nhan = "Quản lý taxi";
+            break;
+        case CN_DAT_CHUYEN_XE:
+            bookingPage = new BookingPage(heThong, this);
+            page = bookingPage;
+            nhan = "Đặt chuyến xe";
+            break;
+        case CN_THONG_KE:
+            statsPage = new StatsPage(heThong, this);
+            page = statsPage;
+            nhan = "Thống kê / Báo cáo";
+            break;
+        }
+        stack->addWidget(page);
+        addMenuBtn(nhan, stack->count() - 1);
     }
 
     sideLay->addStretch();
