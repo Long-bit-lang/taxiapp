@@ -145,14 +145,27 @@ void TaxiPage::onPhanCong() {
 
     std::vector<QCheckBox*> checks;
     for (auto& tx : heThong->taiXe().layDanhSach()) {
-        auto* cb = new QCheckBox(QString::fromStdString(tx.getMaTX() + " - " + tx.getHoTen()), &dlg);
+        bool phuHop = hangBangLaiPhuHopSucChua(tx.getBangLai(), taxi->getSucChua());
+
+        QString nhan = QString::fromStdString(tx.getMaTX() + " - " + tx.getHoTen()
+                                              + " (Bang " + tx.getBangLai() + ")");
+        if (!phuHop) nhan += "  [Không đủ điều kiện - xe quá số chở cho phép]";
+
+        auto* cb = new QCheckBox(nhan, &dlg);
         cb->setProperty("maTX", QString::fromStdString(tx.getMaTX()));
+
         bool assigned = std::find(taxi->getDsMaTaiXe().begin(), taxi->getDsMaTaiXe().end(), tx.getMaTX()) != taxi->getDsMaTaiXe().end();
         cb->setChecked(assigned);
+
+        if (!phuHop) {
+            cb->setEnabled(false);      // khong cho tick moi
+            cb->setChecked(false);      // tu dong bo neu truoc do lo gan sai
+            cb->setStyleSheet("color: #B8503F;");
+        }
+
         lay->addWidget(cb);
         checks.push_back(cb);
     }
-
     auto* btnRow = new QHBoxLayout();
     auto* btnCancel = new QPushButton("Hủy", &dlg); btnCancel->setObjectName("btnFlat");
     auto* btnSave = new QPushButton("Lưu", &dlg); btnSave->setObjectName("btnPrimary");

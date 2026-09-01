@@ -46,19 +46,23 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
 
     txtDiaChi = new QLineEdit(this);
     txtSdt = new QLineEdit(this);
-    txtBangLai = new QLineEdit(this);
+    cbBangLai = new QComboBox(this);
+    cbBangLai->addItems({"B2", "C", "D", "E"});
+    cbBangLai->setToolTip("Chỉ các hạng B2 trở lên mới được hành nghề lái xe Taxi");
     txtGPLX = new QLineEdit(this);
     if (existing) {
         txtDiaChi->setText(QString::fromStdString(existing->getDiaChi()));
         txtSdt->setText(QString::fromStdString(existing->getSoDienThoai()));
-        txtBangLai->setText(QString::fromStdString(existing->getBangLai()));
+        int idx = cbBangLai->findText(QString::fromStdString(existing->getBangLai()));
+        cbBangLai->setCurrentIndex(idx >= 0 ? idx : 0);
         txtGPLX->setText(QString::fromStdString(existing->getSoGPLX()));
-    } else {
-        txtBangLai->setText("B2");
+    }
+    else {
+        cbBangLai->setCurrentText("B2");
     }
     form->addRow("Địa chỉ:", txtDiaChi);
     form->addRow("Số điện thoại:", txtSdt);
-    form->addRow("Bằng lái:", txtBangLai);
+    form->addRow("Bằng lái:", cbBangLai);
     form->addRow("Số GPLX:", txtGPLX);
 
     cbTrangThai = new QComboBox(this);
@@ -93,7 +97,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
             return;
         }
 
-        if (txtBangLai->text().trimmed().isEmpty()) {
+        if (cbBangLai->currentText().trimmed().isEmpty()) {
             QMessageBox::warning(this, "Lỗi", "Vui lòng nhập loại bằng lái.");
             return;
         }
@@ -130,7 +134,7 @@ TaiXe DriverDialog::ketQua() const {
         d,
         txtDiaChi->text().toStdString(),
         txtSdt->text().toStdString(),
-        txtBangLai->text().toStdString(),
+        cbBangLai->currentText().toStdString(),
         txtGPLX->text().toStdString(),
         (TrangThai)cbTrangThai->currentIndex()
     );

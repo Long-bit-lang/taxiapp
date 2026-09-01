@@ -21,7 +21,7 @@ private:
     QDateEdit* dateNgaySinh;
     QLineEdit* txtDiaChi;
     QLineEdit* txtSdt;
-    QLineEdit* txtBangLai;
+    QComboBox* cbBangLai;
     QLineEdit* txtGPLX;
     QComboBox* cbTrangThai;
 };

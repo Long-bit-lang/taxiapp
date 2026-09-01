@@ -37,7 +37,7 @@ public:
     std::vector<ChucNang> danhSachChucNang() const override {
         return {CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_THONG_KE};
     }
-    std::string tenVaiTro() const override { return "Quan ly"; }
+    std::string tenVaiTro() const override { return "Quản lý"; }
 };
 
 class DieuHanh : public NguoiDung {
@@ -46,7 +46,7 @@ public:
     std::vector<ChucNang> danhSachChucNang() const override {
         return {CN_DAT_CHUYEN_XE};
     }
-    std::string tenVaiTro() const override { return "Dieu hanh"; }
+    std::string tenVaiTro() const override { return "Điều hành"; }
 };
 
 #endif // NGUOIDUNG_H

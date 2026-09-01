@@ -86,6 +86,12 @@ void DriverPage::onThem() {
     dlg.findChild<QLineEdit*>()->setText(QString::fromStdString(heThong->taiXe().sinhMaMoi()));
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
+        if (!hangBangLaiHopLeTaxi(moi.getBangLai())) {
+            QMessageBox::warning(this, "Loi",
+                                 "Hạng bằng lái không hợp lệ để hành nghề lái xe taxi!\n"
+                                 "Chỉ chấp nhận các hạng: B2, C, D, E.");
+            return;
+        }
         if (heThong->taiXe().coMaTX(moi.getMaTX())) {
             QMessageBox::warning(this, "Lỗi", "Mã tài xế này đã tồn tại! Vui lòng thử lại.");
             return;
@@ -110,6 +116,12 @@ void DriverPage::onSua() {
     DriverDialog dlg(this, found);
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
+        if (!hangBangLaiHopLeTaxi(moi.getBangLai())) {
+            QMessageBox::warning(this, "Loi",
+                                 "Hạng bằng lái không hợp lệ để hành nghề lái xe taxi!\n"
+                                 "Chỉ chấp nhận các hạng: B2, C, D, E.");
+            return;
+        }
         if (heThong->taiXe().coSoGPLX(moi.getSoGPLX(), maTX)) {
             QMessageBox::warning(this, "Lỗi", "Số GPLX này đã tồn tại ở một tài xế khác!");
             return;

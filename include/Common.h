@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include <algorithm>
 
 struct Date {
     int day = 1, month = 1, year = 2000;
@@ -23,6 +24,19 @@ inline std::string trangThaiToStr(TrangThai t) {
         case NGHI: return "Nghỉ";
         default: return "Ngừng hoạt động";
     }
+}
+
+inline bool hangBangLaiHopLeTaxi(const std::string& bangLai) {
+    static const std::vector<std::string> hopLe = {"B2", "C", "D", "E"};
+    return std::find(hopLe.begin(), hopLe.end(), bangLai) != hopLe.end();
+}
+
+inline bool hangBangLaiPhuHopSucChua(const std::string& bangLai, int sucChua) {
+    if (bangLai == "B2") return sucChua <= 8;
+    if (bangLai == "D")  return sucChua <= 29;
+    if (bangLai == "E")  return true;
+    if (bangLai == "C")  return true;
+    return false;
 }
 
 enum VaiTro { QUAN_LY = 0, DIEU_HANH = 1 };

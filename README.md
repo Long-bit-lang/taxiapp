@@ -68,8 +68,8 @@ make -j4
 
 | Tai khoan   | Mat khau | Vai tro        |
 |-------------|----------|----------------|
-| quanly01    | 123456   | Quan ly        |
-| dieuhanh01  | 123456   | Dieu hanh      |
+| quanly01    | 123455   | Quan ly        |
+| dieuhanh01  | 12345   | Dieu hanh      |
 
 ## Du lieu mau co san
 

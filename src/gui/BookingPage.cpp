@@ -154,7 +154,7 @@ void BookingPage::chonTaxi(const QString& bienSo) {
     if (taxi) {
         for (auto& maTX : taxi->getDsMaTaiXe()) {
             for (auto& tx : heThong->taiXe().layDanhSach()) {
-                if (tx.getMaTX() == maTX && tx.getTrangThai() == DANG_HOAT_DONG && !heThong->chuyenXe().taiXeDangChay(maTX)) {
+                if (tx.getMaTX() == maTX && tx.getTrangThai() == DANG_HOAT_DONG && !heThong->chuyenXe().taiXeDangChay(maTX) && hangBangLaiPhuHopSucChua(tx.getBangLai(), taxi->getSucChua())) {
                     cbTaiXe->addItem(QString::fromStdString(tx.getHoTen()),
                                       QString::fromStdString(maTX));
                 }
@@ -192,6 +192,7 @@ void BookingPage::onXacNhan() {
     }
     Taxi* taxi = heThong->taxi().timTheoBienSo(bienSoDangChon.toStdString());
     if (!taxi) return;
+
     
     QString maTaiXeChon = cbTaiXe->currentData().toString();
     if (maTaiXeChon.isEmpty()) {
@@ -202,6 +203,17 @@ void BookingPage::onXacNhan() {
     if (heThong->chuyenXe().taiXeDangChay(maTaiXeChon.toStdString())) {
         QMessageBox::warning(this, "Lỗi",
                              "Tài xế này hiện đang thực hiện một chuyến xe khác, vui lòng chọn tài xế khác.");
+        chonTaxi(bienSoDangChon);
+        return;
+    }
+
+    const TaiXe* taiXeChon = nullptr;
+    for (auto& t : heThong->taiXe().layDanhSach()) {
+        if (t.getMaTX() == maTaiXeChon.toStdString()) { taiXeChon = &t; break; }
+    }
+    if (!taiXeChon || !hangBangLaiPhuHopSucChua(taiXeChon->getBangLai(), taxi->getSucChua())) {
+        QMessageBox::warning(this, "Lỗi",
+                             "Tài xế không đủ điều kiện hạng bằng lái cho xe này, vui lòng chọn tài xế khác.");
         chonTaxi(bienSoDangChon);
         return;
     }
