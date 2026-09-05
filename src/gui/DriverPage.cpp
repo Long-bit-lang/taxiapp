@@ -1,6 +1,5 @@
 #include "DriverPage.h"
 #include "DriverDialog.h"
-#include "Style.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QTableWidget>

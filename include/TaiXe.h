@@ -41,7 +41,6 @@ public:
     void setSoDienThoai(std::string sdt) { soDienThoai = sdt; }
     void setBangLai(std::string bl) { bangLai = bl; }
     void setSoGPLX(std::string gplx) { soGPLX = gplx; }
-    void setTrangThai(TrangThai tt) { trangThai = tt; }
 };
 
 #endif // TAIXE_H

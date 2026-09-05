@@ -1,5 +1,4 @@
 #include "MainWindow.h"
-#include "Style.h"
 #include "DriverPage.h"
 #include "TaxiPage.h"
 #include "BookingPage.h"

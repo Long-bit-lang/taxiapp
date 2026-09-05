@@ -1,5 +1,4 @@
 #include "BookingPage.h"
-#include "Style.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QFormLayout>

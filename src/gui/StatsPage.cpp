@@ -1,5 +1,4 @@
 #include "StatsPage.h"
-#include "Style.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QComboBox>
