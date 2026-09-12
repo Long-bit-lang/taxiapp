@@ -22,7 +22,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
     txtMaTX = new QLineEdit(this);
     if (existing) { txtMaTX->setText(QString::fromStdString(existing->getMaTX())); }
     txtMaTX->setReadOnly(true);
-    form->addRow("Ma tai xe:", txtMaTX);
+    form->addRow("Mã tài xế:", txtMaTX);
 
     txtTen = new QLineEdit(this);
     txtHoDem = new QLineEdit(this);
@@ -88,12 +88,12 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
             return;
         }
 
-        static const QRegularExpression sdtRegex("^0[0-9]{9,10}$");
+        static const QRegularExpression sdtRegex("^0[0-9]{9}$");
         QString sdt = txtSdt->text().trimmed();
         sdt.remove(' ');
         if (!sdtRegex.match(sdt).hasMatch()) {
             QMessageBox::warning(this, "Lỗi",
-                "Số điện thoại không hợp lệ (phả bắt đầu bằng 0, gồm 10 chữ số).");
+                "Số điện thoại không hợp lệ (phả bắt đầu bằng 0, gồm đúng 10 chữ số).");
             return;
         }
 

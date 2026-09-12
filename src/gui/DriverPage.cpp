@@ -37,7 +37,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     toolbar->addStretch();
 
     txtSearch = new QLineEdit(this);
-    txtSearch->setPlaceholderText("Tìm kiếm: tên / tuổi / bằng lái / GPLX...");
+    txtSearch->setPlaceholderText("Tìm kiếm: tên / bằng lái / GPLX");
     txtSearch->setFixedWidth(280);
     connect(txtSearch, &QLineEdit::textChanged, this, &DriverPage::onTimKiem);
     toolbar->addWidget(txtSearch);
@@ -86,7 +86,7 @@ void DriverPage::onThem() {
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
         if (!hangBangLaiHopLeTaxi(moi.getBangLai())) {
-            QMessageBox::warning(this, "Loi",
+            QMessageBox::warning(this, "Lỗi",
                                  "Hạng bằng lái không hợp lệ để hành nghề lái xe taxi!\n"
                                  "Chỉ chấp nhận các hạng: B2, C, D, E.");
             return;
@@ -116,7 +116,7 @@ void DriverPage::onSua() {
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
         if (!hangBangLaiHopLeTaxi(moi.getBangLai())) {
-            QMessageBox::warning(this, "Loi",
+            QMessageBox::warning(this, "Lỗi",
                                  "Hạng bằng lái không hợp lệ để hành nghề lái xe taxi!\n"
                                  "Chỉ chấp nhận các hạng: B2, C, D, E.");
             return;
