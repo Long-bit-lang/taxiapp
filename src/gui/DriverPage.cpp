@@ -51,7 +51,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
-    root->addWidget(table);
+    root->addWidget(table, 1);
 
     refresh();
 }

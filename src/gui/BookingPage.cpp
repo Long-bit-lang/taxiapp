@@ -178,7 +178,7 @@ void BookingPage::onXacNhan() {
         QMessageBox::warning(this, "Lỗi", "Vui lòng nhập họ tên khách hàng.");
         return;
     }
-    static const QRegularExpression sdtRegex("^0[0-9]{9,10}$");
+    static const QRegularExpression sdtRegex("^0[0-9]{9}$");
     QString sdtKhach = txtSdt->text();
     sdtKhach.remove(' ');
     if (!sdtRegex.match(sdtKhach).hasMatch()) {

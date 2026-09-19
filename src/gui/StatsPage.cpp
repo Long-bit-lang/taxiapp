@@ -27,13 +27,14 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     root->addSpacing(10);
 
     table = new QTableWidget(this);
+    table->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Ignored);
     table->setColumnCount(6);
     table->setHorizontalHeaderLabels({"Mã chuyến", "Điểm đón", "Điểm đến", "Khoảng cách", "Cước phí", "Trạng thái"});
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
-    root->addWidget(table);
+    root->addWidget(table, 1);
 
     auto* totalCard = new QFrame(this);
     totalCard->setObjectName("card");

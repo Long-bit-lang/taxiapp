@@ -40,7 +40,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
         auto d = existing->getNgaySinh();
         dateNgaySinh->setDate(QDate(d.year, d.month, d.day));
     } else {
-        dateNgaySinh->setDate(QDate(1995, 1, 1));
+        dateNgaySinh->setDate(QDate(2000, 1, 1));
     }
     form->addRow("Ngày sinh:", dateNgaySinh);
 
