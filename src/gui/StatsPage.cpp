@@ -27,7 +27,6 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     root->addSpacing(10);
 
     table = new QTableWidget(this);
-    table->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Ignored);
     table->setColumnCount(6);
     table->setHorizontalHeaderLabels({"Mã chuyến", "Điểm đón", "Điểm đến", "Khoảng cách", "Cước phí", "Trạng thái"});
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);

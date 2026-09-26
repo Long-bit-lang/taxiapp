@@ -12,11 +12,13 @@
 #include <QFrame>
 #include <QMessageBox>
 #include <QDateTime>
+#include <QScrollArea>
+#include <QTimer>
 
 BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     : QWidget(parent), heThong(ht) {
 
-    auto* root = new QVBoxLayout(this);
+    auto* root = new QVBoxLayout(this);   // SỬA: phải là "this", không phải "rightCard" (rightCard chưa tồn tại ở đây)
     root->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("ĐẶT CHUYẾN XE", this);
@@ -69,16 +71,24 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     auto* rightLay = new QVBoxLayout(rightCard);
     rightLay->addWidget(new QLabel("<b>Danh sách taxi đề xuất</b>", rightCard));
 
-    dsTaxiContainer = new QWidget(rightCard);
+    dsTaxiContainer = new QWidget();
     dsTaxiLayout = new QVBoxLayout(dsTaxiContainer);
     dsTaxiLayout->setSpacing(8);
-    rightLay->addWidget(dsTaxiContainer);
-    rightLay->addStretch();
+    dsTaxiLayout->setAlignment(Qt::AlignTop);
+
+    // Bọc danh sách taxi trong QScrollArea: danh sách tự cuộn bên trong khung
+    // cố định thay vì đẩy tràn cả cửa sổ khi có nhiều taxi phù hợp
+    auto* scrollDsTaxi = new QScrollArea(rightCard);
+    scrollDsTaxi->setWidgetResizable(true);
+    scrollDsTaxi->setFrameShape(QFrame::NoFrame);
+    scrollDsTaxi->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollDsTaxi->setWidget(dsTaxiContainer);
+    rightLay->addWidget(scrollDsTaxi, 1);
 
     rightLay->addWidget(new QLabel("Chọn tài xế thực hiện:", rightCard));
     cbTaiXe = new QComboBox(rightCard);
     rightLay->addWidget(cbTaiXe);
-    
+
     btnXacNhan = new QPushButton("XÁC NHẬN ĐẶT XE", rightCard);
     btnXacNhan->setObjectName("btnSuccess");
     btnXacNhan->setMinimumHeight(38);
@@ -90,7 +100,10 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     row->addWidget(rightCard, 1);
     root->addLayout(row);
 
-    hienThiDanhSachTaxi();
+    // Trì hoãn lần nạp đầu tiên tới khi vòng lặp sự kiện đã hoàn tất bố cục
+    // ban đầu, để QScrollArea có kích thước viewport hợp lệ trước khi được
+    // nạp dữ liệu (tránh lỗi chỉ hiển thị đúng khi resize/full screen)
+    QTimer::singleShot(0, this, [this]() { hienThiDanhSachTaxi(); });
 }
 
 void BookingPage::hienThiDanhSachTaxi() {
