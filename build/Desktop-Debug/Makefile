@@ -59,7 +59,8 @@ SOURCES       = ../../src/main.cpp \
 		../../src/gui/DriverDialog.cpp \
 		../../src/gui/TaxiPage.cpp \
 		../../src/gui/BookingPage.cpp \
-		../../src/gui/StatsPage.cpp moc_MainWindow.cpp \
+		../../src/gui/StatsPage.cpp qrc_resources.cpp \
+		moc_MainWindow.cpp \
 		moc_LoginWidget.cpp \
 		moc_DriverPage.cpp \
 		moc_DriverDialog.cpp \
@@ -74,6 +75,7 @@ OBJECTS       = main.o \
 		TaxiPage.o \
 		BookingPage.o \
 		StatsPage.o \
+		qrc_resources.o \
 		moc_MainWindow.o \
 		moc_LoginWidget.o \
 		moc_DriverPage.o \
@@ -95,6 +97,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -104,8 +107,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri \
@@ -118,6 +123,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testinternals_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandclient.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandclient_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandglobal_private.pri \
@@ -131,6 +138,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_post.prf \
+		../../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/default_pre.prf \
@@ -152,7 +160,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
-		../../../../QuanLyTaXi.pro ../../src/gui/MainWindow.h \
+		../../../../QuanLyTaXi.pro TinhLuong.h \
+		../../src/gui/MainWindow.h \
 		../../src/gui/LoginWidget.h \
 		../../src/gui/DriverPage.h \
 		../../src/gui/DriverDialog.h \
@@ -169,7 +178,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		../../include/Taxi.h \
 		../../include/ChuyenXe.h \
 		../../include/NguoiDung.h \
-		../../include/Common.h ../../src/main.cpp \
+		../../include/Common.h \
+		../../include/TinhLuong.h ../../src/main.cpp \
 		../../src/gui/MainWindow.cpp \
 		../../src/gui/LoginWidget.cpp \
 		../../src/gui/DriverPage.cpp \
@@ -202,6 +212,7 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -211,8 +222,10 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri \
@@ -225,6 +238,8 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testinternals_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandclient.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandclient_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandglobal_private.pri \
@@ -238,6 +253,7 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/default_pre.prf \
@@ -260,6 +276,7 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
 		../../QuanLyTaXi.pro \
+		../../resources.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt6Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt6Core.prl
@@ -278,6 +295,7 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri:
@@ -287,8 +305,10 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri:
@@ -301,6 +321,8 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testinternals_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandclient.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandclient_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_waylandglobal_private.pri:
@@ -314,6 +336,7 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/default_pre.prf:
@@ -336,6 +359,7 @@ Makefile: ../../QuanLyTaXi.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf:
 ../../QuanLyTaXi.pro:
+../../resources.qrc:
 /usr/lib/x86_64-linux-gnu/libQt6Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt6Core.prl:
@@ -353,8 +377,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../src/gui/MainWindow.h ../../src/gui/LoginWidget.h ../../src/gui/DriverPage.h ../../src/gui/DriverDialog.h ../../src/gui/TaxiPage.h ../../src/gui/BookingPage.h ../../src/gui/StatsPage.h ../../src/gui/Style.h ../../include/HeThongTaxi.h ../../include/QuanLyTaiXe.h ../../include/QuanLyTaxi.h ../../include/QuanLyChuyenXe.h ../../include/QuanLyTaiKhoan.h ../../include/TaiXe.h ../../include/Taxi.h ../../include/ChuyenXe.h ../../include/NguoiDung.h ../../include/Common.h $(DISTDIR)/
+	$(COPY_FILE) --parents TinhLuong.h ../../src/gui/MainWindow.h ../../src/gui/LoginWidget.h ../../src/gui/DriverPage.h ../../src/gui/DriverDialog.h ../../src/gui/TaxiPage.h ../../src/gui/BookingPage.h ../../src/gui/StatsPage.h ../../src/gui/Style.h ../../include/HeThongTaxi.h ../../include/QuanLyTaiXe.h ../../include/QuanLyTaxi.h ../../include/QuanLyChuyenXe.h ../../include/QuanLyTaiKhoan.h ../../include/TaiXe.h ../../include/Taxi.h ../../include/ChuyenXe.h ../../include/NguoiDung.h ../../include/Common.h ../../include/TinhLuong.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../../src/main.cpp ../../src/gui/MainWindow.cpp ../../src/gui/LoginWidget.cpp ../../src/gui/DriverPage.cpp ../../src/gui/DriverDialog.cpp ../../src/gui/TaxiPage.cpp ../../src/gui/BookingPage.cpp ../../src/gui/StatsPage.cpp $(DISTDIR)/
 
 
@@ -379,8 +404,15 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: ../../resources.qrc \
+		/usr/lib/qt6/libexec/rcc \
+		../../icons/arrow_down.png \
+		../../icons/arrow_up.png
+	/usr/lib/qt6/libexec/rcc -name resources ../../resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -499,7 +531,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -603,8 +635,12 @@ StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		../../include/QuanLyChuyenXe.h \
 		../../include/ChuyenXe.h \
 		../../include/QuanLyTaiKhoan.h \
-		../../include/NguoiDung.h
+		../../include/NguoiDung.h \
+		../../include/TinhLuong.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StatsPage.o ../../src/gui/StatsPage.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_MainWindow.o: moc_MainWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainWindow.o moc_MainWindow.cpp

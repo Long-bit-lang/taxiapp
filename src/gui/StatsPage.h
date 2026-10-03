@@ -2,6 +2,7 @@
 #define STATSPAGE_H
 
 #include <QWidget>
+#include <QSpinBox>
 #include "../../include/HeThongTaxi.h"
 
 class QComboBox;
@@ -15,13 +16,16 @@ public:
     void refresh();
 
 private slots:
-    void onChonTaxi(int index);
+    void onLoc();
 
 private:
     HeThongTaxi* heThong;
-    QComboBox* cbTaxi;
+    QComboBox* cbThang;
+    QSpinBox* spinNam;
     QTableWidget* table;
     QLabel* lblTong;
+    void napDanhSachThang();
+    void capNhatGioiHan();
 };
 
 #endif // STATSPAGE_H

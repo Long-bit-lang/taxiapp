@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) {
             qWarning() << "KHONG TIM THAY thu muc 'data/' chua taikhoan.txt!"
                        << "Thu muc lam viec hien tai:" << QDir::currentPath();
         }
+        qDebug() << "dang doc tai" << QDir::currentPath();
     }
     app.setStyleSheet(appStyleSheet());
 

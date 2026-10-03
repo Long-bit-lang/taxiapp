@@ -54,6 +54,31 @@ inline QString appStyleSheet() {
         QLineEdit, QComboBox, QDateEdit, QSpinBox, QDoubleSpinBox {
             border: 1px solid #96948C; border-radius: 5px; padding: 6px 8px; background: white;
         }
+
+        QSpinBox, QDoubleSpinBox { padding-right: 26px; }
+
+        QSpinBox::up-button, QDoubleSpinBox::up-button {
+        subcontrol-origin: border; subcontrol-position: top right;
+        width: 20px; background: #F2F1EC;
+        border-left: 1px solid #96948C; border-bottom: 1px solid #96948C;
+        border-top-right-radius: 5px;
+        }
+        QSpinBox::down-button, QDoubleSpinBox::down-button {
+        subcontrol-origin: border; subcontrol-position: bottom right;
+        width: 20px; background: #F2F1EC;
+        border-left: 1px solid #96948C;
+        border-bottom-right-radius: 5px;
+        }
+        QSpinBox::up-button:hover, QDoubleSpinBox::up-button:hover,
+        QSpinBox::down-button:hover, QDoubleSpinBox::down-button:hover { background: #DFEBF7; }
+
+        QSpinBox::up-arrow, QDoubleSpinBox::up-arrow {
+        image: url(:/icons/arrow_up.png); width: 10px; height: 6px;
+        }
+        QSpinBox::down-arrow, QDoubleSpinBox::down-arrow {
+        image: url(:/icons/arrow_down.png); width: 10px; height: 6px;
+        }
+
         QLineEdit:focus, QComboBox:focus { border: 1px solid #4285C7; }
 
         QFrame#card { background: #F2F1EC; border-radius: 8px; }

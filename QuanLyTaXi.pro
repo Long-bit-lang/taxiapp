@@ -14,6 +14,7 @@ SOURCES += \
     src/gui/StatsPage.cpp
 
 HEADERS += \
+    TinhLuong.h \
     src/gui/MainWindow.h \
     src/gui/LoginWidget.h \
     src/gui/DriverPage.h \
@@ -31,4 +32,7 @@ HEADERS += \
     include/Taxi.h \
     include/ChuyenXe.h \
     include/NguoiDung.h \
-    include/Common.h
+    include/Common.h \
+    include/TinhLuong.h \
+
+RESOURCES += resources.qrc
