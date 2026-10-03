@@ -37,11 +37,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     toolbar->addStretch();
 
     txtSearch = new QLineEdit(this);
-<<<<<<< HEAD
     txtSearch->setPlaceholderText("Tìm kiếm: tên / bằng lái / GPLX");
-=======
-    txtSearch->setPlaceholderText("Tìm kiếm: tên / bằng lái / GPLX...");
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
     txtSearch->setFixedWidth(280);
     connect(txtSearch, &QLineEdit::textChanged, this, &DriverPage::onTimKiem);
     toolbar->addWidget(txtSearch);
@@ -55,11 +51,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
-<<<<<<< HEAD
     root->addWidget(table, 1);
-=======
-    root->addWidget(table);
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
     refresh();
 }
@@ -94,11 +86,7 @@ void DriverPage::onThem() {
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
         if (!hangBangLaiHopLeTaxi(moi.getBangLai())) {
-<<<<<<< HEAD
             QMessageBox::warning(this, "Lỗi",
-=======
-            QMessageBox::warning(this, "Loi",
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
                                  "Hạng bằng lái không hợp lệ để hành nghề lái xe taxi!\n"
                                  "Chỉ chấp nhận các hạng: B2, C, D, E.");
             return;
@@ -128,11 +116,7 @@ void DriverPage::onSua() {
     if (dlg.exec() == QDialog::Accepted) {
         TaiXe moi = dlg.ketQua();
         if (!hangBangLaiHopLeTaxi(moi.getBangLai())) {
-<<<<<<< HEAD
             QMessageBox::warning(this, "Lỗi",
-=======
-            QMessageBox::warning(this, "Loi",
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
                                  "Hạng bằng lái không hợp lệ để hành nghề lái xe taxi!\n"
                                  "Chỉ chấp nhận các hạng: B2, C, D, E.");
             return;

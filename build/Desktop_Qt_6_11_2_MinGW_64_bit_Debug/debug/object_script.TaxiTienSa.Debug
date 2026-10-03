@@ -1,0 +1,15 @@
+debug/main.o
+debug/MainWindow.o
+debug/LoginWidget.o
+debug/DriverPage.o
+debug/DriverDialog.o
+debug/TaxiPage.o
+debug/BookingPage.o
+debug/StatsPage.o
+debug/moc_MainWindow.o
+debug/moc_LoginWidget.o
+debug/moc_DriverPage.o
+debug/moc_DriverDialog.o
+debug/moc_TaxiPage.o
+debug/moc_BookingPage.o
+debug/moc_StatsPage.o

@@ -12,20 +12,13 @@
 #include <QFrame>
 #include <QMessageBox>
 #include <QDateTime>
-<<<<<<< HEAD
 #include <QScrollArea>
 #include <QTimer>
-=======
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
 BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     : QWidget(parent), heThong(ht) {
 
-<<<<<<< HEAD
     auto* root = new QVBoxLayout(this);   // SỬA: phải là "this", không phải "rightCard" (rightCard chưa tồn tại ở đây)
-=======
-    auto* root = new QVBoxLayout(this);
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
     root->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("ĐẶT CHUYẾN XE", this);
@@ -78,7 +71,6 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     auto* rightLay = new QVBoxLayout(rightCard);
     rightLay->addWidget(new QLabel("<b>Danh sách taxi đề xuất</b>", rightCard));
 
-<<<<<<< HEAD
     dsTaxiContainer = new QWidget();
     dsTaxiLayout = new QVBoxLayout(dsTaxiContainer);
     dsTaxiLayout->setSpacing(8);
@@ -92,22 +84,11 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     scrollDsTaxi->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollDsTaxi->setWidget(dsTaxiContainer);
     rightLay->addWidget(scrollDsTaxi, 1);
-=======
-    dsTaxiContainer = new QWidget(rightCard);
-    dsTaxiLayout = new QVBoxLayout(dsTaxiContainer);
-    dsTaxiLayout->setSpacing(8);
-    rightLay->addWidget(dsTaxiContainer);
-    rightLay->addStretch();
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
     rightLay->addWidget(new QLabel("Chọn tài xế thực hiện:", rightCard));
     cbTaiXe = new QComboBox(rightCard);
     rightLay->addWidget(cbTaiXe);
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
     btnXacNhan = new QPushButton("XÁC NHẬN ĐẶT XE", rightCard);
     btnXacNhan->setObjectName("btnSuccess");
     btnXacNhan->setMinimumHeight(38);
@@ -119,14 +100,10 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     row->addWidget(rightCard, 1);
     root->addLayout(row);
 
-<<<<<<< HEAD
     // Trì hoãn lần nạp đầu tiên tới khi vòng lặp sự kiện đã hoàn tất bố cục
     // ban đầu, để QScrollArea có kích thước viewport hợp lệ trước khi được
     // nạp dữ liệu (tránh lỗi chỉ hiển thị đúng khi resize/full screen)
     QTimer::singleShot(0, this, [this]() { hienThiDanhSachTaxi(); });
-=======
-    hienThiDanhSachTaxi();
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 }
 
 void BookingPage::hienThiDanhSachTaxi() {
@@ -214,11 +191,7 @@ void BookingPage::onXacNhan() {
         QMessageBox::warning(this, "Lỗi", "Vui lòng nhập họ tên khách hàng.");
         return;
     }
-<<<<<<< HEAD
     static const QRegularExpression sdtRegex("^0[0-9]{9}$");
-=======
-    static const QRegularExpression sdtRegex("^0[0-9]{9,10}$");
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
     QString sdtKhach = txtSdt->text();
     sdtKhach.remove(' ');
     if (!sdtRegex.match(sdtKhach).hasMatch()) {

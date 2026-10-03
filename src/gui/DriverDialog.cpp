@@ -22,11 +22,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
     txtMaTX = new QLineEdit(this);
     if (existing) { txtMaTX->setText(QString::fromStdString(existing->getMaTX())); }
     txtMaTX->setReadOnly(true);
-<<<<<<< HEAD
     form->addRow("Mã tài xế:", txtMaTX);
-=======
-    form->addRow("Ma tai xe:", txtMaTX);
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
     txtTen = new QLineEdit(this);
     txtHoDem = new QLineEdit(this);
@@ -44,11 +40,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
         auto d = existing->getNgaySinh();
         dateNgaySinh->setDate(QDate(d.year, d.month, d.day));
     } else {
-<<<<<<< HEAD
         dateNgaySinh->setDate(QDate(2000, 1, 1));
-=======
-        dateNgaySinh->setDate(QDate(1995, 1, 1));
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
     }
     form->addRow("Ngày sinh:", dateNgaySinh);
 
@@ -96,20 +88,12 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
             return;
         }
 
-<<<<<<< HEAD
         static const QRegularExpression sdtRegex("^0[0-9]{9}$");
-=======
-        static const QRegularExpression sdtRegex("^0[0-9]{9,10}$");
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
         QString sdt = txtSdt->text().trimmed();
         sdt.remove(' ');
         if (!sdtRegex.match(sdt).hasMatch()) {
             QMessageBox::warning(this, "Lỗi",
-<<<<<<< HEAD
                 "Số điện thoại không hợp lệ (phả bắt đầu bằng 0, gồm đúng 10 chữ số).");
-=======
-                "Số điện thoại không hợp lệ (phả bắt đầu bằng 0, gồm 10 chữ số).");
->>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
             return;
         }
 
