@@ -33,7 +33,10 @@ int main(int argc, char* argv[]) {
     auto* root = new QStackedWidget();
     root->setWindowTitle("Hệ thống quản lý Taxi Tiên Sa");
     root->resize(1000, 640);
+<<<<<<< HEAD
     root->setMaximumSize(1280, 800);
+=======
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
     auto* login = new LoginWidget(&heThong);
     root->addWidget(login);

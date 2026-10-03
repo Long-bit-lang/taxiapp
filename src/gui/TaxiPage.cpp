@@ -54,7 +54,11 @@ TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
+<<<<<<< HEAD
     root->addWidget(table, 1);
+=======
+    root->addWidget(table);
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
     refresh();
 }

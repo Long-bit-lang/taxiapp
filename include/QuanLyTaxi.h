@@ -9,6 +9,7 @@
 #include "Taxi.h"
 #include "Common.h"
 
+<<<<<<< HEAD
 using namespace std;
 
 
@@ -27,6 +28,23 @@ public:
 
     bool xoa(const string& bienSo) {
         auto it = remove_if(dsTaxi.begin(), dsTaxi.end(),
+=======
+class QuanLyTaxi {
+private:
+    std::vector<Taxi> dsTaxi;
+    std::string duongDanFile;
+
+public:
+    explicit QuanLyTaxi(std::string file = "data/taxi.txt") : duongDanFile(file) {}
+
+    std::vector<Taxi>& layDanhSach() { return dsTaxi; }
+    const std::vector<Taxi>& layDanhSach() const { return dsTaxi; }
+
+    void them(const Taxi& t) { dsTaxi.push_back(t); ghiFile(); }
+
+    bool xoa(const std::string& bienSo) {
+        auto it = std::remove_if(dsTaxi.begin(), dsTaxi.end(),
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
                                   [&](const Taxi& t) { return t.getBienSo() == bienSo; });
         if (it == dsTaxi.end()) return false;
         dsTaxi.erase(it, dsTaxi.end());
@@ -34,34 +52,56 @@ public:
         return true;
     }
 
+<<<<<<< HEAD
     void goBoTaiXeKhoiTatCaTaxi(const string& maTX) {
+=======
+    void goBoTaiXeKhoiTatCaTaxi(const std::string& maTX) {
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
         for (auto& t : dsTaxi) t.xoaTaiXe(maTX);
         ghiFile();
     }
     
+<<<<<<< HEAD
     bool coBienSo(const string& bienSo) const {
+=======
+    bool coBienSo(const std::string& bienSo) const {
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
         for (auto& t : dsTaxi) if (t.getBienSo() == bienSo) return true;
         return false;
     }
 
+<<<<<<< HEAD
     Taxi* timTheoBienSo(const string& bienSo) {
+=======
+    Taxi* timTheoBienSo(const std::string& bienSo) {
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
         for (auto& t : dsTaxi) if (t.getBienSo() == bienSo) return &t;
         return nullptr;
     }
 
     // Loc taxi dang san sang, uu tien... (o day minh hoa: sap xep theo bien so)
+<<<<<<< HEAD
     vector<Taxi*> timTaxiPhuHop(int soKhachToiThieu = 1) {
         vector<Taxi*> ketQua;
         for (auto& t : dsTaxi)
             if (t.kiemTraSanSang() && t.getSucChua() >= soKhachToiThieu)
                 ketQua.push_back(&t);
         sort(ketQua.begin(), ketQua.end(),
+=======
+    std::vector<Taxi*> timTaxiPhuHop(int soKhachToiThieu = 1) {
+        std::vector<Taxi*> ketQua;
+        for (auto& t : dsTaxi)
+            if (t.kiemTraSanSang() && t.getSucChua() >= soKhachToiThieu)
+                ketQua.push_back(&t);
+        std::sort(ketQua.begin(), ketQua.end(),
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
                   [](Taxi* a, Taxi* b) { return a->getBienSo() < b->getBienSo(); });
         return ketQua;
     }
 
     void docFile() {
         dsTaxi.clear();
+<<<<<<< HEAD
         ifstream fin(duongDanFile);
         if (!fin.is_open()) return;
         string line;
@@ -70,6 +110,16 @@ public:
             auto p = split(line, '|');
             if (p.size() < 2) continue;
             Taxi t(p[0], stoi(p[1]));
+=======
+        std::ifstream fin(duongDanFile);
+        if (!fin.is_open()) return;
+        std::string line;
+        while (std::getline(fin, line)) {
+            if (line.empty()) continue;
+            auto p = split(line, '|');
+            if (p.size() < 2) continue;
+            Taxi t(p[0], std::stoi(p[1]));
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
             if (p.size() >= 3 && !p[2].empty()) {
                 for (auto& ma : split(p[2], ',')) t.themTaiXe(ma);
             }
@@ -79,7 +129,11 @@ public:
     }
 
     void ghiFile() const {
+<<<<<<< HEAD
         ofstream fout(duongDanFile, ios::trunc);
+=======
+        std::ofstream fout(duongDanFile, std::ios::trunc);
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
         for (auto& t : dsTaxi) {
             fout << t.getBienSo() << "|" << t.getSucChua() << "|" << t.dsMaTaiXeStr()
                  << "|" << (t.kiemTraSanSang() ? 1 : 0) << "\n";

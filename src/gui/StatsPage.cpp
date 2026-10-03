@@ -33,7 +33,11 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
+<<<<<<< HEAD
     root->addWidget(table, 1);
+=======
+    root->addWidget(table);
+>>>>>>> ac530f48aed7f31cf74186dddadf02ad8de568f1
 
     auto* totalCard = new QFrame(this);
     totalCard->setObjectName("card");
