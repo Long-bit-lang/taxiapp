@@ -1,7 +1,6 @@
 #ifndef QUANLYTAIXE_H
 #define QUANLYTAIXE_H
 
-#include <vector>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -13,13 +12,13 @@ using namespace std;
 
 class QuanLyTaiXe {
 private:
-    vector<TaiXe> dsTaiXe;
+    DanhSach<TaiXe> dsTaiXe;
     string duongDanFile;
 
 public:
     explicit QuanLyTaiXe(string file = "data/taixe.txt") : duongDanFile(file) {}
 
-    const vector<TaiXe>& layDanhSach() const { return dsTaiXe; }
+    const DanhSach<TaiXe>& layDanhSach() const { return dsTaiXe; }
 
     void them(const TaiXe& tx) { dsTaiXe.push_back(tx); ghiFile(); }
 
@@ -29,14 +28,12 @@ public:
         return false;
     }
 
-    bool xoa(const string& maTX) {
-        auto it = remove_if(dsTaiXe.begin(), dsTaiXe.end(),
-                                  [&](const TaiXe& t) { return t.getMaTX() == maTX; });
-        if (it == dsTaiXe.end()) return false;
-        dsTaiXe.erase(it, dsTaiXe.end());
-        ghiFile();
-        return true;
+    bool xoa(const string& bienSo) {
+        bool coXoa = dsTaixe.xoaNeu([&](const Taixe& t) { return t.getMaTX() == maTX; });
+        if (coXoa) ghiFile();
+        return coXoa;
     }
+
 
     bool coSoGPLX(const string& gplx, const string& boQuaMa = "") const {
         for (auto& t : dsTaiXe)
@@ -49,13 +46,13 @@ public:
         return false;
     }
 
-    vector<TaiXe> timKiem(const string& tuKhoa) const {
-        vector<TaiXe> ketQua;
+    DanhSach<TaiXe> timKiem(const string& tuKhoa) const {
+        DanhSach<TaiXe> ketQua;
         string tk = tuKhoa;
-        transform(tk.begin(), tk.end(), tk.begin(), ::tolower);
+        for (auto& ch : tk) ch = (char)tolower((unsigned char)ch);
         for (auto& t : dsTaiXe) {
             string hoTen = t.getHoTen(), gplx = t.getSoGPLX(), bl = t.getBangLai();
-            transform(hoTen.begin(), hoTen.end(), hoTen.begin(), ::tolower);
+            for (auto& ch : hoTen) ch = (char)tolower((unsigned char)ch);
             string tuoiStr = to_string(tinhTuoi(t.getNgaySinh()));
             if (tk.empty() || hoTen.find(tk) != string::npos ||
                 gplx.find(tuKhoa) != string::npos ||

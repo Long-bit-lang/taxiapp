@@ -1,10 +1,8 @@
 #ifndef QUANLYTAIKHOAN_H
 #define QUANLYTAIKHOAN_H
 
-#include <vector>
 #include <string>
 #include <fstream>
-#include <sstream>
 #include <memory>
 #include "NguoiDung.h"
 
@@ -13,7 +11,7 @@ using namespace std;
 
 class QuanLyTaiKhoan {
 private:
-    vector<TaiKhoan> dsTaiKhoan;
+    DanhSach<TaiKhoan> dsTaiKhoan;
     string duongDanFile;
 
 public:
@@ -39,7 +37,7 @@ public:
             if (line.empty()) continue;
             auto p = split(line, '|');
             if (p.size() < 3) continue;
-            dsTaiKhoan.emplace_back(p[0], p[1], (VaiTro)stoi(p[2]));
+            dsTaiKhoan.themCuoi(TaiKhoan(p[0], p[1], (VaiTro)stoi(p[2])));
         }
     }
 };

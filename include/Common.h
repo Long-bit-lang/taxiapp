@@ -6,6 +6,7 @@
 #include <string>
 #include <algorithm>
 #include <ctime>
+#include "CauTruc.h"
 
 using namespace std;
 
@@ -40,11 +41,6 @@ inline string trangThaiToStr(TrangThai t) {
     }
 }
 
-inline bool hangBangLaiHopLeTaxi(const string& bangLai) {
-    static const vector<string> hopLe = {"B2", "C", "D", "E"};
-    return find(hopLe.begin(), hopLe.end(), bangLai) != hopLe.end();
-}
-
 inline bool hangBangLaiPhuHopSucChua(const string& bangLai, int sucChua) {
     if (bangLai == "B2") return sucChua <= 8;
     if (bangLai == "D")  return sucChua <= 29;
@@ -65,11 +61,22 @@ inline string trangThaiChuyenToStr(TrangThaiChuyen t) {
     }
 }
 
-inline vector<string> split(const string& s, char delim) {
-    vector<string> out;
-    stringstream ss(s);
+inline DanhSach<string> split(const string& s, char delim) {
+    DanhSach<string> out;
     string item;
-    while (getline(ss, item, delim)) out.push_back(item);
+    for (size_t i = 0; i <= s.size(); ++i) {
+        if (i == s.size() || s[i] == delim) {
+            if (!(i == s.size() && item.empty()))   // giống getline: không thêm mục rỗng ở cuối
+                out.themCuoi(item);
+            item.clear();
+        } else item += s[i];
+    }
     return out;
 }
+
+inline bool hangBangLaiHopLeTaxi(const string& bangLai) {
+    static const DanhSach<string> hopLe = {"B2", "C", "D", "E"};
+    return hopLe.chua(bangLai);
+}
+
 #endif // COMMON_H

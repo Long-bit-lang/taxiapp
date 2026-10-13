@@ -1,11 +1,11 @@
 #ifndef QUANLYCHUYENXE_H
 #define QUANLYCHUYENXE_H
 
-#include <vector>
 #include <string>
 #include <fstream>
-#include <sstream>
 #include <algorithm>
+#include <cstdio>
+#include <cstdlib>
 #include "ChuyenXe.h"
 #include "Common.h"
 
@@ -13,13 +13,13 @@ using namespace std;
 
 class QuanLyChuyenXe {
 private:
-    vector<ChuyenXe> dsChuyenXe;
+    DanhSach<ChuyenXe> dsChuyenXe;
     string duongDanFile;
 
 public:
     explicit QuanLyChuyenXe(string file = "data/chuyenxe.txt") : duongDanFile(file) {}
 
-    const vector<ChuyenXe>& layDanhSach() const { return dsChuyenXe; }
+    const DanhSach<ChuyenXe>& layDanhSach() const { return dsChuyenXe; }
 
     void themChuyen(const ChuyenXe& cx) { dsChuyenXe.push_back(cx); ghiFile(); }
 
@@ -34,8 +34,8 @@ public:
         return buf;
     }
 
-    vector<ChuyenXe> theoTaxi(const string& bienSo) const {
-        vector<ChuyenXe> ketQua;
+    DanhSach<ChuyenXe> theoTaxi(const string& bienSo) const {
+        DanhSach<ChuyenXe> ketQua;
         for (auto& c : dsChuyenXe) if (c.getBienSoTaxi() == bienSo) ketQua.push_back(c);
         return ketQua;
     }

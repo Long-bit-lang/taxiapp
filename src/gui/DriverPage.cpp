@@ -56,7 +56,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     refresh();
 }
 
-void DriverPage::fillTable(const std::vector<TaiXe>& ds) {
+void DriverPage::fillTable(const DanhSach<TaiXe>& ds) {
     table->setRowCount((int)ds.size());
     for (int i = 0; i < (int)ds.size(); ++i) {
         const auto& t = ds[i];

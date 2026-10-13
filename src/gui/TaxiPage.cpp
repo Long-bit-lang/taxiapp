@@ -143,7 +143,7 @@ void TaxiPage::onPhanCong() {
     auto* lay = new QVBoxLayout(&dlg);
     lay->addWidget(new QLabel("Chọn tài xế được phân công lái xe này:", &dlg));
 
-    std::vector<QCheckBox*> checks;
+    DanhSach<QCheckBox*> checks;
     for (auto& tx : heThong->taiXe().layDanhSach()) {
         bool phuHop = hangBangLaiPhuHopSucChua(tx.getBangLai(), taxi->getSucChua());
 
@@ -154,7 +154,7 @@ void TaxiPage::onPhanCong() {
         auto* cb = new QCheckBox(nhan, &dlg);
         cb->setProperty("maTX", QString::fromStdString(tx.getMaTX()));
 
-        bool assigned = std::find(taxi->getDsMaTaiXe().begin(), taxi->getDsMaTaiXe().end(), tx.getMaTX()) != taxi->getDsMaTaiXe().end();
+        bool assigned = taxi->getDsMaTaiXe().chua(tx.getMaTX());
         cb->setChecked(assigned);
 
         if (!phuHop) {

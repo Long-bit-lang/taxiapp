@@ -2,7 +2,6 @@
 #define NGUOIDUNG_H
 
 #include <string>
-#include <vector>
 #include "Common.h"
 
 using namespace std;
@@ -29,14 +28,14 @@ public:
     string getTenDangNhap() const { return tenDangNhap; }
     VaiTro getVaiTro() const { return vaiTro; }
 
-    virtual vector<ChucNang> danhSachChucNang() const = 0;
+    virtual DanhSach<ChucNang> danhSachChucNang() const = 0;
     virtual string tenVaiTro() const = 0;
 };
 
 class QuanLy : public NguoiDung {
 public:
     QuanLy(string tk) : NguoiDung(tk, QUAN_LY) {}
-    vector<ChucNang> danhSachChucNang() const override {
+    DanhSach<ChucNang> danhSachChucNang() const override {
         return {CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_THONG_KE};
     }
     string tenVaiTro() const override { return "Quản lý"; }
@@ -45,7 +44,7 @@ public:
 class DieuHanh : public NguoiDung {
 public:
     DieuHanh(string tk) : NguoiDung(tk, DIEU_HANH) {}
-    vector<ChucNang> danhSachChucNang() const override {
+    DanhSach<ChucNang> danhSachChucNang() const override {
         return {CN_DAT_CHUYEN_XE};
     }
     string tenVaiTro() const override { return "Điều hành"; }

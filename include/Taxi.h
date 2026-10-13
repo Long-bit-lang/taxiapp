@@ -12,7 +12,7 @@ class Taxi {
 private:
     string bienSo;
     int sucChua;
-    vector<string> dsMaTaiXe;
+    DanhSach<string> dsMaTaiXe;
     bool dangSanSang;
 
 public:
@@ -35,11 +35,10 @@ public:
     void setSanSang(bool ss) { dangSanSang = ss; }
 
     void themTaiXe(const string& maTX) {
-        if (find(dsMaTaiXe.begin(), dsMaTaiXe.end(), maTX) == dsMaTaiXe.end())
-            dsMaTaiXe.push_back(maTX);
+        if (!dsMaTaiXe.chua(maTX)) dsMaTaiXe.themCuoi(maTX);
     }
     void xoaTaiXe(const string& maTX) {
-        dsMaTaiXe.erase(remove(dsMaTaiXe.begin(), dsMaTaiXe.end(), maTX), dsMaTaiXe.end());
+        dsMaTaiXe.xoaGiaTri(maTX);
     }
 };
 

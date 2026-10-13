@@ -160,8 +160,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf \
-		../../../../QuanLyTaXi.pro TinhLuong.h \
-		../../src/gui/MainWindow.h \
+		../../../../QuanLyTaXi.pro ../../src/gui/MainWindow.h \
 		../../src/gui/LoginWidget.h \
 		../../src/gui/DriverPage.h \
 		../../src/gui/DriverDialog.h \
@@ -179,7 +178,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		../../include/ChuyenXe.h \
 		../../include/NguoiDung.h \
 		../../include/Common.h \
-		../../include/TinhLuong.h ../../src/main.cpp \
+		../../include/TinhLuong.h \
+		../../include/CauTruc.h ../../src/main.cpp \
 		../../src/gui/MainWindow.cpp \
 		../../src/gui/LoginWidget.cpp \
 		../../src/gui/DriverPage.cpp \
@@ -379,7 +379,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents TinhLuong.h ../../src/gui/MainWindow.h ../../src/gui/LoginWidget.h ../../src/gui/DriverPage.h ../../src/gui/DriverDialog.h ../../src/gui/TaxiPage.h ../../src/gui/BookingPage.h ../../src/gui/StatsPage.h ../../src/gui/Style.h ../../include/HeThongTaxi.h ../../include/QuanLyTaiXe.h ../../include/QuanLyTaxi.h ../../include/QuanLyChuyenXe.h ../../include/QuanLyTaiKhoan.h ../../include/TaiXe.h ../../include/Taxi.h ../../include/ChuyenXe.h ../../include/NguoiDung.h ../../include/Common.h ../../include/TinhLuong.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../src/gui/MainWindow.h ../../src/gui/LoginWidget.h ../../src/gui/DriverPage.h ../../src/gui/DriverDialog.h ../../src/gui/TaxiPage.h ../../src/gui/BookingPage.h ../../src/gui/StatsPage.h ../../src/gui/Style.h ../../include/HeThongTaxi.h ../../include/QuanLyTaiXe.h ../../include/QuanLyTaxi.h ../../include/QuanLyChuyenXe.h ../../include/QuanLyTaiKhoan.h ../../include/TaiXe.h ../../include/Taxi.h ../../include/ChuyenXe.h ../../include/NguoiDung.h ../../include/Common.h ../../include/TinhLuong.h ../../include/CauTruc.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../../src/main.cpp ../../src/gui/MainWindow.cpp ../../src/gui/LoginWidget.cpp ../../src/gui/DriverPage.cpp ../../src/gui/DriverDialog.cpp ../../src/gui/TaxiPage.cpp ../../src/gui/BookingPage.cpp ../../src/gui/StatsPage.cpp $(DISTDIR)/
 
 
@@ -427,6 +427,7 @@ moc_MainWindow.cpp: ../../src/gui/MainWindow.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -442,6 +443,7 @@ moc_LoginWidget.cpp: ../../src/gui/LoginWidget.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -457,6 +459,7 @@ moc_DriverPage.cpp: ../../src/gui/DriverPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -470,6 +473,7 @@ moc_DriverPage.cpp: ../../src/gui/DriverPage.h \
 moc_DriverDialog.cpp: ../../src/gui/DriverDialog.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/nhlong/Documents/quanlytaxi/build/Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/nhlong/Documents/quanlytaxi -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/gui/DriverDialog.h -o moc_DriverDialog.cpp
@@ -479,6 +483,7 @@ moc_TaxiPage.cpp: ../../src/gui/TaxiPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -494,6 +499,7 @@ moc_BookingPage.cpp: ../../src/gui/BookingPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -509,6 +515,7 @@ moc_StatsPage.cpp: ../../src/gui/StatsPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -541,6 +548,7 @@ main.o: ../../src/main.cpp ../../src/gui/Style.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -555,6 +563,7 @@ MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -572,6 +581,7 @@ LoginWidget.o: ../../src/gui/LoginWidget.cpp ../../src/gui/LoginWidget.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -585,6 +595,7 @@ DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -596,7 +607,8 @@ DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 
 DriverDialog.o: ../../src/gui/DriverDialog.cpp ../../src/gui/DriverDialog.h \
 		../../include/TaiXe.h \
-		../../include/Common.h
+		../../include/Common.h \
+		../../include/CauTruc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DriverDialog.o ../../src/gui/DriverDialog.cpp
 
 TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
@@ -604,6 +616,7 @@ TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -617,6 +630,7 @@ BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -630,6 +644,7 @@ StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \

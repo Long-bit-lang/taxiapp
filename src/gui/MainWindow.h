@@ -31,7 +31,7 @@ private:
     TaxiPage* taxiPage = nullptr;
     BookingPage* bookingPage = nullptr;
     StatsPage* statsPage = nullptr;
-    std::vector<QPushButton*> menuButtons;
+    DanhSach<QPushButton*> menuButtons;
 
     QLabel* lblSoTaiXe = nullptr;
     QLabel* lblSoTaxi = nullptr;

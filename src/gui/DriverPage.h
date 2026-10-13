@@ -23,7 +23,7 @@ private:
     HeThongTaxi* heThong;
     QTableWidget* table;
     QLineEdit* txtSearch;
-    void fillTable(const std::vector<TaiXe>& ds);
+    void fillTable(const DanhSach<TaiXe>& ds);
 };
 
 #endif // DRIVERPAGE_H

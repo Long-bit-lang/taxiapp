@@ -1,8 +1,6 @@
 #ifndef TINHLUONG_H
 #define TINHLUONG_H
 
-#include <map>
-#include <vector>
 #include <string>
 #include <cstdio>
 #include <algorithm>
@@ -48,11 +46,11 @@ inline bool thuocThang(const ChuyenXe& c, int thang, int nam) {
     return thang == 0 || m == thang;
 }
 
-inline vector<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi& qlTaxi,
+inline DanhSach<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi& qlTaxi,
                                         int thang, int nam,
                                         const CauHinhLuong& ch = CauHinhLuong()) {
-    map<string, LuongTaiXe> bang;
-    map<pair<string, string>, pair<int, double>> theoNgay; // (maTX, ngay) -> (so chuyen, doanh thu)
+    BanDo<string, LuongTaiXe> bang;
+    BanDo<pair<string, string>, pair<int, double>> theoNgay; // (maTX, ngay) -> (so chuyen, doanh thu)
 
     for (const auto& c : qlCX.layDanhSach()) {
         if (c.getTrangThai() != HOAN_THANH) continue;
@@ -71,22 +69,23 @@ inline vector<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi& 
         l.chietKhau += cuoc * ch.tyLeChietKhau;
         l.phiNenTang += (sucChua >= 7) ? ch.phiNenTang7Cho : ch.phiNenTang4Cho;
 
-        auto& n = theoNgay[{c.getMaTaiXe(), c.getThoiDiem().substr(0, 10)}];
+        auto& n = theoNgay[Cap<string,string>(c.getMaTaiXe(), c.getThoiDiem().substr(0, 10))];
         n.first++;
         n.second += cuoc;
     }
 
-    for (const auto& kv : theoNgay)
-        bang[kv.first.first].thuong += kv.second.second * tyLeThuongNgay(kv.second.first);
+    theoNgay.duyet([&](const Cap<string,string>& k, const Cap<int,double>& v) {
+        bang[k.first].thuong += v.second * tyLeThuongNgay(v.first);
+    });
 
-    vector<LuongTaiXe> kq;
-    for (auto& kv : bang) {
-        LuongTaiXe& l = kv.second;
+    DanhSach<LuongTaiXe> kq;
+    bang.duyet([&](const string&, const LuongTaiXe& lx) {
+        LuongTaiXe l = lx;
         double truocThue = l.doanhThu - l.chietKhau - l.phiNenTang + l.thuong;
         l.thue = max(0.0, truocThue) * ch.tyLeThue;
         l.thucNhan = truocThue - l.thue;
-        kq.push_back(l);
-    }
+        kq.themCuoi(l);
+    });
     return kq;
 }
 

@@ -1,7 +1,6 @@
 #ifndef QUANLYTAXI_H
 #define QUANLYTAXI_H
 
-#include <vector>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -14,24 +13,21 @@ using namespace std;
 
 class QuanLyTaxi {
 private:
-    vector<Taxi> dsTaxi;
+    DanhSach<Taxi> dsTaxi;
     string duongDanFile;
 
 public:
     explicit QuanLyTaxi(string file = "data/taxi.txt") : duongDanFile(file) {}
 
-    vector<Taxi>& layDanhSach() { return dsTaxi; }
-    const vector<Taxi>& layDanhSach() const { return dsTaxi; }
+    DanhSach<Taxi>& layDanhSach() { return dsTaxi; }
+    const DanhSach<Taxi>& layDanhSach() const { return dsTaxi; }
 
     void them(const Taxi& t) { dsTaxi.push_back(t); ghiFile(); }
 
     bool xoa(const string& bienSo) {
-        auto it = remove_if(dsTaxi.begin(), dsTaxi.end(),
-                                  [&](const Taxi& t) { return t.getBienSo() == bienSo; });
-        if (it == dsTaxi.end()) return false;
-        dsTaxi.erase(it, dsTaxi.end());
-        ghiFile();
-        return true;
+        bool coXoa = dsTaxi.xoaNeu([&](const Taxi& t) { return t.getBienSo() == bienSo; });
+        if (coXoa) ghiFile();
+        return coXoa;
     }
 
     void goBoTaiXeKhoiTatCaTaxi(const string& maTX) {
@@ -50,13 +46,12 @@ public:
     }
 
     // Loc taxi dang san sang, uu tien... (o day minh hoa: sap xep theo bien so)
-    vector<Taxi*> timTaxiPhuHop(int soKhachToiThieu = 1) {
-        vector<Taxi*> ketQua;
+    DanhSach<Taxi*> timTaxiPhuHop(int soKhachToiThieu = 1) {
+        DanhSach<Taxi*> ketQua;
         for (auto& t : dsTaxi)
             if (t.kiemTraSanSang() && t.getSucChua() >= soKhachToiThieu)
-                ketQua.push_back(&t);
-        sort(ketQua.begin(), ketQua.end(),
-                  [](Taxi* a, Taxi* b) { return a->getBienSo() < b->getBienSo(); });
+                ketQua.themCuoi(&t);
+        ketQua.sapXep([](Taxi* a, Taxi* b) { return a->getBienSo() < b->getBienSo(); });
         return ketQua;
     }
 
