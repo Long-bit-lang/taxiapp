@@ -2,8 +2,8 @@
 #define TAXI_H
 
 #include <string>
-#include <vector>
 #include <algorithm>
+#include "CauTruc.h"
 
 using namespace std;
 
@@ -21,11 +21,11 @@ public:
 
     string getBienSo() const { return bienSo; }
     int getSucChua() const { return sucChua; }
-    const vector<string>& getDsMaTaiXe() const { return dsMaTaiXe; }
+    const DanhSach<string>& getDsMaTaiXe() const { return dsMaTaiXe; }
     bool kiemTraSanSang() const { return dangSanSang; }
     string dsMaTaiXeStr() const {
         string s;
-        for (size_t i = 0; i < dsMaTaiXe.size(); ++i) {
+        for (int i = 0; i < dsMaTaiXe.size(); ++i) {
             s += dsMaTaiXe[i];
             if (i + 1 < dsMaTaiXe.size()) s += ",";
         }

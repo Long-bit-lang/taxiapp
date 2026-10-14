@@ -2,6 +2,7 @@
 #define CHUYENXE_H
 
 #include <string>
+#include "Common.h"
 
 using namespace std;
 

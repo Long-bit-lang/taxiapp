@@ -50,7 +50,7 @@ inline DanhSach<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi
                                         int thang, int nam,
                                         const CauHinhLuong& ch = CauHinhLuong()) {
     BanDo<string, LuongTaiXe> bang;
-    BanDo<pair<string, string>, pair<int, double>> theoNgay; // (maTX, ngay) -> (so chuyen, doanh thu)
+    BanDo<Cap<string, string>, Cap<int, double>> theoNgay; // (maTX, ngay) -> (so chuyen, doanh thu)
 
     for (const auto& c : qlCX.layDanhSach()) {
         if (c.getTrangThai() != HOAN_THANH) continue;

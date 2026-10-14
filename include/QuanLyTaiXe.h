@@ -28,8 +28,8 @@ public:
         return false;
     }
 
-    bool xoa(const string& bienSo) {
-        bool coXoa = dsTaixe.xoaNeu([&](const Taixe& t) { return t.getMaTX() == maTX; });
+    bool xoa(const string& maTX) {
+        bool coXoa = dsTaiXe.xoaNeu([&](const TaiXe& t) { return t.getMaTX() == maTX; });
         if (coXoa) ghiFile();
         return coXoa;
     }

@@ -93,7 +93,7 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
         sdt.remove(' ');
         if (!sdtRegex.match(sdt).hasMatch()) {
             QMessageBox::warning(this, "Lỗi",
-                "Số điện thoại không hợp lệ (phả bắt đầu bằng 0, gồm đúng 10 chữ số).");
+                "Số điện thoại không hợp lệ (phải bắt đầu bằng 0, gồm đúng 10 chữ số).");
             return;
         }
 

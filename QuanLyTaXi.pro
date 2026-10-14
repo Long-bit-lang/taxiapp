@@ -33,6 +33,6 @@ HEADERS += \
     include/NguoiDung.h \
     include/Common.h \
     include/TinhLuong.h \
-    include/CauTruc.h \
+    include/CauTruc.h
 
 RESOURCES += resources.qrc
