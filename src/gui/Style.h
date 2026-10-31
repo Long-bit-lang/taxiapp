@@ -4,6 +4,11 @@
 #include <QString>
 #include <QTableWidget>
 #include <QHeaderView>
+#include <QToolTip>
+#include <QLabel>
+#include <QCursor>
+#include <QFontMetrics>
+
 
 // Cài đặt chung cho mọi bảng: hàng cao, header cao, cột tự vừa nội dung,
 // chỉ cột "cotGian" (và cotGian2 nếu có) chiếm phần thừa.
@@ -25,13 +30,43 @@ inline void caiDatBang(QTableWidget* t, int cotGian, int cotGian2 = -1) {
     t->setSelectionBehavior(QAbstractItemView::SelectRows);
     t->setEditTriggers(QAbstractItemView::NoEditTriggers);
     t->setTextElideMode(Qt::ElideRight);
+    t->setWordWrap(false);
+    QObject::connect(t, &QTableWidget::cellClicked, t, [t](int row, int col) {
+        auto* it = t->item(row, col);
+        if (!it || it->text().isEmpty()) return;
+
+        auto* lb = new QLabel(it->text(), t, Qt::Popup);
+        lb->setAttribute(Qt::WA_DeleteOnClose);
+        lb->setWordWrap(true);
+        lb->setMaximumWidth(500);
+        lb->setTextInteractionFlags(Qt::TextSelectableByMouse);   // cho phép bôi đen để copy
+        lb->setStyleSheet("QLabel { background: white; color: #2C3E50; font-size: 15px;"
+                          " border: 1px solid #4285C7; padding: 10px 14px; }");
+        lb->adjustSize();
+        lb->move(QCursor::pos() + QPoint(8, 8));
+        lb->show();
+    });
 }
 
 inline void vuaNoiDung(QTableWidget* t) {
     auto* h = t->horizontalHeader();
-    for (int c = 0; c < t->columnCount(); ++c)
-        if (h->sectionResizeMode(c) != QHeaderView::Stretch)
-            t->resizeColumnToContents(c);
+    QFont f = t->font();
+    f.setPixelSize(15);
+    QFontMetrics fm(f);
+    QFont fb = f; fb.setBold(true); fb.setPixelSize(14);
+    QFontMetrics fmHead(fb);
+
+    const int soDong = qMin(t->rowCount(), 200);
+    for (int c = 0; c < t->columnCount(); ++c) {
+        if (h->sectionResizeMode(c) == QHeaderView::Stretch) continue;
+        auto* hi = t->horizontalHeaderItem(c);
+        int w = (hi ? fmHead.horizontalAdvance(hi->text()) : 0) + 40;
+        for (int r = 0; r < soDong; ++r) {
+            auto* it = t->item(r, c);
+            if (it) w = qMax(w, fm.horizontalAdvance(it->text()) + 40);
+        }
+        t->setColumnWidth(c, w);
+    }
 }
 
 inline QString appStyleSheet() {
@@ -122,6 +157,10 @@ inline QString appStyleSheet() {
         QFrame#successBox { background: #D7EDE8; border: 2px solid #438F78; border-radius: 8px; }
         QFrame#taxiCard { background: white; border: 1px solid #96948C; border-radius: 6px; }
         QFrame#taxiCardSelected { background: #DFEBF7; border: 2px solid #4285C7; border-radius: 6px; }
+        QToolTip {
+            background: #FFFFFF; color: #2C3E50; border: 1px solid #4285C7;
+            padding: 8px 10px; font-size: 15px;
+        }
     )";
 }
 

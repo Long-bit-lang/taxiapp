@@ -35,11 +35,11 @@ public:
         return GIA_MO_CUA + khoangCach * DON_GIA_KM;
     }
 
-    string getMaChuyen() const { return maChuyen; }
+    const string& getMaChuyen() const { return maChuyen; }
     string getTenKhachHang() const { return tenKhachHang; }
     string getSdtKhachHang() const { return sdtKhachHang; }
-    string getBienSoTaxi() const { return bienSoTaxi; }
-    string getThoiDiem() const { return thoiDiem; }
+    const string& getBienSoTaxi() const { return bienSoTaxi; }
+    const string& getThoiDiem() const { return thoiDiem; }
     string getDiemDon() const { return diemDon; }
     string getDiemDen() const { return diemDen; }
     double getKhoangCach() const { return khoangCach; }
@@ -47,7 +47,7 @@ public:
     void setCuocPhi(double c) { cuocPhi = c; }
     TrangThaiChuyen getTrangThai() const { return trangThai; }
     void setTrangThai(TrangThaiChuyen t) { trangThai = t; }
-    string getMaTaiXe() const { return maTaiXe; }
+    const string& getMaTaiXe() const { return maTaiXe; }
     void setMaTaiXe(const string& m) { maTaiXe = m; }
 };
 

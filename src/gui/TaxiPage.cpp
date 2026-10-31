@@ -13,6 +13,7 @@
 #include <QMessageBox>
 #include <QCheckBox>
 #include <algorithm>
+#include <QHash>
 
 TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(ht) {
     auto* root = new QVBoxLayout(this);
@@ -64,6 +65,13 @@ TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
 void TaxiPage::refresh() {
     heThong->taxi().docFile();
     heThong->taiXe().docFile();
+
+    // mã tài xế -> họ tên, dựng 1 lần: O(M)
+    QHash<QString, QString> tenTheoMa;
+    for (const auto& tx : heThong->taiXe().layDanhSach())
+        tenTheoMa.insert(QString::fromStdString(tx.getMaTX()),
+                         QString::fromStdString(tx.getHoTen()));
+
     table->setUpdatesEnabled(false);
     const auto& ds = heThong->taxi().layDanhSach();
     table->setRowCount((int)ds.size());
@@ -73,9 +81,9 @@ void TaxiPage::refresh() {
         table->setItem(i, 1, new QTableWidgetItem(QString::number(t.getSucChua()) + " chỗ"));
 
         QStringList tens;
-        for (auto& maTX : t.getDsMaTaiXe()) {
-            for (auto& tx : heThong->taiXe().layDanhSach())
-                if (tx.getMaTX() == maTX) tens << QString::fromStdString(tx.getHoTen());
+        for (const auto& maTX : t.getDsMaTaiXe()) {
+            auto it = tenTheoMa.constFind(QString::fromStdString(maTX));
+            if (it != tenTheoMa.constEnd()) tens << it.value();
         }
         table->setItem(i, 2, new QTableWidgetItem(tens.join(", ")));
 

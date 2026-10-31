@@ -19,7 +19,7 @@ public:
     Taxi() : sucChua(4), dangSanSang(true) {}
     Taxi(string bs, int sc) : bienSo(bs), sucChua(sc), dangSanSang(true) {}
 
-    string getBienSo() const { return bienSo; }
+    const string& getBienSo() const { return bienSo; }
     int getSucChua() const { return sucChua; }
     const DanhSach<string>& getDsMaTaiXe() const { return dsMaTaiXe; }
     bool kiemTraSanSang() const { return dangSanSang; }

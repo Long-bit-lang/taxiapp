@@ -125,8 +125,12 @@ void BookingPage::hienThiDanhSachTaxi() {
             "Không có taxi nào sẵn sàng và đủ chỗ cho số khách đã nhập.", dsTaxiContainer));
         return;
     }
+
+    const int GIOI_HAN = 20;
     bool firstSet = false;
+    int dem = 0;
     for (auto* t : ds) {
+        if (++dem > GIOI_HAN) break;
         QString bienSo = QString::fromStdString(t->getBienSo());
         auto* card = new QPushButton(dsTaxiContainer);
         card->setCheckable(true);
@@ -144,6 +148,14 @@ void BookingPage::hienThiDanhSachTaxi() {
         dsTaxiLayout->addWidget(card);
 
         if (!firstSet) { chonTaxi(bienSo); firstSet = true; }
+    }
+    if (ds.size() > GIOI_HAN) {
+        auto* lblBot = new QLabel(
+            QString("Đang hiển thị %1 / %2 taxi phù hợp. Nhập đúng số khách để thu hẹp danh sách.")
+                .arg(GIOI_HAN).arg(ds.size()),
+            dsTaxiContainer);
+        lblBot->setStyleSheet("color:#96948C; padding:8px;");
+        dsTaxiLayout->addWidget(lblBot);
     }
 }
 

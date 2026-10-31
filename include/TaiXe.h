@@ -26,15 +26,15 @@ public:
         : maTX(ma), ten(t), hoDem(hd), ngaySinh(ns), diaChi(dc),
           soDienThoai(sdt), bangLai(bl), soGPLX(gplx), trangThai(tt) {}
 
-    string getMaTX() const { return maTX; }
+    const string& getMaTX() const { return maTX; }
     string getTen() const { return ten; }
     string getHoDem() const { return hoDem; }
     string getHoTen() const { return hoDem + " " + ten; }
     Date getNgaySinh() const { return ngaySinh; }
     string getDiaChi() const { return diaChi; }
-    string getSoDienThoai() const { return soDienThoai; }
-    string getBangLai() const { return bangLai; }
-    string getSoGPLX() const { return soGPLX; }
+    const string& getSoDienThoai() const { return soDienThoai; }
+    const string& getBangLai() const { return bangLai; }
+    const string& getSoGPLX() const { return soGPLX; }
     TrangThai getTrangThai() const { return trangThai; }
 
     void setTen(string t) { ten = t; }
