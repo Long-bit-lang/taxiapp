@@ -1,3 +1,4 @@
+#include "Style.h"
 #include "DriverPage.h"
 #include "DriverDialog.h"
 #include <QVBoxLayout>
@@ -17,7 +18,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     root->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("QUẢN LÝ TÀI XẾ", this);
-    lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
+    lblTitle->setObjectName("pageTitle");
     root->addWidget(lblTitle);
     root->addSpacing(8);
 
@@ -38,7 +39,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
 
     txtSearch = new QLineEdit(this);
     txtSearch->setPlaceholderText("Tìm kiếm: tên / bằng lái / GPLX");
-    txtSearch->setFixedWidth(280);
+    txtSearch->setFixedWidth(360);
     connect(txtSearch, &QLineEdit::textChanged, this, &DriverPage::onTimKiem);
     toolbar->addWidget(txtSearch);
     root->addLayout(toolbar);
@@ -47,6 +48,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
     table = new QTableWidget(this);
     table->setColumnCount(6);
     table->setHorizontalHeaderLabels({"Mã TX", "Họ và tên", "SĐT", "Bằng lái", "Số GPLX", "Trạng thái"});
+    caiDatBang(table, 1);
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -57,6 +59,7 @@ DriverPage::DriverPage(HeThongTaxi* ht, QWidget* parent)
 }
 
 void DriverPage::fillTable(const DanhSach<TaiXe>& ds) {
+    table->setUpdatesEnabled(false);
     table->setRowCount((int)ds.size());
     for (int i = 0; i < (int)ds.size(); ++i) {
         const auto& t = ds[i];
@@ -69,6 +72,8 @@ void DriverPage::fillTable(const DanhSach<TaiXe>& ds) {
         if (t.getTrangThai() == DANG_HOAT_DONG) itTrangThai->setForeground(QColor("#438F78"));
         table->setItem(i, 5, itTrangThai);
     }
+    table->setUpdatesEnabled(true);
+    vuaNoiDung(table);
 }
 
 void DriverPage::refresh() {

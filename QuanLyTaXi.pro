@@ -4,6 +4,7 @@ TARGET    = TaxiTienSa
 TEMPLATE  = app
 
 SOURCES += \
+    src/gui/TripPage.cpp \
     src/main.cpp \
     src/gui/MainWindow.cpp \
     src/gui/LoginWidget.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     src/gui/TaxiPage.h \
     src/gui/BookingPage.h \
     src/gui/StatsPage.h \
+    src/gui/TripPage.h \
     src/gui/Style.h \
     include/HeThongTaxi.h \
     include/QuanLyTaiXe.h \

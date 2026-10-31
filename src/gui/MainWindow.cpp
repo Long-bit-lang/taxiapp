@@ -3,6 +3,7 @@
 #include "TaxiPage.h"
 #include "BookingPage.h"
 #include "StatsPage.h"
+#include "TripPage.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -21,7 +22,7 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
     // title bar
     auto* titleBar = new QFrame(this);
     titleBar->setObjectName("titleBar");
-    titleBar->setFixedHeight(46);
+    titleBar->setFixedHeight(56);
     auto* titleLay = new QHBoxLayout(titleBar);
     titleLay->setContentsMargins(0, 0, 0, 0);
     QString hello = QString("HỆ THỐNG QUẢN LÝ TAXI TIÊN SA — Xin chào, %1 (%2)")
@@ -39,7 +40,7 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
     // sidebar
     auto* sidebar = new QFrame(this);
     sidebar->setObjectName("sidebar");
-    sidebar->setFixedWidth(220);
+    sidebar->setFixedWidth(260);
     auto* sideLay = new QVBoxLayout(sidebar);
     sideLay->setContentsMargins(0, 14, 0, 14);
     sideLay->setSpacing(4);
@@ -53,7 +54,7 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
         auto* btn = new QPushButton(text, sidebar);
         btn->setObjectName("menuBtn");
         btn->setCheckable(true);
-        btn->setMinimumHeight(38);
+        btn->setMinimumHeight(46);
         connect(btn, &QPushButton::clicked, this, [this, stackIndex, btn]() { chuyenTrang(stackIndex, btn); });
         sideLay->addWidget(btn);
         menuButtons.push_back(btn);
@@ -81,6 +82,11 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
             page = bookingPage;
             nhan = "Đặt chuyến xe";
             break;
+        case CN_CHUYEN_HOM_NAY:
+            tripPage = new TripPage(heThong, this);
+            page = tripPage;
+            nhan = "Chuyến hôm nay";
+            break;
         case CN_THONG_KE:
             statsPage = new StatsPage(heThong, this);
             page = statsPage;
@@ -94,7 +100,7 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
     sideLay->addStretch();
     auto* btnLogout = new QPushButton("Đăng xuất", sidebar);
     btnLogout->setObjectName("menuBtn");
-    btnLogout->setMinimumHeight(38);
+    btnLogout->setMinimumHeight(46);
     connect(btnLogout, &QPushButton::clicked, this, [this]() { emit dangXuat(); });
     sideLay->addWidget(btnLogout);
 
@@ -113,6 +119,7 @@ void MainWindow::chuyenTrang(int index, QPushButton* btnActive) {
     if (taxiPage && stack->widget(index) == taxiPage) taxiPage->refresh();
     if (bookingPage && stack->widget(index) == bookingPage) bookingPage->refresh();
     if (statsPage && stack->widget(index) == statsPage) statsPage->refresh();
+    if (tripPage && stack->widget(index) == tripPage) tripPage->refresh();
 }
 
 QWidget* MainWindow::buildOverviewPage() {
@@ -121,6 +128,7 @@ QWidget* MainWindow::buildOverviewPage() {
     lay->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("Tổng quan hệ thống", page);
+    lblTitle->setObjectName("pageTitle");
     lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
     lay->addWidget(lblTitle);
     lay->addSpacing(12);
@@ -129,14 +137,14 @@ QWidget* MainWindow::buildOverviewPage() {
     auto themThe = [&](QLabel*& outValueLabel, const QString& nhan) {
         auto* card = new QFrame(page);
         card->setObjectName("statCard");
-        card->setFixedSize(150, 90);
+        card->setMinimumSize(210, 120);
         auto* cardLay = new QVBoxLayout(card);
         outValueLabel = new QLabel("0", card);
         outValueLabel->setAlignment(Qt::AlignCenter);
-        outValueLabel->setStyleSheet("font-size:20px; font-weight:bold; color:#4285C7;");
+        outValueLabel->setStyleSheet("font-size:30px; font-weight:bold; color:#4285C7;");
         auto* lblNhan = new QLabel(nhan, card);
         lblNhan->setAlignment(Qt::AlignCenter);
-        lblNhan->setStyleSheet("font-size:11px; color:#5a5a56;");
+        lblNhan->setStyleSheet("font-size:13px; color:#5a5a56;");
         cardLay->addWidget(outValueLabel);
         cardLay->addWidget(lblNhan);
         grid->addWidget(card);

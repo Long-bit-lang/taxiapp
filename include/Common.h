@@ -19,7 +19,7 @@ struct Date {
 };
 
 enum TrangThai { DANG_HOAT_DONG = 0, NGHI = 1, NGUNG_HOAT_DONG = 2 };
-enum ChucNang { CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_THONG_KE };
+enum ChucNang { CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_CHUYEN_HOM_NAY, CN_THONG_KE };
 
 inline int tinhTuoi(const Date& ngaySinh) {
     time_t t = time(nullptr);

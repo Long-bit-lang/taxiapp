@@ -16,7 +16,7 @@ LoginWidget::LoginWidget(HeThongTaxi* ht, QWidget* parent)
     // title bar
     auto* titleBar = new QFrame(this);
     titleBar->setObjectName("titleBar");
-    titleBar->setFixedHeight(46);
+    titleBar->setFixedHeight(56);
     auto* titleLay = new QHBoxLayout(titleBar);
     titleLay->setContentsMargins(0, 0, 0, 0);
     auto* titleLbl = new QLabel("HỆ THỐNG QUẢN LÝ TAXI TIÊN SA — ĐĂNG NHẬP", titleBar);
@@ -31,13 +31,13 @@ LoginWidget::LoginWidget(HeThongTaxi* ht, QWidget* parent)
 
     auto* card = new QFrame(centerWrap);
     card->setObjectName("card");
-    card->setFixedWidth(360);
+    card->setFixedWidth(440);
     auto* cardLay = new QVBoxLayout(card);
     cardLay->setContentsMargins(30, 26, 30, 26);
     cardLay->setSpacing(10);
 
     auto* lblTitle = new QLabel("ĐĂNG NHẬP HỆ THỐNG", card);
-    lblTitle->setStyleSheet("font-size:16px; font-weight:bold;");
+    lblTitle->setStyleSheet("font-size:20px; font-weight:bold;");
     lblTitle->setAlignment(Qt::AlignCenter);
     cardLay->addWidget(lblTitle);
     cardLay->addSpacing(14);
@@ -62,7 +62,7 @@ LoginWidget::LoginWidget(HeThongTaxi* ht, QWidget* parent)
     cardLay->addSpacing(8);
     auto* btnLogin = new QPushButton("ĐĂNG NHẬP", card);
     btnLogin->setObjectName("btnPrimary");
-    btnLogin->setMinimumHeight(38);
+    btnLogin->setMinimumHeight(46);
     connect(btnLogin, &QPushButton::clicked, this, &LoginWidget::onDangNhap);
     connect(txtMatKhau, &QLineEdit::returnPressed, this, &LoginWidget::onDangNhap);
     cardLay->addWidget(btnLogin);

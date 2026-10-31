@@ -1,3 +1,4 @@
+#include "Style.h"
 #include "StatsPage.h"
 #include <QSpinBox>
 #include "../../include/TinhLuong.h"
@@ -16,7 +17,7 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     root->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("THỐNG KÊ / BÁO CÁO — Bảng lương tài xế", this);
-    lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
+    lblTitle->setObjectName("pageTitle");
     root->addWidget(lblTitle);
     root->addSpacing(8);
 
@@ -45,6 +46,7 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     table->setColumnCount(9);
     table->setHorizontalHeaderLabels({"Mã TX", "Họ và tên", "Số chuyến", "Tổng km",
                                       "Doanh thu", "Chiết khấu", "Phí nền tảng", "Thưởng", "Thực nhận"});
+    caiDatBang(table, 1);
     table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
@@ -56,7 +58,7 @@ StatsPage::StatsPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThon
     totalLay->addWidget(new QLabel("<b>TỔNG CỘNG</b>", totalCard));
     totalLay->addStretch();
     lblTong = new QLabel("0 đ", totalCard);
-    lblTong->setStyleSheet("font-size:15px; font-weight:bold; color:#4285C7;");
+    lblTong->setStyleSheet("font-size:20px; font-weight:bold; color:#4285C7;");
     totalLay->addWidget(lblTong);
     root->addWidget(totalCard);
 
@@ -96,6 +98,7 @@ void StatsPage::onLoc() {
     auto ds = tinhBangLuong(heThong->chuyenXe(), heThong->taxi(),
                             cbThang->currentData().toInt(), spinNam->value());
     table->setRowCount((int)ds.size());
+    table->setUpdatesEnabled(false);
     double tongThucNhan = 0;
     for (int i = 0; i < (int)ds.size(); ++i) {
         const auto& l = ds[i];
@@ -118,4 +121,6 @@ void StatsPage::onLoc() {
         tongThucNhan += l.thucNhan;
     }
     lblTong->setText(QString::number(tongThucNhan, 'f', 0) + " đ");
+    table->setUpdatesEnabled(true);
+    vuaNoiDung(table);
 }

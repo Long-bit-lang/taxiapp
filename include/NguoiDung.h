@@ -36,7 +36,7 @@ class QuanLy : public NguoiDung {
 public:
     QuanLy(string tk) : NguoiDung(tk, QUAN_LY) {}
     DanhSach<ChucNang> danhSachChucNang() const override {
-        return {CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_THONG_KE};
+        return {CN_QUAN_LY_TAI_XE, CN_QUAN_LY_TAXI, CN_DAT_CHUYEN_XE, CN_CHUYEN_HOM_NAY, CN_THONG_KE};
     }
     string tenVaiTro() const override { return "Quản lý"; }
 };
@@ -45,7 +45,7 @@ class DieuHanh : public NguoiDung {
 public:
     DieuHanh(string tk) : NguoiDung(tk, DIEU_HANH) {}
     DanhSach<ChucNang> danhSachChucNang() const override {
-        return {CN_DAT_CHUYEN_XE};
+        return {CN_DAT_CHUYEN_XE, CN_CHUYEN_HOM_NAY};
     }
     string tenVaiTro() const override { return "Điều hành"; }
 };

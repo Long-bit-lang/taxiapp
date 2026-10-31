@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../src/main.cpp \
+SOURCES       = ../../src/gui/TripPage.cpp \
+		../../src/main.cpp \
 		../../src/gui/MainWindow.cpp \
 		../../src/gui/LoginWidget.cpp \
 		../../src/gui/DriverPage.cpp \
@@ -66,8 +67,10 @@ SOURCES       = ../../src/main.cpp \
 		moc_DriverDialog.cpp \
 		moc_TaxiPage.cpp \
 		moc_BookingPage.cpp \
-		moc_StatsPage.cpp
-OBJECTS       = main.o \
+		moc_StatsPage.cpp \
+		moc_TripPage.cpp
+OBJECTS       = TripPage.o \
+		main.o \
 		MainWindow.o \
 		LoginWidget.o \
 		DriverPage.o \
@@ -82,7 +85,8 @@ OBJECTS       = main.o \
 		moc_DriverDialog.o \
 		moc_TaxiPage.o \
 		moc_BookingPage.o \
-		moc_StatsPage.o
+		moc_StatsPage.o \
+		moc_TripPage.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf \
@@ -167,6 +171,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		../../src/gui/TaxiPage.h \
 		../../src/gui/BookingPage.h \
 		../../src/gui/StatsPage.h \
+		../../src/gui/TripPage.h \
 		../../src/gui/Style.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
@@ -179,7 +184,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		../../include/NguoiDung.h \
 		../../include/Common.h \
 		../../include/TinhLuong.h \
-		../../include/CauTruc.h ../../src/main.cpp \
+		../../include/CauTruc.h ../../src/gui/TripPage.cpp \
+		../../src/main.cpp \
 		../../src/gui/MainWindow.cpp \
 		../../src/gui/LoginWidget.cpp \
 		../../src/gui/DriverPage.cpp \
@@ -379,8 +385,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../src/gui/MainWindow.h ../../src/gui/LoginWidget.h ../../src/gui/DriverPage.h ../../src/gui/DriverDialog.h ../../src/gui/TaxiPage.h ../../src/gui/BookingPage.h ../../src/gui/StatsPage.h ../../src/gui/Style.h ../../include/HeThongTaxi.h ../../include/QuanLyTaiXe.h ../../include/QuanLyTaxi.h ../../include/QuanLyChuyenXe.h ../../include/QuanLyTaiKhoan.h ../../include/TaiXe.h ../../include/Taxi.h ../../include/ChuyenXe.h ../../include/NguoiDung.h ../../include/Common.h ../../include/TinhLuong.h ../../include/CauTruc.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../src/main.cpp ../../src/gui/MainWindow.cpp ../../src/gui/LoginWidget.cpp ../../src/gui/DriverPage.cpp ../../src/gui/DriverDialog.cpp ../../src/gui/TaxiPage.cpp ../../src/gui/BookingPage.cpp ../../src/gui/StatsPage.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../src/gui/MainWindow.h ../../src/gui/LoginWidget.h ../../src/gui/DriverPage.h ../../src/gui/DriverDialog.h ../../src/gui/TaxiPage.h ../../src/gui/BookingPage.h ../../src/gui/StatsPage.h ../../src/gui/TripPage.h ../../src/gui/Style.h ../../include/HeThongTaxi.h ../../include/QuanLyTaiXe.h ../../include/QuanLyTaxi.h ../../include/QuanLyChuyenXe.h ../../include/QuanLyTaiKhoan.h ../../include/TaiXe.h ../../include/Taxi.h ../../include/ChuyenXe.h ../../include/NguoiDung.h ../../include/Common.h ../../include/TinhLuong.h ../../include/CauTruc.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../src/gui/TripPage.cpp ../../src/main.cpp ../../src/gui/MainWindow.cpp ../../src/gui/LoginWidget.cpp ../../src/gui/DriverPage.cpp ../../src/gui/DriverDialog.cpp ../../src/gui/TaxiPage.cpp ../../src/gui/BookingPage.cpp ../../src/gui/StatsPage.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -419,9 +425,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_MainWindow.cpp moc_LoginWidget.cpp moc_DriverPage.cpp moc_DriverDialog.cpp moc_TaxiPage.cpp moc_BookingPage.cpp moc_StatsPage.cpp
+compiler_moc_header_make_all: moc_MainWindow.cpp moc_LoginWidget.cpp moc_DriverPage.cpp moc_DriverDialog.cpp moc_TaxiPage.cpp moc_BookingPage.cpp moc_StatsPage.cpp moc_TripPage.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_MainWindow.cpp moc_LoginWidget.cpp moc_DriverPage.cpp moc_DriverDialog.cpp moc_TaxiPage.cpp moc_BookingPage.cpp moc_StatsPage.cpp
+	-$(DEL_FILE) moc_MainWindow.cpp moc_LoginWidget.cpp moc_DriverPage.cpp moc_DriverDialog.cpp moc_TaxiPage.cpp moc_BookingPage.cpp moc_StatsPage.cpp moc_TripPage.cpp
 moc_MainWindow.cpp: ../../src/gui/MainWindow.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
@@ -526,6 +532,22 @@ moc_StatsPage.cpp: ../../src/gui/StatsPage.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/nhlong/Documents/quanlytaxi/build/Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/nhlong/Documents/quanlytaxi -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/gui/StatsPage.h -o moc_StatsPage.cpp
 
+moc_TripPage.cpp: ../../src/gui/TripPage.h \
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+		../../include/CauTruc.h \
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h \
+		moc_predefs.h \
+		/usr/lib/qt6/libexec/moc
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include /home/nhlong/Documents/quanlytaxi/build/Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/home/nhlong/Documents/quanlytaxi -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../src/gui/TripPage.h -o moc_TripPage.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
@@ -541,6 +563,20 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
+
+TripPage.o: ../../src/gui/TripPage.cpp ../../src/gui/TripPage.h \
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+		../../include/CauTruc.h \
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TripPage.o ../../src/gui/TripPage.cpp
 
 main.o: ../../src/main.cpp ../../src/gui/Style.h \
 		../../src/gui/LoginWidget.h \
@@ -573,7 +609,8 @@ MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		../../src/gui/DriverPage.h \
 		../../src/gui/TaxiPage.h \
 		../../src/gui/BookingPage.h \
-		../../src/gui/StatsPage.h
+		../../src/gui/StatsPage.h \
+		../../src/gui/TripPage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o ../../src/gui/MainWindow.cpp
 
 LoginWidget.o: ../../src/gui/LoginWidget.cpp ../../src/gui/LoginWidget.h \
@@ -677,6 +714,9 @@ moc_BookingPage.o: moc_BookingPage.cpp
 
 moc_StatsPage.o: moc_StatsPage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_StatsPage.o moc_StatsPage.cpp
+
+moc_TripPage.o: moc_TripPage.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_TripPage.o moc_TripPage.cpp
 
 ####### Install
 

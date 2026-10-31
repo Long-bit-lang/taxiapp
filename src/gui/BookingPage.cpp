@@ -22,7 +22,7 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
     root->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("ĐẶT CHUYẾN XE", this);
-    lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
+    lblTitle->setObjectName("pageTitle");
     root->addWidget(lblTitle);
     root->addSpacing(10);
 
@@ -60,7 +60,7 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
 
     auto* btnTim = new QPushButton("TÌM TAXI PHÙ HỢP", leftCard);
     btnTim->setObjectName("btnPrimary");
-    btnTim->setMinimumHeight(38);
+    btnTim->setMinimumHeight(46);
     connect(btnTim, &QPushButton::clicked, this, &BookingPage::onTimTaxi);
     leftLay->addSpacing(6);
     leftLay->addWidget(btnTim);
@@ -91,7 +91,7 @@ BookingPage::BookingPage(HeThongTaxi* ht, QWidget* parent)
 
     btnXacNhan = new QPushButton("XÁC NHẬN ĐẶT XE", rightCard);
     btnXacNhan->setObjectName("btnSuccess");
-    btnXacNhan->setMinimumHeight(38);
+    btnXacNhan->setMinimumHeight(46);
     btnXacNhan->setEnabled(false);
     connect(btnXacNhan, &QPushButton::clicked, this, &BookingPage::onXacNhan);
     rightLay->addWidget(btnXacNhan);
@@ -131,13 +131,13 @@ void BookingPage::hienThiDanhSachTaxi() {
         auto* card = new QPushButton(dsTaxiContainer);
         card->setCheckable(true);
         card->setCursor(Qt::PointingHandCursor);
-        card->setMinimumHeight(56);
+        card->setMinimumHeight(64);
         card->setProperty("bienSo", bienSo);
         card->setText(QString("Biển số: %1   |   %2 chỗ")
                       .arg(bienSo).arg(t->getSucChua()));
         card->setStyleSheet(
-            "QPushButton { text-align: left; padding: 10px 14px; border: 1px solid #96948C;"
-            " border-radius: 6px; background: white; }"
+            "QPushButton { text-align: left; padding: 12px 16px; border: 1px solid #96948C;"
+            " border-radius: 6px; background: white; font-size: 15px; }"
             "QPushButton:checked { border: 2px solid #4285C7; background: #DFEBF7; font-weight: bold; }"
         );
         connect(card, &QPushButton::clicked, this, [this, bienSo]() { chonTaxi(bienSo); });

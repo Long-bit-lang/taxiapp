@@ -1,3 +1,4 @@
+#include "Style.h"
 #include "TaxiPage.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -18,7 +19,7 @@ TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
     root->setContentsMargins(20, 16, 20, 16);
 
     auto* lblTitle = new QLabel("QUẢN LÝ TAXI", this);
-    lblTitle->setStyleSheet("font-size:17px; font-weight:bold; color:#2C3E50;");
+    lblTitle->setObjectName("pageTitle");
     root->addWidget(lblTitle);
     root->addSpacing(8);
 
@@ -50,6 +51,7 @@ TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
     table = new QTableWidget(this);
     table->setColumnCount(4);
     table->setHorizontalHeaderLabels({"Biển số", "Sức chứa", "Tài xế phân công", "Trạng thái"});
+    caiDatBang(table, 2);
     table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -62,6 +64,7 @@ TaxiPage::TaxiPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
 void TaxiPage::refresh() {
     heThong->taxi().docFile();
     heThong->taiXe().docFile();
+    table->setUpdatesEnabled(false);
     const auto& ds = heThong->taxi().layDanhSach();
     table->setRowCount((int)ds.size());
     for (int i = 0; i < (int)ds.size(); ++i) {
@@ -80,6 +83,8 @@ void TaxiPage::refresh() {
         if (t.kiemTraSanSang()) itTrangThai->setForeground(QColor("#438F78"));
         table->setItem(i, 3, itTrangThai);
     }
+    table->setUpdatesEnabled(true);
+    vuaNoiDung(table);
 }
 
 void TaxiPage::onThem() {

@@ -1,9 +1,7 @@
 #ifndef CAUTRUC_H
 #define CAUTRUC_H
 
-#include <cstddef>
 #include <utility>   // chỉ dùng std::move
-#include <stdexcept>
 #include <initializer_list>
 
 // ========== DanhSach<T>: mảng động (thay vector) ==========

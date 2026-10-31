@@ -13,6 +13,7 @@ class DriverPage;
 class TaxiPage;
 class BookingPage;
 class StatsPage;
+class TripPage;
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -31,6 +32,7 @@ private:
     TaxiPage* taxiPage = nullptr;
     BookingPage* bookingPage = nullptr;
     StatsPage* statsPage = nullptr;
+    TripPage* tripPage = nullptr;
     DanhSach<QPushButton*> menuButtons;
 
     QLabel* lblSoTaiXe = nullptr;
