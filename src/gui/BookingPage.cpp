@@ -1,3 +1,4 @@
+#include "Style.h"
 #include "BookingPage.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -263,9 +264,9 @@ void BookingPage::onXacNhan() {
     QMessageBox box(this);
     box.setWindowTitle("Thành công");
     box.setIcon(QMessageBox::Information);
-    box.setText(QString("ĐẶT CHUYẾN XE THÀNH CÔNG\n\nMã chuyến xe: %1\nTaxi: %2\nCước phí dự kiến: %3 d")
-                .arg(QString::fromStdString(maChuyen), bienSoDangChon)
-                .arg(QString::number(cx.getCuocPhi(), 'f', 0)));
+    box.setText(QString("ĐẶT CHUYẾN XE THÀNH CÔNG\n\nMã chuyến xe: %1\nTaxi: %2\nCước phí dự kiến: %3")
+                    .arg(QString::fromStdString(maChuyen), bienSoDangChon)
+                    .arg(dinhDangTien(cx.getCuocPhi())));
     box.exec();
 
     hienThiDanhSachTaxi();

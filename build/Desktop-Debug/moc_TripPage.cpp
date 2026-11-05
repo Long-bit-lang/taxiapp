@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../src/gui/TripPage.h"
+#include "../../../quanlytaxi_backup/src/gui/TripPage.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

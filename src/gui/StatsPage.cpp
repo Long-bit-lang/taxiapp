@@ -106,7 +106,7 @@ void StatsPage::onLoc() {
         for (auto& tx : heThong->taiXe().layDanhSach())
             if (tx.getMaTX() == l.maTX) { hoTen = QString::fromStdString(tx.getHoTen()); break; }
 
-        auto tien = [](double v) { return new QTableWidgetItem(QString::number(v, 'f', 0) + " đ"); };
+        auto tien = [](double v) { return new QTableWidgetItem(dinhDangTien(v)); };
         table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(l.maTX)));
         table->setItem(i, 1, new QTableWidgetItem(hoTen));
         table->setItem(i, 2, new QTableWidgetItem(QString::number(l.soChuyen)));
@@ -120,7 +120,7 @@ void StatsPage::onLoc() {
         table->setItem(i, 8, it);
         tongThucNhan += l.thucNhan;
     }
-    lblTong->setText(QString::number(tongThucNhan, 'f', 0) + " đ");
+    lblTong->setText(dinhDangTien(tongThucNhan));
     table->setUpdatesEnabled(true);
     vuaNoiDung(table);
 }

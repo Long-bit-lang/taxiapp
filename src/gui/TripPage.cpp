@@ -160,7 +160,7 @@ void TripPage::refresh() {
         table->setItem(r, 5, new QTableWidgetItem(
                                  QString::fromStdString(c.getTenKhachHang() + " - " + c.getSdtKhachHang())));
         table->setItem(r, 6, new QTableWidgetItem(lotrinh));
-        table->setItem(r, 7, new QTableWidgetItem(QString::number(c.getCuocPhi(), 'f', 0) + " đ"));
+        table->setItem(r, 7, new QTableWidgetItem(dinhDangTien(c.getCuocPhi())));
 
         auto* itTT = new QTableWidgetItem(QString::fromStdString(trangThaiChuyenToStr(c.getTrangThai())));
         switch (c.getTrangThai()) {

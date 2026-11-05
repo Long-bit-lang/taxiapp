@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../src/gui/DriverPage.h"
+#include "../../../quanlytaxi_backup/src/gui/DriverPage.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

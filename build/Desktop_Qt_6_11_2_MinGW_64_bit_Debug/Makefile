@@ -282,7 +282,10 @@ Makefile: ../../QuanLyTaXi.pro C:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++/qmake.c
 		C:/a/qt/6.11.2/mingw_64/mkspecs/features/qt_config.prf \
 		C:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++/qmake.conf \
 		C:/a/qt/6.11.2/mingw_64/mkspecs/features/spec_post.prf \
+<<<<<<< HEAD
 		../../.qmake.stash \
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/mkspecs/features/exclusive_builds.prf \
 		C:/a/qt/6.11.2/mingw_64/mkspecs/features/toolchain.prf \
 		C:/a/qt/6.11.2/mingw_64/mkspecs/features/default_pre.prf \
@@ -312,7 +315,13 @@ Makefile: ../../QuanLyTaXi.pro C:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++/qmake.c
 		C:/a/qt/6.11.2/mingw_64/lib/Qt6Gui.prl \
 		C:/a/qt/6.11.2/mingw_64/lib/Qt6Core.prl \
 		C:/a/qt/6.11.2/mingw_64/lib/Qt6EntryPoint.prl \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/mkspecs/features/build_pass.prf
+=======
+		.qmake.stash \
+		C:/a/qt/6.11.2/mingw_64/mkspecs/features/build_pass.prf \
+		../../resources.qrc
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 	$(QMAKE) -o Makefile ..\..\QuanLyTaXi.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/spec_pre.prf:
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/device_config.prf:
@@ -526,7 +535,10 @@ C:/a/qt/6.11.2/mingw_64/mkspecs/features/qt_functions.prf:
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/qt_config.prf:
 C:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++/qmake.conf:
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/spec_post.prf:
+<<<<<<< HEAD
 ../../.qmake.stash:
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/exclusive_builds.prf:
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/toolchain.prf:
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/default_pre.prf:
@@ -556,7 +568,13 @@ C:/a/qt/6.11.2/mingw_64/lib/Qt6Widgets.prl:
 C:/a/qt/6.11.2/mingw_64/lib/Qt6Gui.prl:
 C:/a/qt/6.11.2/mingw_64/lib/Qt6Core.prl:
 C:/a/qt/6.11.2/mingw_64/lib/Qt6EntryPoint.prl:
+<<<<<<< HEAD
 C:/a/qt/6.11.2/mingw_64/mkspecs/features/build_pass.prf:
+=======
+.qmake.stash:
+C:/a/qt/6.11.2/mingw_64/mkspecs/features/build_pass.prf:
+../../resources.qrc:
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\QuanLyTaXi.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 
@@ -567,6 +585,10 @@ all: debug-all release-all  FORCE
 clean: debug-clean release-clean  FORCE
 distclean: debug-distclean release-distclean  FORCE
 	-$(DEL_FILE) Makefile
+<<<<<<< HEAD
+=======
+	-$(DEL_FILE) .qmake.stash
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug-mocclean:
 	$(MAKE) -f $(MAKEFILE).Debug mocclean

@@ -564,7 +564,8 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-TripPage.o: ../../src/gui/TripPage.cpp ../../src/gui/TripPage.h \
+TripPage.o: ../../src/gui/TripPage.cpp ../../src/gui/Style.h \
+		../../src/gui/TripPage.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -594,7 +595,8 @@ main.o: ../../src/main.cpp ../../src/gui/Style.h \
 		../../src/gui/MainWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../src/main.cpp
 
-MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
+MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/Style.h \
+		../../src/gui/MainWindow.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -627,7 +629,8 @@ LoginWidget.o: ../../src/gui/LoginWidget.cpp ../../src/gui/LoginWidget.h \
 		../../include/NguoiDung.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LoginWidget.o ../../src/gui/LoginWidget.cpp
 
-DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
+DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/Style.h \
+		../../src/gui/DriverPage.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -648,7 +651,8 @@ DriverDialog.o: ../../src/gui/DriverDialog.cpp ../../src/gui/DriverDialog.h \
 		../../include/CauTruc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DriverDialog.o ../../src/gui/DriverDialog.cpp
 
-TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
+TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/Style.h \
+		../../src/gui/TaxiPage.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -662,7 +666,8 @@ TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		../../include/NguoiDung.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TaxiPage.o ../../src/gui/TaxiPage.cpp
 
-BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
+BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/Style.h \
+		../../src/gui/BookingPage.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -676,7 +681,8 @@ BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		../../include/NguoiDung.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BookingPage.o ../../src/gui/BookingPage.cpp
 
-StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
+StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/Style.h \
+		../../src/gui/StatsPage.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \

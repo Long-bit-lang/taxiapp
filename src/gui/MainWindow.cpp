@@ -1,3 +1,4 @@
+#include "Style.h"
 #include "MainWindow.h"
 #include "DriverPage.h"
 #include "TaxiPage.h"
@@ -173,5 +174,5 @@ void MainWindow::refreshOverview() {
     lblSoTaiXe->setText(QString::number(soTaiXe));
     lblSoTaxi->setText(QString::number(soTaxi));
     lblSoChuyen->setText(QString::number(soChuyen));
-    lblDoanhThu->setText(QString::number(doanhThu / 1e6, 'f', 1) + "tr");
+    lblDoanhThu->setText(dinhDangTien(doanhThu));
 }

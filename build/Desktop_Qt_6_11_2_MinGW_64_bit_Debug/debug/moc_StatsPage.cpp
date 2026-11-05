@@ -39,6 +39,7 @@ template <> constexpr inline auto StatsPage::qt_create_metaobjectdata<qt_meta_ta
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "StatsPage",
+<<<<<<< HEAD
         "onChonTaxi",
         "",
         "index"
@@ -49,6 +50,15 @@ template <> constexpr inline auto StatsPage::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SlotData<void(int)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 3 },
         }}),
+=======
+        "onLoc",
+        ""
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'onLoc'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -72,10 +82,18 @@ void StatsPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     auto *_t = static_cast<StatsPage *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
+<<<<<<< HEAD
         case 0: _t->onChonTaxi((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
+=======
+        case 0: _t->onLoc(); break;
+        default: ;
+        }
+    }
+    (void)_a;
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 }
 
 const QMetaObject *StatsPage::metaObject() const

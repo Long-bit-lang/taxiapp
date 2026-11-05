@@ -16,7 +16,11 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
+<<<<<<< HEAD
 INCPATH       = -I../../../taxiapp-hlong -I. -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -Idebug -I/include -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ 
+=======
+INCPATH       = -I../../../taxiapp-main -I. -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -Idebug -I/include -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ 
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
 LIBS        =        C:\a\qt\6.11.2\mingw_64\lib\libQt6Widgets.a C:\a\qt\6.11.2\mingw_64\lib\libQt6Gui.a C:\a\qt\6.11.2\mingw_64\lib\libQt6Core.a -lmingw32 C:\a\qt\6.11.2\mingw_64\lib\libQt6EntryPoint.a -lshell32  
@@ -50,21 +54,38 @@ OBJECTS_DIR   = debug
 
 ####### Files
 
+<<<<<<< HEAD
 SOURCES       = ..\..\src\main.cpp \
+=======
+SOURCES       = ..\..\src\gui\TripPage.cpp \
+		..\..\src\main.cpp \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		..\..\src\gui\MainWindow.cpp \
 		..\..\src\gui\LoginWidget.cpp \
 		..\..\src\gui\DriverPage.cpp \
 		..\..\src\gui\DriverDialog.cpp \
 		..\..\src\gui\TaxiPage.cpp \
 		..\..\src\gui\BookingPage.cpp \
+<<<<<<< HEAD
 		..\..\src\gui\StatsPage.cpp debug\moc_MainWindow.cpp \
+=======
+		..\..\src\gui\StatsPage.cpp debug\qrc_resources.cpp \
+		debug\moc_MainWindow.cpp \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		debug\moc_LoginWidget.cpp \
 		debug\moc_DriverPage.cpp \
 		debug\moc_DriverDialog.cpp \
 		debug\moc_TaxiPage.cpp \
 		debug\moc_BookingPage.cpp \
+<<<<<<< HEAD
 		debug\moc_StatsPage.cpp
 OBJECTS       = debug/main.o \
+=======
+		debug\moc_StatsPage.cpp \
+		debug\moc_TripPage.cpp
+OBJECTS       = debug/TripPage.o \
+		debug/main.o \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		debug/MainWindow.o \
 		debug/LoginWidget.o \
 		debug/DriverPage.o \
@@ -72,13 +93,22 @@ OBJECTS       = debug/main.o \
 		debug/TaxiPage.o \
 		debug/BookingPage.o \
 		debug/StatsPage.o \
+<<<<<<< HEAD
+=======
+		debug/qrc_resources.o \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		debug/moc_MainWindow.o \
 		debug/moc_LoginWidget.o \
 		debug/moc_DriverPage.o \
 		debug/moc_DriverDialog.o \
 		debug/moc_TaxiPage.o \
 		debug/moc_BookingPage.o \
+<<<<<<< HEAD
 		debug/moc_StatsPage.o
+=======
+		debug/moc_StatsPage.o \
+		debug/moc_TripPage.o
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 DIST          =  ..\..\src\gui\MainWindow.h \
 		..\..\src\gui\LoginWidget.h \
@@ -87,6 +117,10 @@ DIST          =  ..\..\src\gui\MainWindow.h \
 		..\..\src\gui\TaxiPage.h \
 		..\..\src\gui\BookingPage.h \
 		..\..\src\gui\StatsPage.h \
+<<<<<<< HEAD
+=======
+		..\..\src\gui\TripPage.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		..\..\src\gui\Style.h \
 		..\..\include\HeThongTaxi.h \
 		..\..\include\QuanLyTaiXe.h \
@@ -97,7 +131,14 @@ DIST          =  ..\..\src\gui\MainWindow.h \
 		..\..\include\Taxi.h \
 		..\..\include\ChuyenXe.h \
 		..\..\include\NguoiDung.h \
+<<<<<<< HEAD
 		..\..\include\Common.h ..\..\src\main.cpp \
+=======
+		..\..\include\Common.h \
+		..\..\include\TinhLuong.h \
+		..\..\include\CauTruc.h ..\..\src\gui\TripPage.cpp \
+		..\..\src\main.cpp \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		..\..\src\gui\MainWindow.cpp \
 		..\..\src\gui\LoginWidget.cpp \
 		..\..\src\gui\DriverPage.cpp \
@@ -124,12 +165,22 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
+<<<<<<< HEAD
 	$(ZIP) TaxiTienSa.zip $(SOURCES) $(DIST) ..\..\QuanLyTaXi.pro C:\a\qt\6.11.2\mingw_64\mkspecs\features\spec_pre.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\device_config.prf C:\a\qt\6.11.2\mingw_64\mkspecs\common\sanitize.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\gcc-base.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\g++-base.conf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\a\qt\6.11.2\mingw_64\mkspecs\common\windows-vulkan.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\g++-win32.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\windows-desktop.conf C:\a\qt\6.11.2\mingw_64\mkspecs\qconfig.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_openxr_loader.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_charts.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_charts_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_core.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_ffmpegmediapluginimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_help.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekit.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekit_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekitimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekitimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssynchronizer.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssynchronizer_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimedia.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediatestlibprivate_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_network.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltc_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3d.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dxr.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dxr_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickshapes.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_shadertools.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_tasktree.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\features\qt_functions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qt_config.prf C:\a\qt\6.11.2\mingw_64\mkspecs\win32-g++\qmake.conf C:\a\qt\6.11.2\mingw_64\mkspecs\features\spec_post.prf ..\..\.qmake.stash C:\a\qt\6.11.2\mingw_64\mkspecs\features\exclusive_builds.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\toolchain.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\default_pre.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\default_pre.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\resolve_config.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\default_post.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\build_pass.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qml_debug.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\precompile_header.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\warn_on.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\permissions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qt.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\resources_functions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\resources.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\moc.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\opengl.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\uic.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qmake_use.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\file_copies.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\windows.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\testcase_targets.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\exceptions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\yacc.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\lex.prf ..\..\QuanLyTaXi.pro C:\a\qt\6.11.2\mingw_64\lib\Qt6Widgets.prl C:\a\qt\6.11.2\mingw_64\lib\Qt6Gui.prl C:\a\qt\6.11.2\mingw_64\lib\Qt6Core.prl C:\a\qt\6.11.2\mingw_64\lib\Qt6EntryPoint.prl    C:\a\qt\6.11.2\mingw_64\mkspecs\features\data\dummy.cpp ..\..\src\gui\MainWindow.h ..\..\src\gui\LoginWidget.h ..\..\src\gui\DriverPage.h ..\..\src\gui\DriverDialog.h ..\..\src\gui\TaxiPage.h ..\..\src\gui\BookingPage.h ..\..\src\gui\StatsPage.h ..\..\src\gui\Style.h ..\..\include\HeThongTaxi.h ..\..\include\QuanLyTaiXe.h ..\..\include\QuanLyTaxi.h ..\..\include\QuanLyChuyenXe.h ..\..\include\QuanLyTaiKhoan.h ..\..\include\TaiXe.h ..\..\include\Taxi.h ..\..\include\ChuyenXe.h ..\..\include\NguoiDung.h ..\..\include\Common.h  ..\..\src\main.cpp ..\..\src\gui\MainWindow.cpp ..\..\src\gui\LoginWidget.cpp ..\..\src\gui\DriverPage.cpp ..\..\src\gui\DriverDialog.cpp ..\..\src\gui\TaxiPage.cpp ..\..\src\gui\BookingPage.cpp ..\..\src\gui\StatsPage.cpp     
 
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.o debug\MainWindow.o debug\LoginWidget.o debug\DriverPage.o debug\DriverDialog.o debug\TaxiPage.o debug\BookingPage.o debug\StatsPage.o debug\moc_MainWindow.o debug\moc_LoginWidget.o debug\moc_DriverPage.o debug\moc_DriverDialog.o debug\moc_TaxiPage.o debug\moc_BookingPage.o debug\moc_StatsPage.o
 
 distclean: clean 
+=======
+	$(ZIP) TaxiTienSa.zip $(SOURCES) $(DIST) ..\..\QuanLyTaXi.pro C:\a\qt\6.11.2\mingw_64\mkspecs\features\spec_pre.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\device_config.prf C:\a\qt\6.11.2\mingw_64\mkspecs\common\sanitize.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\gcc-base.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\g++-base.conf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\a\qt\6.11.2\mingw_64\mkspecs\common\windows-vulkan.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\g++-win32.conf C:\a\qt\6.11.2\mingw_64\mkspecs\common\windows-desktop.conf C:\a\qt\6.11.2\mingw_64\mkspecs\qconfig.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_ext_openxr_loader.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_charts.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_charts_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_chartsqml.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_chartsqml_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_core.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_ffmpegmediapluginimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_help.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekit.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekit_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekitimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labsstylekitimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssynchronizer.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labssynchronizer_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimedia.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediaquick_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediatestlibprivate_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_network.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltc_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3d.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dassetutils_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3deffects.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dglslparser_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpers_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dhelpersimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3diblbaker_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dparticleeffects.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dparticles.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dparticles_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dspatialaudio_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dxr.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick3dxr_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickshapes.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimeline.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimeline_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quicktimelineblendtrees_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickvectorimagehelpers_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_shadertools.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_spatialaudio.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_spatialaudio_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_tasktree.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\a\qt\6.11.2\mingw_64\mkspecs\features\qt_functions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qt_config.prf C:\a\qt\6.11.2\mingw_64\mkspecs\win32-g++\qmake.conf C:\a\qt\6.11.2\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\a\qt\6.11.2\mingw_64\mkspecs\features\exclusive_builds.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\toolchain.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\default_pre.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\default_pre.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\resolve_config.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\default_post.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\build_pass.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qml_debug.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\precompile_header.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\warn_on.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\permissions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qt.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\resources_functions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\resources.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\moc.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\opengl.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\uic.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\qmake_use.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\file_copies.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\win32\windows.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\testcase_targets.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\exceptions.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\yacc.prf C:\a\qt\6.11.2\mingw_64\mkspecs\features\lex.prf ..\..\QuanLyTaXi.pro ..\..\resources.qrc C:\a\qt\6.11.2\mingw_64\lib\Qt6Widgets.prl C:\a\qt\6.11.2\mingw_64\lib\Qt6Gui.prl C:\a\qt\6.11.2\mingw_64\lib\Qt6Core.prl C:\a\qt\6.11.2\mingw_64\lib\Qt6EntryPoint.prl   ..\..\resources.qrc C:\a\qt\6.11.2\mingw_64\mkspecs\features\data\dummy.cpp ..\..\src\gui\MainWindow.h ..\..\src\gui\LoginWidget.h ..\..\src\gui\DriverPage.h ..\..\src\gui\DriverDialog.h ..\..\src\gui\TaxiPage.h ..\..\src\gui\BookingPage.h ..\..\src\gui\StatsPage.h ..\..\src\gui\TripPage.h ..\..\src\gui\Style.h ..\..\include\HeThongTaxi.h ..\..\include\QuanLyTaiXe.h ..\..\include\QuanLyTaxi.h ..\..\include\QuanLyChuyenXe.h ..\..\include\QuanLyTaiKhoan.h ..\..\include\TaiXe.h ..\..\include\Taxi.h ..\..\include\ChuyenXe.h ..\..\include\NguoiDung.h ..\..\include\Common.h ..\..\include\TinhLuong.h ..\..\include\CauTruc.h  ..\..\src\gui\TripPage.cpp ..\..\src\main.cpp ..\..\src\gui\MainWindow.cpp ..\..\src\gui\LoginWidget.cpp ..\..\src\gui\DriverPage.cpp ..\..\src\gui\DriverDialog.cpp ..\..\src\gui\TaxiPage.cpp ..\..\src\gui\BookingPage.cpp ..\..\src\gui\StatsPage.cpp     
+
+clean: compiler_clean 
+	-$(DEL_FILE) debug\TripPage.o debug\main.o debug\MainWindow.o debug\LoginWidget.o debug\DriverPage.o debug\DriverDialog.o debug\TaxiPage.o debug\BookingPage.o debug\StatsPage.o debug\qrc_resources.o debug\moc_MainWindow.o debug\moc_LoginWidget.o debug\moc_DriverPage.o debug\moc_DriverDialog.o debug\moc_TaxiPage.o debug\moc_BookingPage.o debug\moc_StatsPage.o debug\moc_TripPage.o
+
+distclean: clean 
+	-$(DEL_FILE) .qmake.stash
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Debug
 
@@ -143,17 +194,35 @@ benchmark: first
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
+<<<<<<< HEAD
 compiler_rcc_make_all:
 compiler_rcc_clean:
+=======
+compiler_rcc_make_all: debug/qrc_resources.cpp
+compiler_rcc_clean:
+	-$(DEL_FILE) debug\qrc_resources.cpp
+debug/qrc_resources.cpp: ../../resources.qrc \
+		C:/a/qt/6.11.2/mingw_64/bin/rcc.exe \
+		../../icons/arrow_down.png \
+		../../icons/arrow_up.png
+	C:\a\qt\6.11.2\mingw_64\bin\rcc.exe -name resources --no-zstd ..\..\resources.qrc -o debug\qrc_resources.cpp
+
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 compiler_moc_predefs_make_all: debug/moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) debug\moc_predefs.h
 debug/moc_predefs.h: C:/a/qt/6.11.2/mingw_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h C:\a\qt\6.11.2\mingw_64\mkspecs\features\data\dummy.cpp
 
+<<<<<<< HEAD
 compiler_moc_header_make_all: debug/moc_MainWindow.cpp debug/moc_LoginWidget.cpp debug/moc_DriverPage.cpp debug/moc_DriverDialog.cpp debug/moc_TaxiPage.cpp debug/moc_BookingPage.cpp debug/moc_StatsPage.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) debug\moc_MainWindow.cpp debug\moc_LoginWidget.cpp debug\moc_DriverPage.cpp debug\moc_DriverDialog.cpp debug\moc_TaxiPage.cpp debug\moc_BookingPage.cpp debug\moc_StatsPage.cpp
+=======
+compiler_moc_header_make_all: debug/moc_MainWindow.cpp debug/moc_LoginWidget.cpp debug/moc_DriverPage.cpp debug/moc_DriverDialog.cpp debug/moc_TaxiPage.cpp debug/moc_BookingPage.cpp debug/moc_StatsPage.cpp debug/moc_TripPage.cpp
+compiler_moc_header_clean:
+	-$(DEL_FILE) debug\moc_MainWindow.cpp debug\moc_LoginWidget.cpp debug\moc_DriverPage.cpp debug\moc_DriverDialog.cpp debug\moc_TaxiPage.cpp debug\moc_BookingPage.cpp debug\moc_StatsPage.cpp debug\moc_TripPage.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 debug/moc_MainWindow.cpp: ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
@@ -359,6 +428,10 @@ debug/moc_MainWindow.cpp: ../../src/gui/MainWindow.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -367,7 +440,11 @@ debug/moc_MainWindow.cpp: ../../src/gui/MainWindow.h \
 		../../include/NguoiDung.h \
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+<<<<<<< HEAD
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\MainWindow.h -o debug\moc_MainWindow.cpp
+=======
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\MainWindow.h -o debug\moc_MainWindow.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug/moc_LoginWidget.cpp: ../../src/gui/LoginWidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
@@ -574,6 +651,10 @@ debug/moc_LoginWidget.cpp: ../../src/gui/LoginWidget.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -582,7 +663,11 @@ debug/moc_LoginWidget.cpp: ../../src/gui/LoginWidget.h \
 		../../include/NguoiDung.h \
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+<<<<<<< HEAD
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\LoginWidget.h -o debug\moc_LoginWidget.cpp
+=======
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\LoginWidget.h -o debug\moc_LoginWidget.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug/moc_DriverPage.cpp: ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
@@ -789,6 +874,10 @@ debug/moc_DriverPage.cpp: ../../src/gui/DriverPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -797,7 +886,11 @@ debug/moc_DriverPage.cpp: ../../src/gui/DriverPage.h \
 		../../include/NguoiDung.h \
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+<<<<<<< HEAD
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\DriverPage.h -o debug\moc_DriverPage.cpp
+=======
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\DriverPage.h -o debug\moc_DriverPage.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug/moc_DriverDialog.cpp: ../../src/gui/DriverDialog.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QDialog \
@@ -1003,9 +1096,16 @@ debug/moc_DriverDialog.cpp: ../../src/gui/DriverDialog.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\DriverDialog.h -o debug\moc_DriverDialog.cpp
+=======
+		../../include/CauTruc.h \
+		debug/moc_predefs.h \
+		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\DriverDialog.h -o debug\moc_DriverDialog.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug/moc_TaxiPage.cpp: ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
@@ -1212,6 +1312,10 @@ debug/moc_TaxiPage.cpp: ../../src/gui/TaxiPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -1220,7 +1324,11 @@ debug/moc_TaxiPage.cpp: ../../src/gui/TaxiPage.h \
 		../../include/NguoiDung.h \
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+<<<<<<< HEAD
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\TaxiPage.h -o debug\moc_TaxiPage.cpp
+=======
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\TaxiPage.h -o debug\moc_TaxiPage.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug/moc_BookingPage.cpp: ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
@@ -1427,6 +1535,10 @@ debug/moc_BookingPage.cpp: ../../src/gui/BookingPage.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -1435,7 +1547,11 @@ debug/moc_BookingPage.cpp: ../../src/gui/BookingPage.h \
 		../../include/NguoiDung.h \
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+<<<<<<< HEAD
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\BookingPage.h -o debug\moc_BookingPage.cpp
+=======
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\BookingPage.h -o debug\moc_BookingPage.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 debug/moc_StatsPage.cpp: ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
@@ -1638,10 +1754,18 @@ debug/moc_StatsPage.cpp: ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QSpinBox \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qspinbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvalidator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qregularexpression.h \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+		../../include/CauTruc.h \
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -1650,7 +1774,231 @@ debug/moc_StatsPage.cpp: ../../src/gui/StatsPage.h \
 		../../include/NguoiDung.h \
 		debug/moc_predefs.h \
 		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\StatsPage.h -o debug\moc_StatsPage.cpp
+
+debug/moc_TripPage.cpp: ../../src/gui/TripPage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtconfiginclude.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qconfig.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcore-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtconfigmacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompilerdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qprocessordetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsystemdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qassert.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtnoop.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtypes.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversion.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtypeinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontainerfwd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsysinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlogging.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qflags.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qatomic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbasicatomic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qatomic_cxx11.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qgenericatomic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qyieldcpu.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qconstructormacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdarwinhelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qexceptionhandling.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qforeach.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttypetraits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobalstatic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmalloc.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qminmax.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnumeric.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20type_traits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qoverload.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qswap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydataops.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontainertools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qxptype_traits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q23type_traits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20functional.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20memory.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q17memory.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearrayview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringfwd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringalgorithms.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlatin1stringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qanystringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qutf8stringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringtokenizer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearraylist.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringlist.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qalgorithms.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20bit.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsimd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringmatcher.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcoreevent.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstracteventdispatcher.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qeventloop.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmetatype.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdatastream.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiodevicebase.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qscopedpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfloat16.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmath.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtformat_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterable.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtaggedpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmetacontainer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontainerinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qscopeguard.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbindingstorage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmargins.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcheckedint_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q23utility.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20utility.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qaction.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qkeysequence.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qicon.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsize.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpixmap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpaintdevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrect.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpoint.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qcolor.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qrgb.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qrgba64.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qshareddata.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qimage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpixelformat.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtransform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpolygon.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qregion.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qspan.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20iterator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qline.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qvariant.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdebug.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtextstream.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontiguouscache.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsharedpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qshareddata_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qset.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhash.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qvarlengtharray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qalloc.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpalette.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qbrush.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfont.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qendian.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfontmetrics.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfontinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfontvariableaxis.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qsizepolicy.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qcursor.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qbitmap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qevent.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiodevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qurl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qeventpoint.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvector2d.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvectornd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpointingdevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputdevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qscreen.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QList \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QObject \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QRect \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QSize \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QSizeF \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QTransform \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qscreen_platform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfuture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmutex.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qresultstore.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qthreadpool.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qthread.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrunnable.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qexception.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpromise.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h \
+		debug/moc_predefs.h \
+		C:/a/qt/6.11.2/mingw_64/bin/moc.exe
+<<<<<<< HEAD
 	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-hlong/taxiapp-hlong -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ..\..\src\gui\StatsPage.h -o debug\moc_StatsPage.cpp
+=======
+	C:\a\qt\6.11.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/LENOVO/Downloads/taxiapp-main/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/debug/moc_predefs.h -IC:/a/qt/6.11.2/mingw_64/mkspecs/win32-g++ -IC:/Users/LENOVO/Downloads/taxiapp-main -IC:/a/qt/6.11.2/mingw_64/include -IC:/a/qt/6.11.2/mingw_64/include/QtWidgets -IC:/a/qt/6.11.2/mingw_64/include/QtGui -IC:/a/qt/6.11.2/mingw_64/include/QtCore -I. -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/a/qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/a/qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\src\gui\TripPage.h -o debug\moc_TripPage.cpp
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1664,12 +2012,282 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
+<<<<<<< HEAD
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+=======
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 
 
 
 ####### Compile
 
+<<<<<<< HEAD
+=======
+debug/TripPage.o: ../../src/gui/TripPage.cpp ../../src/gui/Style.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtconfiginclude.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qconfig.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcore-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtconfigmacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompilerdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qprocessordetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsystemdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtdeprecationmarkers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtclasshelpermacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtpreprocessorsupport.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qassert.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtnoop.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtypes.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversion.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtypeinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontainerfwd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsysinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlogging.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qflags.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qatomic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbasicatomic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qatomic_cxx11.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qgenericatomic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qyieldcpu.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qconstructormacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdarwinhelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qexceptionhandling.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qforeach.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttypetraits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobalstatic.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmalloc.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qminmax.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnumeric.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20type_traits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qoverload.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qswap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtenvironmentvariables.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydataops.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontainertools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qxptype_traits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q23type_traits.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20functional.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20memory.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q17memory.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearrayview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringfwd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringalgorithms.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlatin1stringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qanystringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qutf8stringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringtokenizer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearraylist.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringlist.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qalgorithms.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20bit.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsimd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringmatcher.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcoreevent.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstracteventdispatcher.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qeventloop.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmetatype.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdatastream.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiodevicebase.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qscopedpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfloat16.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmath.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtformat_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterable.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtaggedpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmetacontainer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontainerinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qscopeguard.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbindingstorage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmargins.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcheckedint_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q23utility.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20utility.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qaction.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qkeysequence.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qicon.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsize.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpixmap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpaintdevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrect.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpoint.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qcolor.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qrgb.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qrgba64.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qshareddata.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qimage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpixelformat.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtransform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpolygon.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qregion.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qspan.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/q20iterator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qline.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qvariant.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdebug.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtextstream.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcontiguouscache.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsharedpointer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qshareddata_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qset.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhash.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qvarlengtharray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qalloc.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpalette.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qbrush.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfont.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qendian.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfontmetrics.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfontinfo.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qfontvariableaxis.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qsizepolicy.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qcursor.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qbitmap.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qevent.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiodevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qurl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qeventpoint.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvector2d.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvectornd.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpointingdevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputdevice.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qscreen.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QList \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QObject \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QRect \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QSize \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QSizeF \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QTransform \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qscreen_platform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfuture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qmutex.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qresultstore.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qthreadpool.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qthread.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrunnable.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qexception.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpromise.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvalidator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qregularexpression.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyle.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+		../../src/gui/TripPage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+		../../include/CauTruc.h \
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QComboBox \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qcombobox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFrame \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QDate \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QTimer \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtimer.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QSignalBlocker
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\TripPage.o ..\..\src\gui\TripPage.cpp
+
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 debug/main.o: ../../src/main.cpp C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QApplication \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qapplication.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1886,12 +2504,47 @@ debug/main.o: ../../src/main.cpp C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QAppl
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qscreen_platform.h \
 		../../src/gui/Style.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvalidator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qregularexpression.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyle.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../src/gui/LoginWidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -1901,11 +2554,18 @@ debug/main.o: ../../src/main.cpp C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QAppl
 		../../src/gui/MainWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\src\main.cpp
 
+<<<<<<< HEAD
 debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+=======
+debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/Style.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
@@ -1953,6 +2613,7 @@ debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -1973,6 +2634,16 @@ debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -1994,6 +2665,28 @@ debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
@@ -2102,10 +2795,42 @@ debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvalidator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qregularexpression.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyle.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+		../../src/gui/MainWindow.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -2116,6 +2841,12 @@ debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		../../src/gui/TaxiPage.h \
 		../../src/gui/BookingPage.h \
 		../../src/gui/StatsPage.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QSpinBox \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qspinbox.h \
+		../../src/gui/TripPage.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayout.h \
@@ -2124,11 +2855,14 @@ debug/MainWindow.o: ../../src/gui/MainWindow.cpp ../../src/gui/MainWindow.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QGridLayout \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFrame \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractbutton.h \
@@ -2341,6 +3075,10 @@ debug/LoginWidget.o: ../../src/gui/LoginWidget.cpp ../../src/gui/LoginWidget.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -2370,11 +3108,18 @@ debug/LoginWidget.o: ../../src/gui/LoginWidget.cpp ../../src/gui/LoginWidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFrame
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\LoginWidget.o ..\..\src\gui\LoginWidget.cpp
 
+<<<<<<< HEAD
 debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+=======
+debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/Style.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
@@ -2422,6 +3167,7 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -2442,6 +3188,16 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -2463,6 +3219,28 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
@@ -2571,6 +3349,7 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -2596,6 +3375,8 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -2611,12 +3392,46 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+		../../src/gui/DriverPage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+		../../include/CauTruc.h \
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h \
+		../../src/gui/DriverDialog.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QDialog \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qdialog.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLineEdit \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlineedit.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextcursor.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextformat.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpen.h \
@@ -2624,6 +3439,11 @@ debug/DriverPage.o: ../../src/gui/DriverPage.cpp ../../src/gui/DriverPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextformat.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpen.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextoption.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QMessageBox \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
@@ -2834,6 +3654,10 @@ debug/DriverDialog.o: ../../src/gui/DriverDialog.cpp ../../src/gui/DriverDialog.
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFormLayout \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qformlayout.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLayout \
@@ -2882,11 +3706,18 @@ debug/DriverDialog.o: ../../src/gui/DriverDialog.cpp ../../src/gui/DriverDialog.
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/QRegularExpression
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\DriverDialog.o ..\..\src\gui\DriverDialog.cpp
 
+<<<<<<< HEAD
 debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+=======
+debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/Style.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
@@ -2934,6 +3765,7 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -2954,6 +3786,16 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -2975,6 +3817,28 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
@@ -3083,6 +3947,7 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -3105,6 +3970,8 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -3120,13 +3987,45 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+		../../src/gui/TaxiPage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+		../../include/CauTruc.h \
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLineEdit \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlineedit.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextcursor.h \
@@ -3144,6 +4043,7 @@ debug/TaxiPage.o: ../../src/gui/TaxiPage.cpp ../../src/gui/TaxiPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QCheckBox \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qcheckbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\TaxiPage.o ..\..\src\gui\TaxiPage.cpp
 
@@ -3152,6 +4052,16 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qcheckbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QHash
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\TaxiPage.o ..\..\src\gui\TaxiPage.cpp
+
+debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/Style.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
@@ -3199,6 +4109,7 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -3219,6 +4130,16 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -3240,6 +4161,28 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
@@ -3348,10 +4291,42 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyleoption.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvalidator.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qregularexpression.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractslider.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyle.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabbar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+		../../src/gui/BookingPage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
 		../../include/Common.h \
+<<<<<<< HEAD
+=======
+		../../include/CauTruc.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		../../include/QuanLyTaxi.h \
 		../../include/Taxi.h \
 		../../include/QuanLyChuyenXe.h \
@@ -3369,14 +4344,19 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLayout \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLineEdit \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlineedit.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextcursor.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextcursor.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextformat.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpen.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextoption.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QSpinBox \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qspinbox.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qvalidator.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qregularexpression.h \
@@ -3391,14 +4371,21 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QComboBox \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qcombobox.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/QRegularExpression \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QDoubleSpinBox \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFrame \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QMessageBox \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qmessagebox.h \
@@ -3409,16 +4396,26 @@ debug/BookingPage.o: ../../src/gui/BookingPage.cpp ../../src/gui/BookingPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcalendar.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QScrollArea \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qscrollarea.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+=======
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/QTimer \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\BookingPage.o ..\..\src\gui\BookingPage.cpp
 
+<<<<<<< HEAD
 debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+=======
+debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/Style.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QString \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstring.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qchar.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtcoreglobal.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtversionchecks.h \
@@ -3466,6 +4463,7 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtresource.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qttranslation.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qversiontagging.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -3486,6 +4484,16 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstdlibdetection.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcomparehelpers.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qbytearray.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qrefcount.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qnamespace.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qtmetamacros.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydata.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qpair.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -3507,6 +4515,28 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qstringconverter_base.h \
+<<<<<<< HEAD
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtableview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiglobal.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtgui-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtguiexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qwidget.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qobject.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlist.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qiterator.h \
@@ -3615,6 +4645,7 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+<<<<<<< HEAD
 		../../include/HeThongTaxi.h \
 		../../include/QuanLyTaiXe.h \
 		../../include/TaiXe.h \
@@ -3633,6 +4664,10 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QComboBox \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qcombobox.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qstyleoption.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qabstractspinbox.h \
@@ -3644,6 +4679,7 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
@@ -3654,13 +4690,58 @@ debug/StatsPage.o: ../../src/gui/StatsPage.cpp ../../src/gui/StatsPage.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QToolTip \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qtooltip.h \
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QLabel \
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlabel.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
 		C:/a/qt/6.11.2/mingw_64/include/QtGui/qtextdocument.h \
+<<<<<<< HEAD
 		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFrame
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\StatsPage.o ..\..\src\gui\StatsPage.cpp
 
+=======
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QCursor \
+		C:/a/qt/6.11.2/mingw_64/include/QtGui/QFontMetrics \
+		../../src/gui/StatsPage.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QWidget \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QSpinBox \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qspinbox.h \
+		../../include/HeThongTaxi.h \
+		../../include/QuanLyTaiXe.h \
+		../../include/TaiXe.h \
+		../../include/Common.h \
+		../../include/CauTruc.h \
+		../../include/QuanLyTaxi.h \
+		../../include/Taxi.h \
+		../../include/QuanLyChuyenXe.h \
+		../../include/ChuyenXe.h \
+		../../include/QuanLyTaiKhoan.h \
+		../../include/NguoiDung.h \
+		../../include/TinhLuong.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QComboBox \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/qcombobox.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtWidgets/QFrame \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QDate \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/a/qt/6.11.2/mingw_64/include/QtCore/QSignalBlocker
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\StatsPage.o ..\..\src\gui\StatsPage.cpp
+
+debug/qrc_resources.o: debug/qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qrc_resources.o debug\qrc_resources.cpp
+
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 debug/moc_MainWindow.o: debug/moc_MainWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_MainWindow.o debug\moc_MainWindow.cpp
 
@@ -3682,6 +4763,12 @@ debug/moc_BookingPage.o: debug/moc_BookingPage.cpp
 debug/moc_StatsPage.o: debug/moc_StatsPage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_StatsPage.o debug\moc_StatsPage.cpp
 
+<<<<<<< HEAD
+=======
+debug/moc_TripPage.o: debug/moc_TripPage.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_TripPage.o debug\moc_TripPage.cpp
+
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 ####### Install
 
 install:  FORCE

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+release/TripPage.o
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 release/main.o
 release/MainWindow.o
 release/LoginWidget.o
@@ -6,6 +10,10 @@ release/DriverDialog.o
 release/TaxiPage.o
 release/BookingPage.o
 release/StatsPage.o
+<<<<<<< HEAD
+=======
+release/qrc_resources.o
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
 release/moc_MainWindow.o
 release/moc_LoginWidget.o
 release/moc_DriverPage.o
@@ -13,3 +21,7 @@ release/moc_DriverDialog.o
 release/moc_TaxiPage.o
 release/moc_BookingPage.o
 release/moc_StatsPage.o
+<<<<<<< HEAD
+=======
+release/moc_TripPage.o
+>>>>>>> 266b384acc67d956f0aa66f2e4a52a1783c20cd6
