@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QCursor>
 #include <QFontMetrics>
+#include <QDebug>
 
 
 // Cài đặt chung cho mọi bảng: hàng cao, header cao, cột tự vừa nội dung,
@@ -32,6 +33,7 @@ inline void caiDatBang(QTableWidget* t, int cotGian, int cotGian2 = -1) {
     t->setTextElideMode(Qt::ElideRight);
     t->setWordWrap(false);
     QObject::connect(t, &QTableWidget::cellClicked, t, [t](int row, int col) {
+        qDebug() << "click" << row << col;
         auto* it = t->item(row, col);
         if (!it || it->text().isEmpty()) return;
 
