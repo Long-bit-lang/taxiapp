@@ -10,7 +10,10 @@
 #include <QFrame>
 #include <QDate>
 #include <QTimer>
-#include <QSignalBlocker>
+#include <QScrollBar>
+#include <QGraphicsDropShadowEffect>
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 TripPage::TripPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(ht) {
     auto* root = new QVBoxLayout(this);
@@ -74,8 +77,25 @@ TripPage::TripPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
     table->setHorizontalHeaderLabels({"Mã chuyến", "Thời điểm", "Biển số", "Tài xế",
                                       "SĐT tài xế", "Khách hàng", "Lộ trình", "Cước phí", "Trạng thái"});
     caiDatBang(table, 3, 6);
-    table->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
-    table->horizontalHeader()->setSectionResizeMode(6, QHeaderView::Stretch);
+
+    auto* h = table->horizontalHeader();
+    h->setSectionResizeMode(0, QHeaderView::Fixed);
+    table->setColumnWidth(0, 110);
+    h->setSectionResizeMode(1, QHeaderView::Fixed);
+    table->setColumnWidth(1, 150);
+    h->setSectionResizeMode(2, QHeaderView::Fixed);
+    table->setColumnWidth(2, 120);
+    h->setSectionResizeMode(3, QHeaderView::Stretch);
+    h->setSectionResizeMode(4, QHeaderView::Fixed);
+    table->setColumnWidth(4, 120);
+    h->setSectionResizeMode(5, QHeaderView::Interactive);
+    table->setColumnWidth(5, 220);
+    h->setSectionResizeMode(6, QHeaderView::Stretch);
+    h->setSectionResizeMode(7, QHeaderView::Fixed);
+    table->setColumnWidth(7, 120);
+    h->setSectionResizeMode(8, QHeaderView::Fixed);
+    table->setColumnWidth(8, 120);
+
     table->setSelectionBehavior(QAbstractItemView::SelectRows);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     table->verticalHeader()->setVisible(false);
@@ -86,8 +106,41 @@ TripPage::TripPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
     lblTrong->setStyleSheet("color:#96948C; padding:12px;");
     root->addWidget(lblTrong);
 
-    connect(cbLoc, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this]() { refresh(); });
-    connect(btnLamMoi, &QPushButton::clicked, this, [this]() { refresh(); });
+    // Nhãn nổi mở rộng hiển thị trọn vẹn thông tin khi ô bị cắt "..."
+    overlayCell = new QLabel(table->viewport());
+    overlayCell->setObjectName("cellDetailOverlay");
+    overlayCell->setWordWrap(true);
+    overlayCell->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    overlayCell->setStyleSheet(
+        "QLabel#cellDetailOverlay {"
+        "  background: #FFFFFF;"
+        "  color: #2C3E50;"
+        "  font-size: 14px;"
+        "  border: 2px solid #4285C7;"
+        "  border-radius: 6px;"
+        "  padding: 6px 12px;"
+        "}"
+    );
+    auto* shadow = new QGraphicsDropShadowEffect(overlayCell);
+    shadow->setBlurRadius(12);
+    shadow->setColor(QColor(0, 0, 0, 70));
+    shadow->setOffset(0, 3);
+    overlayCell->setGraphicsEffect(shadow);
+    overlayCell->hide();
+
+    connect(table, &QTableWidget::cellClicked, this, &TripPage::onCellClicked);
+    connect(table->verticalScrollBar(), &QScrollBar::valueChanged, this, &TripPage::hideOverlay);
+    connect(table->horizontalScrollBar(), &QScrollBar::valueChanged, this, &TripPage::hideOverlay);
+    table->viewport()->installEventFilter(this);
+
+    connect(cbLoc, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this]() {
+        hideOverlay();
+        refresh();
+    });
+    connect(btnLamMoi, &QPushButton::clicked, this, [this]() {
+        hideOverlay();
+        refresh();
+    });
 
     // tự làm mới mỗi 10 giây, chỉ khi tab đang hiển thị
     timer = new QTimer(this);
@@ -97,7 +150,88 @@ TripPage::TripPage(HeThongTaxi* ht, QWidget* parent) : QWidget(parent), heThong(
     refresh();
 }
 
+bool TripPage::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == table->viewport()) {
+        if (event->type() == QEvent::MouseButtonPress) {
+            auto* me = static_cast<QMouseEvent*>(event);
+            QModelIndex idx = table->indexAt(me->pos());
+            if (!idx.isValid()) {
+                hideOverlay();
+            }
+        }
+    }
+    if (event->type() == QEvent::KeyPress) {
+        auto* ke = static_cast<QKeyEvent*>(event);
+        if (ke->key() == Qt::Key_Escape) {
+            hideOverlay();
+        }
+    }
+    return QWidget::eventFilter(watched, event);
+}
+
+void TripPage::hideOverlay() {
+    selectedRow = -1;
+    selectedCol = -1;
+    if (overlayCell) overlayCell->hide();
+}
+
+void TripPage::onCellClicked(int row, int col) {
+    auto* it = table->item(row, col);
+    if (!it || it->text().isEmpty()) {
+        hideOverlay();
+        return;
+    }
+
+    // Nếu bấm lại chính ô đang mở -> thu gọn lại
+    if (selectedRow == row && selectedCol == col && overlayCell && overlayCell->isVisible()) {
+        hideOverlay();
+        return;
+    }
+
+    // Đóng ô cũ trước (ô cũ trở lại bình thường)
+    hideOverlay();
+
+    QRect cellRect = table->visualItemRect(it);
+    if (cellRect.isNull() || !cellRect.isValid()) return;
+
+    QFontMetrics fm(table->font());
+    int textWidth = fm.horizontalAdvance(it->text());
+
+    // Kiểm tra xem nội dung ô có bị tràn (hiện "...") hay không
+    bool isTruncated = (textWidth > cellRect.width() - 20) || it->text().contains('\n');
+
+    if (isTruncated) {
+        selectedRow = row;
+        selectedCol = col;
+
+        overlayCell->setText(it->text());
+
+        // Chiều rộng mở rộng vừa vặn (tối thiểu bằng ô, tối đa 580px)
+        int targetW = qMax(cellRect.width(), qMin(textWidth + 28, 580));
+        overlayCell->setFixedWidth(targetW);
+        overlayCell->adjustSize();
+
+        int x = cellRect.x();
+        int y = cellRect.y();
+
+        // Chống tràn mép phải khung nhìn
+        if (x + overlayCell->width() > table->viewport()->width()) {
+            x = qMax(0, table->viewport()->width() - overlayCell->width() - 6);
+        }
+        // Chống tràn mép dưới khung nhìn
+        if (y + overlayCell->height() > table->viewport()->height()) {
+            y = qMax(0, cellRect.bottom() - overlayCell->height());
+        }
+
+        overlayCell->move(x, y);
+        overlayCell->show();
+        overlayCell->raise();
+    }
+}
+
 void TripPage::refresh() {
+    hideOverlay();
+
     heThong->taiXe().docFile();
     heThong->taxi().docFile();
     heThong->chuyenXe().docFile();
@@ -131,11 +265,12 @@ void TripPage::refresh() {
     lblHoanThanh->setText(QString::number(demHoanThanh));
     lblDaHuy->setText(QString::number(demDaHuy));
 
-    table->setRowCount(hienThi.size());
+    table->setUpdatesEnabled(false);
+    table->setRowCount((int)hienThi.size());
     lblTrong->setVisible(hienThi.empty());
     table->setVisible(!hienThi.empty());
 
-    for (int r = 0; r < hienThi.size(); ++r) {
+    for (int r = 0; r < (int)hienThi.size(); ++r) {
         const ChuyenXe& c = *hienThi[r];
 
         // tra tài xế theo mã
@@ -152,22 +287,36 @@ void TripPage::refresh() {
         QString lotrinh = QString::fromStdString(c.getDiemDon() + "  →  " + c.getDiemDen())
                           + QString("  (%1 km)").arg(c.getKhoangCach(), 0, 'f', 1);
 
-        table->setItem(r, 0, new QTableWidgetItem(QString::fromStdString(c.getMaChuyen())));
-        table->setItem(r, 1, new QTableWidgetItem(QString::fromStdString(c.getThoiDiem())));
-        table->setItem(r, 2, new QTableWidgetItem(QString::fromStdString(c.getBienSoTaxi())));
-        table->setItem(r, 3, new QTableWidgetItem(tenTX));
-        table->setItem(r, 4, new QTableWidgetItem(sdtTX));
-        table->setItem(r, 5, new QTableWidgetItem(
-                                 QString::fromStdString(c.getTenKhachHang() + " - " + c.getSdtKhachHang())));
-        table->setItem(r, 6, new QTableWidgetItem(lotrinh));
-        table->setItem(r, 7, new QTableWidgetItem(dinhDangTien(c.getCuocPhi())));
+        auto setItem = [this, r](int col, const QString& text, const QColor& fg = QColor()) {
+            auto* it = table->item(r, col);
+            if (!it) {
+                it = new QTableWidgetItem(text);
+                table->setItem(r, col, it);
+            } else {
+                it->setText(text);
+            }
+            it->setToolTip(text);
+            if (fg.isValid()) it->setForeground(fg);
+            else it->setForeground(QColor("#3d3d3a"));
+        };
 
-        auto* itTT = new QTableWidgetItem(QString::fromStdString(trangThaiChuyenToStr(c.getTrangThai())));
+        setItem(0, QString::fromStdString(c.getMaChuyen()));
+        setItem(1, QString::fromStdString(c.getThoiDiem()));
+        setItem(2, QString::fromStdString(c.getBienSoTaxi()));
+        setItem(3, tenTX);
+        setItem(4, sdtTX);
+        setItem(5, QString::fromStdString(c.getTenKhachHang() + " - " + c.getSdtKhachHang()));
+        setItem(6, lotrinh);
+        setItem(7, dinhDangTien(c.getCuocPhi()));
+
+        QColor colorTT;
         switch (c.getTrangThai()) {
-        case DANG_DI:    itTT->setForeground(QColor("#4285C7")); break;
-        case HOAN_THANH: itTT->setForeground(QColor("#438F78")); break;
-        default:         itTT->setForeground(QColor("#B8503F")); break;
+        case DANG_DI:    colorTT = QColor("#4285C7"); break;
+        case HOAN_THANH: colorTT = QColor("#438F78"); break;
+        default:         colorTT = QColor("#B8503F"); break;
         }
-        table->setItem(r, 8, itTT);
+        setItem(8, QString::fromStdString(trangThaiChuyenToStr(c.getTrangThai())), colorTT);
     }
+
+    table->setUpdatesEnabled(true);
 }

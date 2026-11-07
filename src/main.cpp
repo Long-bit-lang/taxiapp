@@ -2,6 +2,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStackedWidget>
+#include <QDebug>
 #include "gui/Style.h"
 #include "gui/LoginWidget.h"
 #include "gui/MainWindow.h"

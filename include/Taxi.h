@@ -40,6 +40,9 @@ public:
     void xoaTaiXe(const string& maTX) {
         dsMaTaiXe.xoaGiaTri(maTX);
     }
+    void datDanhSachTaiXe(const DanhSach<string>& dsMoi) {
+        dsMaTaiXe = dsMoi;
+    }
 };
 
 #endif // TAXI_H

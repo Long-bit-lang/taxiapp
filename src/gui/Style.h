@@ -31,21 +31,6 @@ inline void caiDatBang(QTableWidget* t, int cotGian, int cotGian2 = -1) {
     t->setEditTriggers(QAbstractItemView::NoEditTriggers);
     t->setTextElideMode(Qt::ElideRight);
     t->setWordWrap(false);
-    QObject::connect(t, &QTableWidget::cellClicked, t, [t](int row, int col) {
-        auto* it = t->item(row, col);
-        if (!it || it->text().isEmpty()) return;
-
-        auto* lb = new QLabel(it->text(), t, Qt::Popup);
-        lb->setAttribute(Qt::WA_DeleteOnClose);
-        lb->setWordWrap(true);
-        lb->setMaximumWidth(500);
-        lb->setTextInteractionFlags(Qt::TextSelectableByMouse);   // cho phép bôi đen để copy
-        lb->setStyleSheet("QLabel { background: white; color: #2C3E50; font-size: 15px;"
-                          " border: 1px solid #4285C7; padding: 10px 14px; }");
-        lb->adjustSize();
-        lb->move(QCursor::pos() + QPoint(8, 8));
-        lb->show();
-    });
 }
 
 inline QString dinhDangTien(double v) {

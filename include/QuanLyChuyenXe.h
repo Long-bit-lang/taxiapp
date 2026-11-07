@@ -41,28 +41,29 @@ public:
     }
     
     ChuyenXe* timChuyenDangDi(const string& bienSo) {
-        for (auto& c : dsChuyenXe) {
-            if (c.getBienSoTaxi() == bienSo && c.getTrangThai() == DANG_DI) return &c;
+        for (int i = dsChuyenXe.size() - 1; i >= 0; --i) {
+            if (dsChuyenXe[i].getBienSoTaxi() == bienSo && dsChuyenXe[i].getTrangThai() == DANG_DI)
+                return &dsChuyenXe[i];
         }
         return nullptr;
     }
     
     bool taiXeDangChay(const string& maTX) const {
-        for (auto& c : dsChuyenXe)
-            if (c.getMaTaiXe() == maTX && c.getTrangThai() == DANG_DI) return true;
+        for (int i = dsChuyenXe.size() - 1; i >= 0; --i)
+            if (dsChuyenXe[i].getMaTaiXe() == maTX && dsChuyenXe[i].getTrangThai() == DANG_DI) return true;
         return false;
     }
 
     bool taxiDangChay(const string& bienSo) const {
-        for (auto& c : dsChuyenXe)
-            if (c.getBienSoTaxi() == bienSo && c.getTrangThai() == DANG_DI) return true;
+        for (int i = dsChuyenXe.size() - 1; i >= 0; --i)
+            if (dsChuyenXe[i].getBienSoTaxi() == bienSo && dsChuyenXe[i].getTrangThai() == DANG_DI) return true;
         return false;
     }
     
     bool hoanThanhChuyen(const string& maChuyen) {
-        for (auto& c : dsChuyenXe) {
-            if (c.getMaChuyen() == maChuyen) {
-                c.setTrangThai(HOAN_THANH);
+        for (int i = dsChuyenXe.size() - 1; i >= 0; --i) {
+            if (dsChuyenXe[i].getMaChuyen() == maChuyen) {
+                dsChuyenXe[i].setTrangThai(HOAN_THANH);
                 ghiFile();
                 return true;
             }
@@ -71,9 +72,9 @@ public:
     }
   
     bool huyChuyen(const string& maChuyen) {
-        for (auto& c : dsChuyenXe) {
-            if (c.getMaChuyen() == maChuyen) {
-                c.setTrangThai(DA_HUY);
+        for (int i = dsChuyenXe.size() - 1; i >= 0; --i) {
+            if (dsChuyenXe[i].getMaChuyen() == maChuyen) {
+                dsChuyenXe[i].setTrangThai(DA_HUY);
                 ghiFile();
                 return true;
             }

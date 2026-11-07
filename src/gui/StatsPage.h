@@ -15,8 +15,13 @@ public:
     explicit StatsPage(HeThongTaxi* ht, QWidget* parent = nullptr);
     void refresh();
 
+protected:
+    bool eventFilter(QObject* watched, QEvent* event) override;
+
 private slots:
     void onLoc();
+    void onCellClicked(int row, int col);
+    void hideOverlay();
 
 private:
     HeThongTaxi* heThong;
@@ -24,6 +29,11 @@ private:
     QSpinBox* spinNam;
     QTableWidget* table;
     QLabel* lblTong;
+
+    QLabel* overlayCell;
+    int selectedRow = -1;
+    int selectedCol = -1;
+
     void napDanhSachThang();
     void capNhatGioiHan();
 };

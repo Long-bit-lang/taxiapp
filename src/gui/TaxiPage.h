@@ -2,9 +2,12 @@
 #define TAXIPAGE_H
 
 #include <QWidget>
+#include <QHash>
 #include "../../include/HeThongTaxi.h"
 
 class QTableWidget;
+class QLineEdit;
+class QComboBox;
 
 class TaxiPage : public QWidget {
     Q_OBJECT
@@ -18,10 +21,17 @@ private slots:
     void onPhanCong();
     void onHoanThanh();
     void onHuyChuyen();
+    void onTimKiem();
 
 private:
     HeThongTaxi* heThong;
     QTableWidget* table;
+    QLineEdit* txtSearch;
+    QComboBox* cbLocTrangThai;
+    QHash<QString, QString> tenTheoMa;
+
+    void updateDriverLookup();
+    void fillTable();
 };
 
 #endif // TAXIPAGE_H

@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../quanlytaxi_backup/src/gui/TripPage.h"
+#include "../../src/gui/TripPage.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -38,10 +38,21 @@ template <> constexpr inline auto TripPage::qt_create_metaobjectdata<qt_meta_tag
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "TripPage"
+        "TripPage",
+        "onCellClicked",
+        "",
+        "row",
+        "col",
+        "hideOverlay"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'onCellClicked'
+        QtMocHelpers::SlotData<void(int, int)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Int, 4 },
+        }}),
+        // Slot 'hideOverlay'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +74,13 @@ Q_CONSTINIT const QMetaObject TripPage::staticMetaObject = { {
 void TripPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<TripPage *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->onCellClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 1: _t->hideOverlay(); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObject *TripPage::metaObject() const
@@ -85,6 +99,18 @@ void *TripPage::qt_metacast(const char *_clname)
 int TripPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 2)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 2;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 2)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 2;
+    }
     return _id;
 }
 QT_WARNING_POP
