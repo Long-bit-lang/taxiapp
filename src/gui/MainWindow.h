@@ -1,8 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
+#pragma once
 #include <QWidget>
-#include <memory>
 #include "../../include/HeThongTaxi.h"
 #include "../../include/NguoiDung.h"
 
@@ -44,5 +41,3 @@ private:
     QWidget* buildOverviewPage();
     void chuyenTrang(int index, QPushButton* btnActive);
 };
-
-#endif // MAINWINDOW_H

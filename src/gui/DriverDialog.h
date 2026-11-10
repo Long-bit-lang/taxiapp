@@ -1,6 +1,4 @@
-#ifndef DRIVERDIALOG_H
-#define DRIVERDIALOG_H
-
+#pragma once
 #include <QDialog>
 #include "../../include/TaiXe.h"
 
@@ -25,5 +23,3 @@ private:
     QLineEdit* txtGPLX;
     QComboBox* cbTrangThai;
 };
-
-#endif // DRIVERDIALOG_H

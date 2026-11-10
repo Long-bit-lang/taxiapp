@@ -117,9 +117,6 @@ void BookingPage::hienThiDanhSachTaxi() {
     btnXacNhan->setEnabled(false);
     cbTaiXe->clear();
 
-    heThong->taxi().docFile();
-    heThong->taiXe().docFile();
-
     auto ds = heThong->taxi().timTaxiPhuHop(spinSoKhach->value());
     if (ds.empty()) {
         dsTaxiLayout->addWidget(new QLabel(
@@ -200,7 +197,11 @@ void BookingPage::onTimTaxi() {
 
 void BookingPage::onXacNhan() {
     if (bienSoDangChon.isEmpty()) return;
-    if (txtTenKhach->text().trimmed().isEmpty()) {
+    QString tenKhach = txtTenKhach->text().trimmed();
+    QString diemDon = txtDiemDon->text().trimmed();
+    QString diemDen = txtDiemDen->text().trimmed();
+
+    if (tenKhach.isEmpty()) {
         QMessageBox::warning(this, "Lỗi", "Vui lòng nhập họ tên khách hàng.");
         return;
     }
@@ -211,14 +212,23 @@ void BookingPage::onXacNhan() {
         QMessageBox::warning(this, "Lỗi", "Số điện thoại khách hàng không hợp lệ.");
         return;
     }
-    if (txtDiemDon->text().trimmed().isEmpty() || txtDiemDen->text().trimmed().isEmpty()) {
+    if (diemDon.isEmpty() || diemDen.isEmpty()) {
         QMessageBox::warning(this, "Lỗi", "Vui lòng nhập đầy đủ điểm đón và điểm đến.");
+        return;
+    }
+    if (tenKhach.contains('|') || diemDon.contains('|') || diemDen.contains('|')) {
+        QMessageBox::warning(this, "Lỗi", "Thông tin nhập không được chứa ký tự '|'.");
         return;
     }
     Taxi* taxi = heThong->taxi().timTheoBienSo(bienSoDangChon.toStdString());
     if (!taxi) return;
 
-    
+    if (!taxi->kiemTraSanSang() || heThong->chuyenXe().taxiDangChay(bienSoDangChon.toStdString())) {
+        QMessageBox::warning(this, "Lỗi", "Taxi này hiện đang phục vụ chuyến khác, vui lòng chọn taxi khác.");
+        hienThiDanhSachTaxi();
+        return;
+    }
+
     QString maTaiXeChon = cbTaiXe->currentData().toString();
     if (maTaiXeChon.isEmpty()) {
         QMessageBox::warning(this, "Lỗi", "Taxi này chưa có tài xế phù hợp để thực hiện chuyến.");
@@ -236,9 +246,10 @@ void BookingPage::onXacNhan() {
     for (auto& t : heThong->taiXe().layDanhSach()) {
         if (t.getMaTX() == maTaiXeChon.toStdString()) { taiXeChon = &t; break; }
     }
-    if (!taiXeChon || !hangBangLaiPhuHopSucChua(taiXeChon->getBangLai(), taxi->getSucChua())) {
+    if (!taiXeChon || taiXeChon->getTrangThai() != DANG_HOAT_DONG ||
+        !hangBangLaiPhuHopSucChua(taiXeChon->getBangLai(), taxi->getSucChua())) {
         QMessageBox::warning(this, "Lỗi",
-                             "Tài xế không đủ điều kiện hạng bằng lái cho xe này, vui lòng chọn tài xế khác.");
+                             "Tài xế không đủ điều kiện hoặc không ở trạng thái hoạt động, vui lòng chọn tài xế khác.");
         chonTaxi(bienSoDangChon);
         return;
     }
@@ -253,9 +264,9 @@ void BookingPage::onXacNhan() {
 
     std::string maChuyen = heThong->chuyenXe().sinhMaMoi();
     std::string thoiDiem = QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm").toStdString();
-    ChuyenXe cx(maChuyen, txtTenKhach->text().toStdString(), txtSdt->text().toStdString(),
-                bienSoDangChon.toStdString(), thoiDiem, txtDiemDon->text().toStdString(),
-                txtDiemDen->text().toStdString(), spinKhoangCach->value(), maTaiXeChon.toStdString());
+    ChuyenXe cx(maChuyen, tenKhach.toStdString(), sdtKhach.toStdString(),
+                bienSoDangChon.toStdString(), thoiDiem, diemDon.toStdString(),
+                diemDen.toStdString(), spinKhoangCach->value(), maTaiXeChon.toStdString());
 
     heThong->chuyenXe().themChuyen(cx);
     taxi->setSanSang(false);
@@ -269,5 +280,11 @@ void BookingPage::onXacNhan() {
                     .arg(dinhDangTien(cx.getCuocPhi())));
     box.exec();
 
+    txtTenKhach->clear();
+    txtSdt->clear();
+    txtDiemDon->clear();
+    txtDiemDen->clear();
+
     hienThiDanhSachTaxi();
+    emit chuyenXeThayDoi();
 }

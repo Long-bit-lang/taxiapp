@@ -1,6 +1,4 @@
-#ifndef TAXIPAGE_H
-#define TAXIPAGE_H
-
+#pragma once
 #include <QWidget>
 #include <QHash>
 #include "../../include/HeThongTaxi.h"
@@ -14,6 +12,10 @@ class TaxiPage : public QWidget {
 public:
     explicit TaxiPage(HeThongTaxi* ht, QWidget* parent = nullptr);
     void refresh();
+
+signals:
+    void duLieuThayDoi();
+    void chuyenXeThayDoi();
 
 private slots:
     void onThem();
@@ -33,5 +35,3 @@ private:
     void updateDriverLookup();
     void fillTable();
 };
-
-#endif // TAXIPAGE_H

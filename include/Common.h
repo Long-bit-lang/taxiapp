@@ -1,10 +1,6 @@
-#ifndef COMMON_H
-#define COMMON_H
+#pragma once
 
-#include <vector>
-#include <sstream>
 #include <string>
-#include <algorithm>
 #include <ctime>
 #include "CauTruc.h"
 
@@ -43,9 +39,9 @@ inline string trangThaiToStr(TrangThai t) {
 
 inline bool hangBangLaiPhuHopSucChua(const string& bangLai, int sucChua) {
     if (bangLai == "B2") return sucChua <= 8;
+    if (bangLai == "C")  return sucChua <= 8;
     if (bangLai == "D")  return sucChua <= 29;
     if (bangLai == "E")  return true;
-    if (bangLai == "C")  return true;
     return false;
 }
 
@@ -66,8 +62,8 @@ inline DanhSach<string> split(const string& s, char delim) {
     string item;
     for (size_t i = 0; i <= s.size(); ++i) {
         if (i == s.size() || s[i] == delim) {
-            if (!(i == s.size() && item.empty()))   // giống getline: không thêm mục rỗng ở cuối
-                out.themCuoi(item);
+            if (!(i == s.size() && item.empty()))  
+                out.push_back(item);
             item.clear();
         } else item += s[i];
     }
@@ -78,5 +74,3 @@ inline bool hangBangLaiHopLeTaxi(const string& bangLai) {
     static const DanhSach<string> hopLe = {"B2", "C", "D", "E"};
     return hopLe.chua(bangLai);
 }
-
-#endif // COMMON_H

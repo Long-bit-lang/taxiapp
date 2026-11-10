@@ -105,6 +105,11 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
             QMessageBox::warning(this, "Lỗi", "Vui lòng nhập số GPLX.");
             return;
         }
+        if (txtTen->text().contains('|') || txtHoDem->text().contains('|') ||
+            txtDiaChi->text().contains('|') || txtGPLX->text().contains('|')) {
+            QMessageBox::warning(this, "Lỗi", "Thông tin nhập không được chứa ký tự '|'.");
+            return;
+        }
 
         QDate ns = dateNgaySinh->date();
         if (ns > QDate::currentDate()) {
@@ -127,15 +132,17 @@ DriverDialog::DriverDialog(QWidget* parent, const TaiXe* existing)
 
 TaiXe DriverDialog::ketQua() const {
     Date d{ dateNgaySinh->date().day(), dateNgaySinh->date().month(), dateNgaySinh->date().year() };
+    QString sdt = txtSdt->text().trimmed();
+    sdt.remove(' ');
     return TaiXe(
-        txtMaTX->text().toStdString(),
-        txtTen->text().toStdString(),
-        txtHoDem->text().toStdString(),
+        txtMaTX->text().trimmed().toStdString(),
+        txtTen->text().trimmed().toStdString(),
+        txtHoDem->text().trimmed().toStdString(),
         d,
-        txtDiaChi->text().toStdString(),
-        txtSdt->text().toStdString(),
+        txtDiaChi->text().trimmed().toStdString(),
+        sdt.toStdString(),
         cbBangLai->currentText().toStdString(),
-        txtGPLX->text().toStdString(),
+        txtGPLX->text().trimmed().toStdString(),
         (TrangThai)cbTrangThai->currentIndex()
     );
 }

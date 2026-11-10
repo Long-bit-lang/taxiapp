@@ -1,8 +1,5 @@
-#ifndef LOGINWIDGET_H
-#define LOGINWIDGET_H
-
+#pragma once
 #include <QWidget>
-#include <memory>
 #include "../../include/HeThongTaxi.h"
 #include "../../include/NguoiDung.h"
 
@@ -26,5 +23,3 @@ private:
     QLineEdit* txtMatKhau;
     QLabel* lblLoi;
 };
-
-#endif // LOGINWIDGET_H

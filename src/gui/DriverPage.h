@@ -1,6 +1,4 @@
-#ifndef DRIVERPAGE_H
-#define DRIVERPAGE_H
-
+#pragma once
 #include <QWidget>
 #include "../../include/HeThongTaxi.h"
 
@@ -12,6 +10,9 @@ class DriverPage : public QWidget {
 public:
     explicit DriverPage(HeThongTaxi* ht, QWidget* parent = nullptr);
     void refresh();
+
+signals:
+    void taiXeThayDoi();
 
 private slots:
     void onThem();
@@ -25,5 +26,3 @@ private:
     QLineEdit* txtSearch;
     void fillTable(const DanhSach<TaiXe>& ds);
 };
-
-#endif // DRIVERPAGE_H

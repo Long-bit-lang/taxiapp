@@ -1,6 +1,4 @@
-#ifndef TINHLUONG_H
-#define TINHLUONG_H
-
+#pragma once
 #include <string>
 #include <cstdio>
 #include <algorithm>
@@ -49,8 +47,8 @@ inline bool thuocThang(const ChuyenXe& c, int thang, int nam) {
 inline DanhSach<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi& qlTaxi,
                                         int thang, int nam,
                                         const CauHinhLuong& ch = CauHinhLuong()) {
-    BanDo<string, LuongTaiXe> bang;
-    BanDo<Cap<string, string>, Cap<int, double>> theoNgay; // (maTX, ngay) -> (so chuyen, doanh thu)
+    Map<string, LuongTaiXe> bang;
+    Map<Cap<string, string>, Cap<int, double>> theoNgay; 
 
     for (const auto& c : qlCX.layDanhSach()) {
         if (c.getTrangThai() != HOAN_THANH) continue;
@@ -58,7 +56,7 @@ inline DanhSach<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi
         if (!thuocThang(c, thang, nam)) continue;
 
         Taxi* t = qlTaxi.timTheoBienSo(c.getBienSoTaxi());
-        int sucChua = t ? t->getSucChua() : 4;      // taxi khong con trong taxi.txt -> coi nhu 4 cho
+        int sucChua = t ? t->getSucChua() : 4;      
         double cuoc = c.getCuocPhi();
 
         LuongTaiXe& l = bang[c.getMaTaiXe()];
@@ -84,9 +82,7 @@ inline DanhSach<LuongTaiXe> tinhBangLuong(const QuanLyChuyenXe& qlCX, QuanLyTaxi
         double truocThue = l.doanhThu - l.chietKhau - l.phiNenTang + l.thuong;
         l.thue = max(0.0, truocThue) * ch.tyLeThue;
         l.thucNhan = truocThue - l.thue;
-        kq.themCuoi(l);
+        kq.push_back(l);
     });
     return kq;
 }
-
-#endif // TINHLUONG_H

@@ -1,6 +1,4 @@
-#ifndef TAIXE_H
-#define TAIXE_H
-
+#pragma once
 #include <string>
 #include "Common.h"
 
@@ -45,5 +43,3 @@ public:
     void setBangLai(string bl) { bangLai = bl; }
     void setSoGPLX(string gplx) { soGPLX = gplx; }
 };
-
-#endif // TAIXE_H

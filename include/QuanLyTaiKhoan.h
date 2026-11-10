@@ -1,6 +1,4 @@
-#ifndef QUANLYTAIKHOAN_H
-#define QUANLYTAIKHOAN_H
-
+#pragma once
 #include <string>
 #include <fstream>
 #include <memory>
@@ -37,9 +35,8 @@ public:
             if (line.empty()) continue;
             auto p = split(line, '|');
             if (p.size() < 3) continue;
-            dsTaiKhoan.themCuoi(TaiKhoan(p[0], p[1], (VaiTro)stoi(p[2])));
+            dsTaiKhoan.push_back(TaiKhoan(p[0], p[1], (VaiTro)stoi(p[2])));
         }
     }
 };
 
-#endif // QUANLYTAIKHOAN_H

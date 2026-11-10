@@ -1,6 +1,4 @@
-#ifndef NGUOIDUNG_H
-#define NGUOIDUNG_H
-
+#pragma once
 #include <string>
 #include "Common.h"
 
@@ -49,5 +47,3 @@ public:
     }
     string tenVaiTro() const override { return "Điều hành"; }
 };
-
-#endif // NGUOIDUNG_H

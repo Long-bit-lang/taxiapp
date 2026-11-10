@@ -1,6 +1,4 @@
-#ifndef CHUYENXE_H
-#define CHUYENXE_H
-
+#pragma once
 #include <string>
 #include "Common.h"
 
@@ -19,6 +17,7 @@ private:
     double cuocPhi = 0;
     TrangThaiChuyen trangThai = DANG_DI;
     string maTaiXe;
+    string thoiDiemKetThuc;   // dd/MM/yyyy HH:mm (khi hoàn thành hoặc hủy)
 
 public:
     ChuyenXe() {}
@@ -49,7 +48,6 @@ public:
     void setTrangThai(TrangThaiChuyen t) { trangThai = t; }
     const string& getMaTaiXe() const { return maTaiXe; }
     void setMaTaiXe(const string& m) { maTaiXe = m; }
+    const string& getThoiDiemKetThuc() const { return thoiDiemKetThuc; }
+    void setThoiDiemKetThuc(const string& t) { thoiDiemKetThuc = t; }
 };
-
-
-#endif // CHUYENXE_H

@@ -26,9 +26,8 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
     titleBar->setFixedHeight(56);
     auto* titleLay = new QHBoxLayout(titleBar);
     titleLay->setContentsMargins(0, 0, 0, 0);
-    QString hello = QString("HỆ THỐNG QUẢN LÝ TAXI TIÊN SA — Xin chào, %1 (%2)")
-                        .arg(QString::fromStdString(nd->getTenDangNhap()),
-                             QString::fromStdString(nd->tenVaiTro()));
+    QString hello = QString("HỆ THỐNG QUẢN LÝ TAXI TIÊN SA — Xin chào, %1")
+                        .arg(QString::fromStdString(nd->tenVaiTro()));
     auto* titleLbl = new QLabel(hello, titleBar);
     titleLbl->setObjectName("titleLabel");
     titleLay->addWidget(titleLbl);
@@ -98,6 +97,41 @@ MainWindow::MainWindow(HeThongTaxi* ht, std::shared_ptr<NguoiDung> nd, QWidget* 
         addMenuBtn(nhan, stack->count() - 1);
     }
 
+    // Đồng bộ thời gian thực giữa các tab
+    if (taxiPage) {
+        connect(taxiPage, &TaxiPage::chuyenXeThayDoi, this, [this]() {
+            if (tripPage) tripPage->refresh(false);
+            if (bookingPage) bookingPage->refresh();
+            refreshOverview();
+        });
+        connect(taxiPage, &TaxiPage::duLieuThayDoi, this, [this]() {
+            if (bookingPage) bookingPage->refresh();
+            refreshOverview();
+        });
+    }
+    if (tripPage) {
+        connect(tripPage, &TripPage::chuyenXeThayDoi, this, [this]() {
+            if (taxiPage) taxiPage->refresh();
+            if (bookingPage) bookingPage->refresh();
+            refreshOverview();
+        });
+    }
+    if (bookingPage) {
+        connect(bookingPage, &BookingPage::chuyenXeThayDoi, this, [this]() {
+            if (tripPage) tripPage->refresh(false);
+            if (taxiPage) taxiPage->refresh();
+            refreshOverview();
+        });
+    }
+    if (driverPage) {
+        connect(driverPage, &DriverPage::taiXeThayDoi, this, [this]() {
+            if (taxiPage) taxiPage->refresh();
+            if (bookingPage) bookingPage->refresh();
+            if (tripPage) tripPage->refresh(false);
+            refreshOverview();
+        });
+    }
+
     sideLay->addStretch();
     auto* btnLogout = new QPushButton("Đăng xuất", sidebar);
     btnLogout->setObjectName("menuBtn");
@@ -120,7 +154,7 @@ void MainWindow::chuyenTrang(int index, QPushButton* btnActive) {
     if (taxiPage && stack->widget(index) == taxiPage) taxiPage->refresh();
     if (bookingPage && stack->widget(index) == bookingPage) bookingPage->refresh();
     if (statsPage && stack->widget(index) == statsPage) statsPage->refresh();
-    if (tripPage && stack->widget(index) == tripPage) tripPage->refresh();
+    if (tripPage && stack->widget(index) == tripPage) tripPage->refresh(false);
 }
 
 QWidget* MainWindow::buildOverviewPage() {
@@ -163,9 +197,6 @@ QWidget* MainWindow::buildOverviewPage() {
 }
 
 void MainWindow::refreshOverview() {
-    heThong->taiXe().docFile();
-    heThong->taxi().docFile();
-    heThong->chuyenXe().docFile();
     int soTaiXe = (int)heThong->taiXe().layDanhSach().size();
     int soTaxi = (int)heThong->taxi().layDanhSach().size();
     int soChuyen = (int)heThong->chuyenXe().layDanhSach().size();

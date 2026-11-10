@@ -3,6 +3,7 @@
 #include <QFileInfo>
 #include <QStackedWidget>
 #include <QDebug>
+#include <clocale>
 #include "gui/Style.h"
 #include "gui/LoginWidget.h"
 #include "gui/MainWindow.h"
@@ -10,6 +11,7 @@
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
+    std::setlocale(LC_NUMERIC, "C");
     if (!QFileInfo::exists("data/taikhoan.txt")) {
         QDir dir(QCoreApplication::applicationDirPath());
         bool found = false;

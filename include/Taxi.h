@@ -1,8 +1,5 @@
-#ifndef TAXI_H
-#define TAXI_H
-
+#pragma once
 #include <string>
-#include <algorithm>
 #include "CauTruc.h"
 
 using namespace std;
@@ -35,7 +32,7 @@ public:
     void setSanSang(bool ss) { dangSanSang = ss; }
 
     void themTaiXe(const string& maTX) {
-        if (!dsMaTaiXe.chua(maTX)) dsMaTaiXe.themCuoi(maTX);
+        if (!dsMaTaiXe.chua(maTX)) dsMaTaiXe.push_back(maTX);
     }
     void xoaTaiXe(const string& maTX) {
         dsMaTaiXe.xoaGiaTri(maTX);
@@ -44,5 +41,3 @@ public:
         dsMaTaiXe = dsMoi;
     }
 };
-
-#endif // TAXI_H

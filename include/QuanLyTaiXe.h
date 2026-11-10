@@ -1,9 +1,6 @@
-#ifndef QUANLYTAIXE_H
-#define QUANLYTAIXE_H
-
+#pragma once
 #include <string>
 #include <fstream>
-#include <sstream>
 #include <algorithm>
 #include "TaiXe.h"
 
@@ -99,5 +96,3 @@ public:
         }
     }
 };
-
-#endif // QUANLYTAIXE_H

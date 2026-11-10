@@ -369,7 +369,7 @@ void TaxiPage::fillTable() {
             if (!match) continue;
         }
 
-        hienThi.themCuoi(&t);
+        hienThi.push_back(&t);
     }
 
     table->setUpdatesEnabled(false);
@@ -431,12 +431,17 @@ void TaxiPage::onThem() {
     if (dlg.exec() == QDialog::Accepted) {
         std::string bienSo = txtBienSo->text().trimmed().toStdString();
         if (bienSo.empty()) { QMessageBox::warning(this, "Lỗi", "Vui lòng nhập biển số xe!"); return; }
+        if (bienSo.find('|') != std::string::npos) {
+            QMessageBox::warning(this, "Lỗi", "Biển số không được chứa ký tự '|'.");
+            return;
+        }
         if (heThong->taxi().coBienSo(bienSo)) {
             QMessageBox::warning(this, "Lỗi", "Biển số này đã tồn tại!");
             return;
         }
         heThong->taxi().them(Taxi(bienSo, spinSucChua->value()));
         fillTable();
+        emit duLieuThayDoi();
     }
 }
 
@@ -455,6 +460,7 @@ void TaxiPage::onXoa() {
     if (ret == QMessageBox::Yes) {
         heThong->taxi().xoa(bienSo);
         fillTable();
+        emit duLieuThayDoi();
     }
 }
 
@@ -472,11 +478,12 @@ void TaxiPage::onPhanCong() {
     if (dlg.exec() == QDialog::Accepted) {
         DanhSach<string> dsMoi;
         for (const auto& ma : dlg.getSelectedMaTX()) {
-            dsMoi.themCuoi(ma.toStdString());
+            dsMoi.push_back(ma.toStdString());
         }
         taxi->datDanhSachTaiXe(dsMoi);
         heThong->taxi().ghiFile();
         fillTable();
+        emit duLieuThayDoi();
     }
 }
 
@@ -507,6 +514,7 @@ void TaxiPage::onHoanThanh() {
     taxi->setSanSang(true);
     heThong->taxi().ghiFile();
     fillTable();
+    emit chuyenXeThayDoi();
 }
 
 void TaxiPage::onHuyChuyen() {
@@ -538,4 +546,5 @@ void TaxiPage::onHuyChuyen() {
     taxi->setSanSang(true);
     heThong->taxi().ghiFile();
     fillTable();
+    emit chuyenXeThayDoi();
 }

@@ -1,6 +1,4 @@
-#ifndef STATSPAGE_H
-#define STATSPAGE_H
-
+#pragma once
 #include <QWidget>
 #include <QSpinBox>
 #include "../../include/HeThongTaxi.h"
@@ -38,4 +36,3 @@ private:
     void capNhatGioiHan();
 };
 
-#endif // STATSPAGE_H

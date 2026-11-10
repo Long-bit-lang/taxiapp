@@ -1,6 +1,4 @@
-#ifndef HETHONGTAXI_H
-#define HETHONGTAXI_H
-
+#pragma once
 #include "QuanLyTaiXe.h"
 #include "QuanLyTaxi.h"
 #include "QuanLyChuyenXe.h"
@@ -28,5 +26,3 @@ public:
     QuanLyChuyenXe& chuyenXe() { return qlChuyenXe; }
     QuanLyTaiKhoan& taiKhoan() { return qlTaiKhoan; }
 };
-
-#endif // HETHONGTAXI_H

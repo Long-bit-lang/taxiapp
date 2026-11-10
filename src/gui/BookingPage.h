@@ -1,6 +1,4 @@
-#ifndef BOOKINGPAGE_H
-#define BOOKINGPAGE_H
-
+#pragma once
 #include <QWidget>
 #include "../../include/HeThongTaxi.h"
 
@@ -16,6 +14,9 @@ class BookingPage : public QWidget {
 public:
     explicit BookingPage(HeThongTaxi* ht, QWidget* parent = nullptr);
     void refresh();
+
+signals:
+    void chuyenXeThayDoi();
 
 private slots:
     void onTimTaxi();
@@ -38,5 +39,3 @@ private:
     void hienThiDanhSachTaxi();
     void chonTaxi(const QString& bienSo);
 };
-
-#endif // BOOKINGPAGE_H

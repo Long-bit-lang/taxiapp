@@ -1,6 +1,4 @@
-#ifndef STYLE_H
-#define STYLE_H
-
+#pragma once
 #include <QString>
 #include <QTableWidget>
 #include <QHeaderView>
@@ -155,5 +153,3 @@ inline QString appStyleSheet() {
         }
     )";
 }
-
-#endif // STYLE_H

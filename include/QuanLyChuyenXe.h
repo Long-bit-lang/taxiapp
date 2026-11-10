@@ -1,11 +1,11 @@
-#ifndef QUANLYCHUYENXE_H
-#define QUANLYCHUYENXE_H
-
+#pragma once
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <algorithm>
-#include <cstdio>
-#include <cstdlib>
+#include <iomanip>
+#include <ctime>
+#include <locale>
 #include "ChuyenXe.h"
 #include "Common.h"
 
@@ -15,6 +15,23 @@ class QuanLyChuyenXe {
 private:
     DanhSach<ChuyenXe> dsChuyenXe;
     string duongDanFile;
+
+    static string thoiDiemHienTai() {
+        time_t t = time(nullptr);
+        tm* now = localtime(&t);
+        char buf[32];
+        if (now && strftime(buf, sizeof(buf), "%d/%m/%Y %H:%M", now) > 0)
+            return string(buf);
+        return "";
+    }
+
+    static double parseDoubleClassic(const string& s) {
+        istringstream iss(s);
+        iss.imbue(locale::classic());
+        double val = 0;
+        iss >> val;
+        return val;
+    }
 
 public:
     explicit QuanLyChuyenXe(string file = "data/chuyenxe.txt") : duongDanFile(file) {}
@@ -27,11 +44,14 @@ public:
         int maxv = 0;
         for (auto& c : dsChuyenXe) {
             string ma = c.getMaChuyen();
-            if (ma.size() > 2) maxv = max(maxv, atoi(ma.substr(2).c_str()));
+            if (ma.size() > 2) {
+                maxv = max(maxv, stoi(ma.substr(2))); 
+            }
         }
-        char buf[16];
-        snprintf(buf, sizeof(buf), "CX%04d", maxv + 1);
-        return buf;
+
+        ostringstream oss;
+        oss << "CX" << setfill('0') << setw(4) << maxv + 1;
+        return oss.str();
     }
 
     DanhSach<ChuyenXe> theoTaxi(const string& bienSo) const {
@@ -60,10 +80,11 @@ public:
         return false;
     }
     
-    bool hoanThanhChuyen(const string& maChuyen) {
+    bool hoanThanhChuyen(const string& maChuyen, const string& thoiDiemKT = "") {
         for (int i = dsChuyenXe.size() - 1; i >= 0; --i) {
             if (dsChuyenXe[i].getMaChuyen() == maChuyen) {
                 dsChuyenXe[i].setTrangThai(HOAN_THANH);
+                dsChuyenXe[i].setThoiDiemKetThuc(thoiDiemKT.empty() ? thoiDiemHienTai() : thoiDiemKT);
                 ghiFile();
                 return true;
             }
@@ -71,10 +92,11 @@ public:
         return false;
     }
   
-    bool huyChuyen(const string& maChuyen) {
+    bool huyChuyen(const string& maChuyen, const string& thoiDiemKT = "") {
         for (int i = dsChuyenXe.size() - 1; i >= 0; --i) {
             if (dsChuyenXe[i].getMaChuyen() == maChuyen) {
                 dsChuyenXe[i].setTrangThai(DA_HUY);
+                dsChuyenXe[i].setThoiDiemKetThuc(thoiDiemKT.empty() ? thoiDiemHienTai() : thoiDiemKT);
                 ghiFile();
                 return true;
             }
@@ -98,23 +120,24 @@ public:
             if (line.empty()) continue;
             auto p = split(line, '|');
             if (p.size() < 9) continue;
-            ChuyenXe c(p[0], p[1], p[2], p[3], p[4], p[5], p[6], stod(p[7]));
-            c.setCuocPhi(stod(p[8]));
+            ChuyenXe c(p[0], p[1], p[2], p[3], p[4], p[5], p[6], parseDoubleClassic(p[7]));
+            c.setCuocPhi(parseDoubleClassic(p[8]));
             if (p.size() >= 10) c.setTrangThai((TrangThaiChuyen)stoi(p[9]));
             if (p.size() >= 11) c.setMaTaiXe(p[10]);
+            if (p.size() >= 12) c.setThoiDiemKetThuc(p[11]);
             dsChuyenXe.push_back(c);
         }
     }
 
     void ghiFile() const {
         ofstream fout(duongDanFile, ios::trunc);
+        fout.imbue(locale::classic());
         for (auto& c : dsChuyenXe) {
             fout << c.getMaChuyen() << "|" << c.getTenKhachHang() << "|" << c.getSdtKhachHang()
                  << "|" << c.getBienSoTaxi() << "|" << c.getThoiDiem() << "|" << c.getDiemDon()
                  << "|" << c.getDiemDen() << "|" << c.getKhoangCach() << "|" << c.getCuocPhi() 
-                 << "|" << (int)c.getTrangThai()  << "|" << c.getMaTaiXe() << "\n";
+                 << "|" << (int)c.getTrangThai()  << "|" << c.getMaTaiXe()
+                 << (c.getThoiDiemKetThuc().empty() ? "" : "|" + c.getThoiDiemKetThuc()) << "\n";
         }
     }
 };
-
-#endif // QUANLYCHUYENXE_H

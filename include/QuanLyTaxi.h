@@ -1,10 +1,6 @@
-#ifndef QUANLYTAXI_H
-#define QUANLYTAXI_H
-
+#pragma once
 #include <string>
 #include <fstream>
-#include <sstream>
-#include <algorithm>
 #include "Taxi.h"
 #include "Common.h"
 
@@ -50,7 +46,7 @@ public:
         DanhSach<Taxi*> ketQua;
         for (auto& t : dsTaxi)
             if (t.kiemTraSanSang() && t.getSucChua() >= soKhachToiThieu)
-                ketQua.themCuoi(&t);
+                ketQua.push_back(&t);
         ketQua.sapXep([](Taxi* a, Taxi* b) { return a->getBienSo() < b->getBienSo(); });
         return ketQua;
     }
@@ -81,5 +77,3 @@ public:
         }
     }
 };
-
-#endif // QUANLYTAXI_H

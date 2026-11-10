@@ -38,3 +38,4 @@ HEADERS += \
     include/CauTruc.h
 
 RESOURCES += resources.qrc
+

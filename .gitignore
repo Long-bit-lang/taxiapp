@@ -1,0 +1,10 @@
+*.o
+*.exe
+*.pro.user
+.qmake.stash
+moc_*
+qrc_*
+Makefile
+TaxiTienSa
+build/
+

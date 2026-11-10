@@ -106,6 +106,7 @@ void DriverPage::onThem() {
         }
         heThong->taiXe().them(moi);
         refresh();
+        emit taiXeThayDoi();
     }
 }
 
@@ -130,8 +131,14 @@ void DriverPage::onSua() {
             QMessageBox::warning(this, "Lỗi", "Số GPLX này đã tồn tại ở một tài xế khác!");
             return;
         }
+        if (moi.getTrangThai() != DANG_HOAT_DONG && heThong->chuyenXe().taiXeDangChay(maTX)) {
+            QMessageBox::warning(this, "Không thể cập nhật trạng thái",
+                                 "Tài xế này đang thực hiện một chuyến xe, không thể chuyển sang trạng thái nghỉ hoặc ngừng hoạt động lúc này.");
+            return;
+        }
         heThong->taiXe().sua(maTX, moi);
         refresh();
+        emit taiXeThayDoi();
     }
 }
 
@@ -152,5 +159,6 @@ void DriverPage::onXoa() {
         heThong->taiXe().xoa(maTX);
         heThong->taxi().goBoTaiXeKhoiTatCaTaxi(maTX);
         refresh();
+        emit taiXeThayDoi();
     }
 }
